@@ -1,10 +1,10 @@
 #!/bin/bash
-set -e
+set +e
 
 # AI Agent Skills - Installation Script
 # Installs skills to Hermes Agent or other AI agents
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 SKILLS_DIR="$REPO_ROOT/skills"
@@ -68,7 +68,7 @@ list_categories() {
             local cat_name=$(basename "$dir")
             local skill_count=$(find "$dir" -name "SKILL.md" -type f | wc -l)
             printf "  %-30s %3d skills\n" "$cat_name" "$skill_count"
-            ((count++))
+            count=$((count + 1))
         fi
     done
     
