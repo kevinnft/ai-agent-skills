@@ -87,15 +87,18 @@ class QualityDashboard:
             print("❌ GitHub token not found. Set GITHUB_TOKEN environment variable.")
             sys.exit(1)
         
-        self.g = Github(self.token)
+        from github import Auth
+        auth = Auth.Token(self.token)
+        self.g = Github(auth=auth)
         self.repo = self.g.get_repo(repo_name)
         self.repo_path = Path.cwd()
     
     def get_metrics(self) -> Metrics:
         """Get repository metrics"""
-        # Get commits in last week
-        week_ago = datetime.now() - timedelta(days=7)
-        month_ago = datetime.now() - timedelta(days=30)
+        # Get commits in last week (timezone-aware)
+        from datetime import timezone
+        week_ago = datetime.now(timezone.utc) - timedelta(days=7)
+        month_ago = datetime.now(timezone.utc) - timedelta(days=30)
         
         commits = list(self.repo.get_commits(since=month_ago))
         commits_this_week = len([c for c in commits if c.commit.author.date > week_ago])
