@@ -4,7 +4,7 @@ set +e
 # AI Agent Skills - Validation Script
 # Validates all skills for correctness
 
-VERSION="1.0.1"
+VERSION="1.2.0"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 SKILLS_DIR="$REPO_ROOT/skills"

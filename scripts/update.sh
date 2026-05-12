@@ -4,7 +4,7 @@ set -e
 # AI Agent Skills - Update Script
 # Updates skills to latest version
 
-VERSION="1.0.0"
+VERSION="1.2.0"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 TARGET_DIR="$HOME/.hermes/skills"
