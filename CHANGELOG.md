@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-05-12
+
+### Added
+- **Auto-Label Bot** — Automatic PR and Issue labeling via GitHub Actions
+  - 35 labels across 6 categories (type, component, language, category, special, size)
+  - Analyzes files changed, languages, folders, PR size, and keywords
+  - Zero cost, zero maintenance, instant labeling
+  - Documentation: `docs/auto-label-bot.md`
+  - Workflow: `.github/workflows/auto-label.yml`
+  - Label creation script: `scripts/create-labels.sh`
+
+### Changed
+- Enhanced GitHub integration with automated workflows
+- Improved contributor experience with automatic labeling
+
 ## [1.0.0] - 2026-05-12
 
 ### Added

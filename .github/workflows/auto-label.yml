@@ -1,0 +1,251 @@
+name: Auto Label PRs and Issues
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+    name: Auto Label
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Auto Label PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const labels = new Set();
+            
+            // Get files changed
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+            
+            console.log(`Analyzing ${files.length} files...`);
+            
+            // Analyze files
+            for (const file of files) {
+              const filename = file.filename;
+              console.log(`File: ${filename}`);
+              
+              // Check folders
+              if (filename.includes('docs/')) {
+                labels.add('documentation');
+              }
+              if (filename.includes('skills/')) {
+                labels.add('skills');
+              }
+              if (filename.includes('scripts/')) {
+                labels.add('scripts');
+              }
+              if (filename.includes('.github/')) {
+                labels.add('github-actions');
+              }
+              
+              // Check languages
+              if (filename.endsWith('.py')) {
+                labels.add('python');
+              }
+              if (filename.endsWith('.js') || filename.endsWith('.ts')) {
+                labels.add('javascript');
+              }
+              if (filename.endsWith('.sh') || filename.endsWith('.bash')) {
+                labels.add('bash');
+              }
+              if (filename.endsWith('.md')) {
+                labels.add('documentation');
+              }
+              if (filename.endsWith('.yml') || filename.endsWith('.yaml')) {
+                labels.add('config');
+              }
+              
+              // Check skill categories
+              if (filename.includes('skills/research/')) {
+                labels.add('research');
+              }
+              if (filename.includes('skills/devops/')) {
+                labels.add('devops');
+              }
+              if (filename.includes('skills/creative/')) {
+                labels.add('creative');
+              }
+              if (filename.includes('skills/software-development/')) {
+                labels.add('development');
+              }
+              if (filename.includes('skills/mlops/')) {
+                labels.add('mlops');
+              }
+              if (filename.includes('skills/github/')) {
+                labels.add('github');
+              }
+              if (filename.includes('skills/productivity/')) {
+                labels.add('productivity');
+              }
+              if (filename.includes('skills/autonomous-ai-agents/')) {
+                labels.add('ai-agents');
+              }
+            }
+            
+            // Analyze PR type based on file status
+            const allAdded = files.every(f => f.status === 'added');
+            const allRemoved = files.every(f => f.status === 'removed');
+            const hasModified = files.some(f => f.status === 'modified');
+            
+            if (allAdded) {
+              labels.add('enhancement');
+              if (files.some(f => f.filename.includes('skills/'))) {
+                labels.add('new-skill');
+              }
+            } else if (allRemoved) {
+              labels.add('cleanup');
+            } else if (hasModified) {
+              labels.add('maintenance');
+            }
+            
+            // Analyze PR title
+            const title = pr.title.toLowerCase();
+            if (title.includes('fix') || title.includes('bug')) {
+              labels.add('bug');
+              labels.delete('enhancement');
+            }
+            if (title.includes('add') || title.includes('new')) {
+              labels.add('enhancement');
+            }
+            if (title.includes('update') || title.includes('improve')) {
+              labels.add('maintenance');
+            }
+            if (title.includes('refactor')) {
+              labels.add('refactor');
+            }
+            if (title.includes('test')) {
+              labels.add('tests');
+            }
+            if (title.includes('security')) {
+              labels.add('security');
+            }
+            if (title.includes('performance') || title.includes('optimize')) {
+              labels.add('performance');
+            }
+            
+            // Analyze PR size
+            const additions = files.reduce((sum, f) => sum + f.additions, 0);
+            const deletions = files.reduce((sum, f) => sum + f.deletions, 0);
+            const totalChanges = additions + deletions;
+            
+            if (totalChanges < 10) {
+              labels.add('size/XS');
+            } else if (totalChanges < 50) {
+              labels.add('size/S');
+            } else if (totalChanges < 200) {
+              labels.add('size/M');
+            } else if (totalChanges < 500) {
+              labels.add('size/L');
+            } else {
+              labels.add('size/XL');
+            }
+            
+            // Convert Set to Array
+            const labelArray = Array.from(labels);
+            
+            console.log(`Applying labels: ${labelArray.join(', ')}`);
+            
+            // Apply labels
+            if (labelArray.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                labels: labelArray
+              });
+              
+              console.log(`✅ Applied ${labelArray.length} labels successfully!`);
+            } else {
+              console.log('⚠️ No labels to apply');
+            }
+      
+      - name: Auto Label Issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const labels = new Set();
+            
+            const title = issue.title.toLowerCase();
+            const body = (issue.body || '').toLowerCase();
+            const text = title + ' ' + body;
+            
+            console.log(`Analyzing issue: ${issue.title}`);
+            
+            // Detect issue type from title
+            if (title.includes('bug') || title.includes('error') || title.includes('fail')) {
+              labels.add('bug');
+            }
+            if (title.includes('feature') || title.includes('add') || title.includes('new')) {
+              labels.add('enhancement');
+            }
+            if (title.includes('question') || title.includes('how to') || title.includes('help')) {
+              labels.add('question');
+            }
+            if (title.includes('docs') || title.includes('documentation')) {
+              labels.add('documentation');
+            }
+            
+            // Detect components from content
+            if (text.includes('install.sh') || text.includes('installation')) {
+              labels.add('scripts');
+              labels.add('installation');
+            }
+            if (text.includes('validate.sh') || text.includes('validation')) {
+              labels.add('scripts');
+              labels.add('validation');
+            }
+            if (text.includes('skill') && !text.includes('skills manager')) {
+              labels.add('skills');
+            }
+            if (text.includes('readme')) {
+              labels.add('documentation');
+            }
+            
+            // Detect priority
+            if (title.includes('critical') || title.includes('urgent')) {
+              labels.add('priority: high');
+            }
+            
+            // Detect if help wanted
+            if (text.includes('help wanted') || text.includes('good first issue')) {
+              labels.add('help-wanted');
+            }
+            
+            // Convert Set to Array
+            const labelArray = Array.from(labels);
+            
+            console.log(`Applying labels: ${labelArray.join(', ')}`);
+            
+            // Apply labels
+            if (labelArray.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: labelArray
+              });
+              
+              console.log(`✅ Applied ${labelArray.length} labels successfully!`);
+            } else {
+              console.log('⚠️ No labels to apply');
+            }
