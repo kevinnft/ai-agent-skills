@@ -1,0 +1,20 @@
+# CODEOWNERS
+# Automatically assign reviewers for specific areas
+
+# Core scripts
+/scripts/ @kevinnft
+
+# All skills
+/skills/ @kevinnft
+
+# Documentation
+README.md @kevinnft
+CHANGELOG.md @kevinnft
+
+# Community standards
+/CODE_OF_CONDUCT.md @kevinnft
+/CONTRIBUTING.md @kevinnft
+/SECURITY.md @kevinnft
+
+# CI/CD
+/.github/workflows/ @kevinnft
