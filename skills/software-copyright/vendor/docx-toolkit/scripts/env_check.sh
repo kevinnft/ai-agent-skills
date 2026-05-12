@@ -2,7 +2,7 @@
 # docx-toolkit Quick Environment Check
 # Cross-platform: macOS, Linux, WSL, Git Bash
 # Run this BEFORE any docx-toolkit operation. Use setup.sh for initial installation.
-set -euo pipefail
+set +euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"

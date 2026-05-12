@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set +euo pipefail
 G="\033[0;32m"; R="\033[0;31m"; N="\033[0m"
 ok() { echo -e "  ${G}+${N} $1"; }
 fail() { echo -e "  ${R}x${N} $1"; }
