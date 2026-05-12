@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Validate shell scripts
         run: |
@@ -20,7 +22,13 @@ jobs:
 
       - name: Validate Python syntax
         run: |
-          python3 -m py_compile -c "import compileall; compileall.compile_dir('skills/', force=True, quiet=1)" || find skills -name '*.py' -exec python3 -m py_compile {} \;
+          python3 - <<'PY'
+          import compileall
+          import sys
+
+          ok = compileall.compile_dir('skills/', force=True, quiet=1)
+          sys.exit(0 if ok else 1)
+          PY
 
       - name: Validate YAML files
         run: |

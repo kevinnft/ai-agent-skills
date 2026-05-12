@@ -9,3 +9,10 @@ disable-model-invocation: true
 ## Request
 
 I don't know this area of code well. Go up a layer of abstraction. Give me a map of all the relevant modules and callers, using the project's domain glossary vocabulary.
+
+## Output
+
+- Start with a concise system map: major modules, responsibilities, and data flow.
+- Identify the entry points, downstream callers, and external dependencies.
+- Call out the key domain terms used by this area of the codebase.
+- End with the next files or tests I should read to go deeper.

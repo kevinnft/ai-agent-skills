@@ -40,8 +40,15 @@ validate_frontmatter() {
         return 1
     fi
     
-    # Extract frontmatter
-    local frontmatter=$(sed -n '/^---$/,/^---$/p' "$file" | sed '1d;$d')
+    # Extract the first YAML frontmatter block only. Do not scan later markdown
+    # examples or horizontal rules, because many skills contain sample `name:`
+    # fields inside code blocks.
+    local frontmatter
+    frontmatter=$(awk '
+        NR == 1 && $0 == "---" { in_frontmatter = 1; next }
+        in_frontmatter && $0 == "---" { exit }
+        in_frontmatter { print }
+    ' "$file")
     
     # Check required fields
     if ! echo "$frontmatter" | grep -q "^name:"; then
@@ -149,8 +156,12 @@ validate_category() {
     done < <(find "$category_dir" -name "SKILL.md" -type f)
     
     if [ $skill_count -eq 0 ]; then
-        print_msg "$YELLOW" "  ⚠  No skills found"
-        ((WARNINGS++))
+        if [ -f "$category_dir/DESCRIPTION.md" ]; then
+            print_msg "$GREEN" "  Info: descriptor-only category (no skills yet)"
+        else
+            print_msg "$YELLOW" "  ⚠  No skills found"
+            ((WARNINGS++))
+        fi
     else
         print_msg "$GREEN" "  Summary: $valid_count valid, $invalid_count invalid"
     fi

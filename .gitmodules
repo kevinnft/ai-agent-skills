@@ -1,0 +1,6 @@
+[submodule "skills/obsidian-skills"]
+	path = skills/obsidian-skills
+	url = https://github.com/kepano/obsidian-skills.git
+[submodule "skills/patent-disclosure-skill"]
+	path = skills/patent-disclosure-skill
+	url = https://github.com/handsomestWei/patent-disclosure-skill.git
