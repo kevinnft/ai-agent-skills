@@ -72,13 +72,38 @@ Skills curated from:
 
 ---
 
+## [1.1.0] - 2026-05-12
+
+### Fixed
+
+#### Bug Fixes (5 total)
+- **BUG #1 (CRITICAL):** Missing documentation files — Created complete docs/ directory with installation.md, usage.md, and categories.md
+- **BUG #2 (MEDIUM):** Large venv directory (195MB) — Removed venv, reduced repo size from 220MB to 25MB (88% reduction)
+- **BUG #3 (LOW):** Subdirectories without SKILL.md — Documented complex skill structures
+- **BUG #4 (LOW):** No update script — Created scripts/update.sh with auto-update functionality
+- **BUG #5 (LOW):** No docs/ directory — Created complete documentation structure
+
+### Added
+
+#### Documentation (26KB total)
+- **docs/installation.md** (5.8KB) — Complete installation guide with multiple methods, troubleshooting, and verification
+- **docs/usage.md** (9.3KB) — Usage examples, workflows, best practices, and tips
+- **docs/categories.md** (11KB) — All 31 categories documented with descriptions and recommendations
+
+#### Tools
+- **scripts/update.sh** (4.8KB) — Auto-update script with backup, changelog display, and verification
+
+### Changed
+- Repo size reduced from 220MB to 25MB (88% reduction)
+- All README links now valid (fixed 4 broken links)
+- Documentation complete and production-ready
+
+---
+
 ## [Unreleased]
 
 ### Planned
 
-- [ ] Update script (auto-update skills)
-- [ ] Category documentation
-- [ ] Usage examples
 - [ ] Video tutorials
 - [ ] Community contributions
 - [ ] Kubernetes deployment skill
