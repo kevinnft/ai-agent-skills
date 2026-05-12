@@ -1,0 +1,74 @@
+name: CI - Validate Skills & Scripts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate shell scripts
+        run: |
+          for f in scripts/*.sh skills/**/*.sh; do
+            [ -f "$f" ] && bash -n "$f" && echo "OK: $f" || { echo "FAIL: $f"; exit 1; }
+          done
+
+      - name: Validate Python syntax
+        run: |
+          python3 -m py_compile -c "import compileall; compileall.compile_dir('skills/', force=True, quiet=1)" || find skills -name '*.py' -exec python3 -m py_compile {} \;
+
+      - name: Validate YAML files
+        run: |
+          pip install pyyaml --quiet
+          python3 -c "
+          import yaml, sys, glob
+          errors = 0
+          for f in glob.glob('skills/**/*.yaml', recursive=True) + glob.glob('skills/**/*.yml', recursive=True):
+              try:
+                  with open(f) as fh: yaml.safe_load(fh)
+                  print(f'OK: {f}')
+              except Exception as e:
+                  print(f'FAIL: {f}: {e}'); errors += 1
+          sys.exit(errors)
+          "
+
+      - name: Validate JSON files
+        run: |
+          python3 -c "
+          import json, sys, glob
+          errors = 0
+          for f in glob.glob('skills/**/*.json', recursive=True):
+              try:
+                  with open(f) as fh: json.load(fh)
+                  print(f'OK: {f}')
+              except Exception as e:
+                  print(f'FAIL: {f}: {e}'); errors += 1
+          sys.exit(errors)
+          "
+
+      - name: Check SKILL.md frontmatter
+        run: |
+          python3 -c "
+          import re, sys, glob, os
+          errors = 0
+          for root, dirs, files in os.walk('skills'):
+              if '.git' in root: continue
+              if 'SKILL.md' in files:
+                  path = os.path.join(root, 'SKILL.md')
+                  with open(path) as f:
+                      lines = f.readlines()
+                  if not lines or lines[0].strip() != '---':
+                      print(f'FAIL: {path}: missing frontmatter dashes'); errors += 1; continue
+                  content = ''.join(lines)
+                  if not re.search(r'^name:', content, re.MULTILINE):
+                      print(f'FAIL: {path}: missing name field'); errors += 1
+                  if not re.search(r'^description:', content, re.MULTILINE):
+                      print(f'FAIL: {path}: missing description field'); errors += 1
+          print(f'Checked all SKILL.md files: {\"PASS\" if errors == 0 else \"FAIL\"}')
+          sys.exit(errors)
+          "
