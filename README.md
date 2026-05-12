@@ -2,8 +2,9 @@
 
 > **189 production-ready skills for AI coding agents** — curated from industry experts (Andrej Karpathy, Matt Pocock, Addy Osmani, obra)
 
-[![Skills](https://img.shields.io/badge/skills-183-blue)](#categories)
+[![Skills](https://img.shields.io/badge/skills-189-blue)](#categories)
 [![Categories](https://img.shields.io/badge/categories-31-green)](#categories)
+[![Quality](https://img.shields.io/badge/quality-86%25%20good-green)](#automation-tools)
 [![License](https://img.shields.io/badge/license-MIT-orange)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![CI](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
@@ -12,12 +13,51 @@
 
 ## 🌟 Highlights
 
-- **183 Skills** across 31 categories
+- **189 Skills** across 31 categories
+- **4 Automation Tools** for repository management, quality monitoring, and skills distribution
 - **Industry Experts**: Andrej Karpathy (ex-Tesla AI), Matt Pocock (TypeScript educator), Addy Osmani (Google Chrome), obra (Superpowers)
 - **Production-Tested**: Battle-tested in real projects
 - **Comprehensive Coverage**: Engineering, DevOps, MLOps, Creative, Research, GitHub
 - **Auto-Install**: One-command installation for Hermes Agent
+- **REST API**: Browse and install skills via API
 - **Zero Dependencies**: Pure markdown skills, no external dependencies
+
+---
+
+## 🛠️ Automation Tools
+
+This repository includes **4 production-ready automation tools**:
+
+### ⚡ Release Automation
+Auto-generate changelog, semantic versioning, GitHub releases
+```bash
+./scripts/release.py --patch    # 1.4.0 → 1.4.1
+```
+[📚 Documentation](docs/release-automation.md)
+
+### 📊 Quality Dashboard
+Real-time repository health monitoring with quality scores
+```bash
+./scripts/quality-dashboard.py
+```
+**Current Score:** 86/100 (Good) | [📚 Documentation](docs/quality-dashboard.md)
+
+### 🏷️ Auto-Label Bot
+Automatic PR/Issue labeling via GitHub Actions (35 labels, 6 categories)
+- ✅ Active workflow
+- ✅ Instant labeling (2 seconds)
+- ✅ Zero cost, zero maintenance
+
+[📚 Documentation](docs/auto-label-bot.md)
+
+### 🛠️ Skills Manager API
+Lightweight REST API for browsing and installing skills
+```bash
+./scripts/skills-api.py --port 5555
+```
+**API:** 139 skills, 20 categories | [📚 Documentation](docs/skills-api.md)
+
+[📖 View All Tools](docs/AUTOMATION.md)
 
 ---
 
@@ -360,11 +400,41 @@ Source: [obra/superpowers](https://github.com/obra/superpowers) (186K ⭐)
 
 ## 📚 Documentation
 
+### Skills Documentation
 - [Installation Guide](./docs/installation.md)
 - [Usage Examples](./docs/usage.md)
 - [Category Overview](./docs/categories.md)
+
+### Automation Tools Documentation
+- [Automation Overview](./docs/AUTOMATION.md)
+- [Release Automation](./docs/release-automation.md)
+- [Quality Dashboard](./docs/quality-dashboard.md)
+- [Auto-Label Bot](./docs/auto-label-bot.md)
+- [Skills Manager API](./docs/skills-api.md)
+
+### Project Documentation
 - [Contributing Guide](./CONTRIBUTING.md)
 - [Changelog](./CHANGELOG.md)
+
+---
+
+## ✨ Features Comparison
+
+| Feature | This Repo | Other Repos |
+|---------|-----------|-------------|
+| **Skills Count** | 189 | 20-50 |
+| **Categories** | 31 | 5-10 |
+| **Industry Experts** | 4 | 1-2 |
+| **Auto-Install** | ✅ | ❌ |
+| **Validation** | ✅ | ❌ |
+| **Auto-Update** | ✅ | ❌ |
+| **Release Automation** | ✅ | ❌ |
+| **Quality Dashboard** | ✅ | ❌ |
+| **Auto-Label Bot** | ✅ | ❌ |
+| **REST API** | ✅ | ❌ |
+| **CI/CD** | ✅ | ❌ |
+| **Documentation** | Comprehensive | Basic |
+| **License** | MIT | Varies |
 
 ---
 
@@ -473,11 +543,13 @@ If you find this useful, please star the repo!
 
 ## 📊 Stats
 
-- **183 Skills** across 31 categories
+- **189 Skills** across 31 categories
+- **4 Automation Tools** (Release, Quality, Auto-Label, API)
 - **424K+ Combined Stars** from source repos
 - **4 Industry Experts** contributing knowledge
 - **Production-Tested** in real projects
 - **Zero Dependencies** — pure markdown
+- **Quality Score:** 86/100 (Good)
 
 ---
 
@@ -485,11 +557,12 @@ If you find this useful, please star the repo!
 
 - [Hermes Agent](https://github.com/nousresearch/hermes-agent)
 - [Documentation](https://hermes-agent.nousresearch.com/docs)
-- [Community Discord](https://discord.gg/hermes)
+- [Automation Tools](docs/AUTOMATION.md)
 - [Issue Tracker](https://github.com/kevinnft/ai-agent-skills/issues)
+- [Changelog](CHANGELOG.md)
 
 ---
 
 **Made with ❤️ by the AI Agent community**
 
-**189 skills to make your AI agent production-ready** 🚀
+**189 skills + 4 automation tools to make your AI agent production-ready** 🚀
