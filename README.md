@@ -2,16 +2,17 @@
 
 > **189 production-ready skills for AI coding agents** — curated from industry experts (Andrej Karpathy, Matt Pocock, Addy Osmani, obra)
 
-[![Skills](https://img.shields.io/badge/skills-189-blue)](#categories)
+[![Skills](https://img.shields.io/badge/skills-183-blue)](#categories)
 [![Categories](https://img.shields.io/badge/categories-31-green)](#categories)
 [![License](https://img.shields.io/badge/license-MIT-orange)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![CI](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
 
 ---
 
 ## 🌟 Highlights
 
-- **189 Skills** across 31 categories
+- **183 Skills** across 31 categories
 - **Industry Experts**: Andrej Karpathy (ex-Tesla AI), Matt Pocock (TypeScript educator), Addy Osmani (Google Chrome), obra (Superpowers)
 - **Production-Tested**: Battle-tested in real projects
 - **Comprehensive Coverage**: Engineering, DevOps, MLOps, Creative, Research, GitHub
@@ -472,7 +473,7 @@ If you find this useful, please star the repo!
 
 ## 📊 Stats
 
-- **189 Skills** across 31 categories
+- **183 Skills** across 31 categories
 - **424K+ Combined Stars** from source repos
 - **4 Industry Experts** contributing knowledge
 - **Production-Tested** in real projects
