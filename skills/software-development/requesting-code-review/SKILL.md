@@ -1,5 +1,5 @@
 ---
-name: requesting-code-review
+name: dev-requesting-code-review
 description: "Pre-commit review: security scan, quality gates, auto-fix."
 version: 2.0.0
 author: Hermes Agent (adapted from obra/superpowers + MorAlekss)

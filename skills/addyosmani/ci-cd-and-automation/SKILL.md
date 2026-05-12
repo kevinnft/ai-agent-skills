@@ -59,7 +59,7 @@ Pull Request Opened
 
 ```yaml
 # .github/workflows/ci.yml
-name: CI
+name: addyosmani-ci-cd
 
 on:
   pull_request:

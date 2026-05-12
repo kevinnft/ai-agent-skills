@@ -1,5 +1,5 @@
 ---
-name: software-copyright-materials
+name: software-copyright
 description: >
   Generate guided Chinese software copyright application materials from a real project.
   Use this skill when the user asks for 软件著作权, 软著申请资料, 软著代码材料,

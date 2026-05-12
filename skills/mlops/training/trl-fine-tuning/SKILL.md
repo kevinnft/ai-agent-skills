@@ -1,5 +1,5 @@
 ---
-name: fine-tuning-with-trl
+name: trl-fine-tuning
 description: "TRL: SFT, DPO, PPO, GRPO, reward modeling for LLM RLHF."
 version: 1.0.0
 author: Orchestra Research

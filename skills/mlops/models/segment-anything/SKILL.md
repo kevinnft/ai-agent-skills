@@ -1,5 +1,5 @@
 ---
-name: segment-anything-model
+name: segment-anything
 description: "SAM: zero-shot image segmentation via points, boxes, masks."
 version: 1.0.0
 author: Orchestra Research

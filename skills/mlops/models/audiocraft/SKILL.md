@@ -1,5 +1,5 @@
 ---
-name: audiocraft-audio-generation
+name: audiocraft
 description: "AudioCraft: MusicGen text-to-music, AudioGen text-to-sound."
 version: 1.0.0
 author: Orchestra Research

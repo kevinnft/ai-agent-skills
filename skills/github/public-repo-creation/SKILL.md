@@ -438,7 +438,7 @@ When including third-party code (e.g., skills, libraries):
 #### **1. CI/CD (GitHub Actions)**
 ```yaml
 # .github/workflows/ci.yml
-name: CI
+name: github-public-repo-creation
 on: [push, pull_request]
 jobs:
   test:

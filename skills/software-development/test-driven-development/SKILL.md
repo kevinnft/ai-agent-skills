@@ -1,5 +1,5 @@
 ---
-name: test-driven-development
+name: dev-tdd
 description: "TDD: enforce RED-GREEN-REFACTOR, tests before code."
 version: 1.1.0
 author: Hermes Agent (adapted from obra/superpowers)

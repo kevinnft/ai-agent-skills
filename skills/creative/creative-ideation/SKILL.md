@@ -1,5 +1,5 @@
 ---
-name: ideation
+name: creative-ideation
 title: Creative Ideation — Constraint-Driven Project Generation
 description: "Generate project ideas via creative constraints."
 version: 1.0.0

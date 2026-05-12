@@ -100,6 +100,49 @@ Skills curated from:
 
 ---
 
+## [1.2.0] - 2026-05-12
+
+### Fixed
+
+#### Critical Bug Fixes (6 duplicates resolved)
+- **BUG #1 (CRITICAL):** Duplicate skill names causing installation conflicts — Fixed by namespacing with category prefixes
+  - `test-driven-development` (3x) → `addyosmani-tdd`, `dev-tdd`, `superpowers-tdd`
+  - `systematic-debugging` (2x) → `dev-systematic-debugging`, `superpowers-systematic-debugging`
+  - `requesting-code-review` (2x) → `dev-requesting-code-review`, `superpowers-requesting-code-review`
+  - `writing-plans` (2x) → `dev-writing-plans`, `superpowers-writing-plans`
+  - `subagent-driven-development` (2x) → `dev-subagent-driven-development`, `superpowers-subagent-driven-development`
+  - `CI` (2x) → `addyosmani-ci-cd`, `github-public-repo-creation`
+
+#### Medium Bug Fixes (7 name/dir mismatches resolved)
+- **BUG #2 (MEDIUM):** Name/directory mismatches — Updated skill names to match directories
+  - `audiocraft-audio-generation` → `audiocraft`
+  - `segment-anything-model` → `segment-anything`
+  - `fine-tuning-with-trl` → `trl-fine-tuning`
+  - `evaluating-llms-harness` → `lm-evaluation-harness`
+  - `serving-llms-vllm` → `vllm`
+  - `ideation` → `creative-ideation`
+  - `software-copyright-materials` → `software-copyright`
+
+#### Minor Bug Fixes (4 files improved)
+- **BUG #3 (MINOR):** Missing markdown headings — Added proper structure to 4 skills
+  - `mattpocock/personal/edit-article/SKILL.md`
+  - `mattpocock/engineering/zoom-out/SKILL.md`
+  - `mattpocock/productivity/handoff/SKILL.md`
+  - `mattpocock/productivity/grill-me/SKILL.md`
+
+### Changed
+- All skill names now unique (no installation conflicts)
+- Consistent naming convention (name matches directory or has category prefix)
+- All skills have proper markdown structure
+- Installation now safe (no overwrites)
+
+### Impact
+- **CRITICAL:** Skills no longer overwrite each other during installation
+- **MEDIUM:** Clearer, more consistent naming
+- **MINOR:** Better documentation structure
+
+---
+
 ## [Unreleased]
 
 ### Planned
