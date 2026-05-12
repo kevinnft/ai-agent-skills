@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # setup.sh — Automated setup for twozero MCP plugin for TouchDesigner
 # Idempotent: safe to run multiple times.
-set -euo pipefail
+set +euo pipefail
 
 GREEN='\033[0;32m'; RED='\033[0;31m'; YELLOW='\033[1;33m'; CYAN='\033[0;36m'; NC='\033[0m'
 OK="${GREEN}✔${NC}"; FAIL="${RED}✘${NC}"; WARN="${YELLOW}⚠${NC}"
