@@ -6,8 +6,8 @@ Complete list of all 31 skill categories with descriptions and skill counts.
 
 ## 📊 Summary
 
-- **Total Skills:** 191
-- **Total Categories:** 31
+- **Total Skills:** 189
+- **Populated Categories:** 24 (31 skill directories total)
 - **Largest Category:** mattpocock (28 skills)
 - **Combined Stars:** 424K+ from source repos
 
@@ -356,4 +356,4 @@ Other:        79 skills (40%)
 
 ---
 
-**Explore all 191 skills across 31 categories!** 🚀
+**Explore all 189 skills across 26 populated categories!** 🚀

@@ -3,7 +3,7 @@
 > **189 production-ready skills for AI coding agents** — curated from industry experts (Andrej Karpathy, Matt Pocock, Addy Osmani, obra)
 
 [![Skills](https://img.shields.io/badge/skills-189-blue)](#categories)
-[![Categories](https://img.shields.io/badge/categories-31-green)](#categories)
+[![Categories](https://img.shields.io/badge/categories-26-green)](#categories)
 [![Quality](https://img.shields.io/badge/quality-86%25%20good-green)](#automation-tools)
 [![License](https://img.shields.io/badge/license-MIT-orange)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
@@ -13,7 +13,7 @@
 
 ## 🌟 Highlights
 
-- **189 Skills** across 31 categories
+- **189 Skills** across 26 populated categories (31 skill directories)
 - **4 Automation Tools** for repository management, quality monitoring, and skills distribution
 - **Industry Experts**: Andrej Karpathy (ex-Tesla AI), Matt Pocock (TypeScript educator), Addy Osmani (Google Chrome), obra (Superpowers)
 - **Production-Tested**: Battle-tested in real projects
@@ -55,7 +55,7 @@ Lightweight REST API for browsing and installing skills
 ```bash
 ./scripts/skills-api.py --port 5555
 ```
-**API:** 139 skills, 20 categories | [📚 Documentation](docs/skills-api.md)
+**API:** 189 skills, 26 populated categories | [📚 Documentation](docs/skills-api.md)
 
 [📖 View All Tools](docs/AUTOMATION.md)
 
@@ -543,7 +543,7 @@ If you find this useful, please star the repo!
 
 ## 📊 Stats
 
-- **189 Skills** across 31 categories
+- **189 Skills** across 26 populated categories (31 skill directories)
 - **4 Automation Tools** (Release, Quality, Auto-Label, API)
 - **424K+ Combined Stars** from source repos
 - **4 Industry Experts** contributing knowledge

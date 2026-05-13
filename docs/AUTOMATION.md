@@ -123,7 +123,7 @@ Lightweight REST API for browsing, searching, and installing skills.
 ```
 GET  /api/skills              - List all skills
 GET  /api/skills/:name        - Get skill details
-POST /api/skills/:name/install - Install skill
+POST /api/skills/:id/install - Install skill
 GET  /api/skills/search?q=web - Search skills
 GET  /api/categories          - List categories
 GET  /api/stats               - Usage statistics

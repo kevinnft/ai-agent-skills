@@ -14,8 +14,8 @@ Features:
 
 API Endpoints:
     GET  /api/skills              - List all skills
-    GET  /api/skills/:name        - Get skill details
-    POST /api/skills/:name/install - Install skill
+    GET  /api/skills/:id         - Get skill details
+    POST /api/skills/:id/install - Install skill
     GET  /api/skills/search?q=web - Search skills
     GET  /api/categories          - List categories
     GET  /api/stats               - Usage statistics
@@ -35,18 +35,35 @@ import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, asdict
 
 try:
-    from flask import Flask, jsonify, request, send_file
+    from flask import Flask, jsonify, request
     from flask_cors import CORS
 except ImportError:
-    print("❌ Flask not installed. Install with: pip install flask flask-cors")
-    sys.exit(1)
+    Flask = None  # type: ignore[assignment]
+    request = None  # type: ignore[assignment]
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for web access
+    def jsonify(data):  # type: ignore[no-redef]
+        return data
+
+    def CORS(app):  # type: ignore[no-redef]
+        return app
+
+
+class _MissingFlaskApp:
+    def route(self, *_args, **_kwargs):
+        def decorator(func):
+            return func
+        return decorator
+
+    def run(self, *_args, **_kwargs):
+        raise RuntimeError("Flask not installed. Install with: pip install flask flask-cors")
+
+
+app = Flask(__name__) if Flask else _MissingFlaskApp()
+CORS(app)  # Enable CORS for web access when Flask is installed
 
 # Configuration
 SKILLS_DIR = Path.home() / '.hermes' / 'skills'
@@ -55,6 +72,7 @@ STATS_FILE = REPO_DIR / '.skills-stats.json'
 
 @dataclass
 class Skill:
+    id: str
     name: str
     category: str
     description: str
@@ -97,53 +115,41 @@ class SkillsManager:
             json.dump(asdict(self.stats), f, indent=2)
     
     def get_all_skills(self) -> List[Skill]:
-        """Get all available skills"""
+        """Get all available skills."""
         skills = []
         skills_path = self.repo_dir / 'skills'
-        
+
         if not skills_path.exists():
             return skills
-        
-        # Iterate through categories
-        for category_dir in skills_path.iterdir():
-            if not category_dir.is_dir() or category_dir.name.startswith('.'):
+
+        for skill_file in sorted(skills_path.rglob('SKILL.md')):
+            skill_dir = skill_file.parent
+            relative_dir = skill_dir.relative_to(skills_path)
+            parts = relative_dir.parts
+
+            if not parts or any(part.startswith('.') for part in parts):
                 continue
-            
-            category = category_dir.name
-            
-            # Iterate through skills in category
-            for skill_dir in category_dir.iterdir():
-                if not skill_dir.is_dir() or skill_dir.name.startswith('.'):
-                    continue
-                
-                skill_name = skill_dir.name
-                skill_file = skill_dir / 'SKILL.md'
-                
-                if not skill_file.exists():
-                    continue
-                
-                # Read description from SKILL.md
-                description = self.extract_description(skill_file)
-                
-                # Get files
-                files = [f.name for f in skill_dir.rglob('*') if f.is_file()]
-                
-                # Calculate size
-                size_kb = sum(f.stat().st_size for f in skill_dir.rglob('*') if f.is_file()) // 1024
-                
-                # Check if installed
-                installed = (self.skills_dir / category / skill_name).exists()
-                
-                skills.append(Skill(
-                    name=skill_name,
-                    category=category,
-                    description=description,
-                    path=str(skill_dir.relative_to(self.repo_dir)),
-                    size_kb=size_kb,
-                    files=files,
-                    installed=installed
-                ))
-        
+
+            category = parts[0]
+            skill_name = parts[-1]
+            skill_id = '/'.join(parts)
+
+            description = self.extract_description(skill_file)
+            files = [str(f.relative_to(skill_dir)) for f in skill_dir.rglob('*') if f.is_file()]
+            size_kb = sum(f.stat().st_size for f in skill_dir.rglob('*') if f.is_file()) // 1024
+            installed = (self.skills_dir / relative_dir).exists()
+
+            skills.append(Skill(
+                id=skill_id,
+                name=skill_name,
+                category=category,
+                description=description,
+                path=str(skill_dir.relative_to(self.repo_dir)),
+                size_kb=size_kb,
+                files=files,
+                installed=installed
+            ))
+
         return skills
     
     def extract_description(self, skill_file: Path) -> str:
@@ -168,17 +174,17 @@ class SkillsManager:
         except:
             return "No description available"
     
-    def get_skill(self, name: str) -> Optional[Skill]:
-        """Get skill by name"""
+    def get_skill(self, identifier: str) -> Optional[Skill]:
+        """Get skill by id, path, or leaf name."""
         skills = self.get_all_skills()
         for skill in skills:
-            if skill.name == name:
+            if identifier in {skill.id, skill.path, skill.name}:
                 return skill
         return None
     
-    def get_skill_content(self, name: str) -> Optional[str]:
+    def get_skill_content(self, identifier: str) -> Optional[str]:
         """Get skill content"""
-        skill = self.get_skill(name)
+        skill = self.get_skill(identifier)
         if not skill:
             return None
         
@@ -190,18 +196,23 @@ class SkillsManager:
             return f.read()
     
     def search_skills(self, query: str) -> List[Skill]:
-        """Search skills by name or description"""
+        """Search skills by name, id, category, or description."""
         query = query.lower()
         skills = self.get_all_skills()
         
         results = []
         for skill in skills:
-            if query in skill.name.lower() or query in skill.description.lower() or query in skill.category.lower():
+            if (
+                query in skill.id.lower()
+                or query in skill.name.lower()
+                or query in skill.description.lower()
+                or query in skill.category.lower()
+            ):
                 results.append(skill)
         
         return results
     
-    def get_categories(self) -> List[Dict[str, any]]:
+    def get_categories(self) -> List[Dict[str, Any]]:
         """Get all categories with skill counts"""
         skills = self.get_all_skills()
         categories = {}
@@ -216,14 +227,15 @@ class SkillsManager:
             for cat, count in sorted(categories.items())
         ]
     
-    def install_skill(self, name: str) -> bool:
-        """Install skill to ~/.hermes/skills/"""
-        skill = self.get_skill(name)
+    def install_skill(self, identifier: str) -> bool:
+        """Install skill to ~/.hermes/skills/."""
+        skill = self.get_skill(identifier)
         if not skill:
             return False
         
         # Create target directory
-        target_dir = self.skills_dir / skill.category / skill.name
+        relative_dir = Path(skill.path).relative_to('skills')
+        target_dir = self.skills_dir / relative_dir
         target_dir.parent.mkdir(parents=True, exist_ok=True)
         
         # Copy skill
@@ -282,36 +294,36 @@ def list_skills():
         'skills': [asdict(s) for s in skills]
     })
 
-@app.route('/api/skills/<name>', methods=['GET'])
-def get_skill(name: str):
+@app.route('/api/skills/<path:identifier>', methods=['GET'])
+def get_skill(identifier: str):
     """Get skill details"""
-    skill = manager.get_skill(name)
+    skill = manager.get_skill(identifier)
     
     if not skill:
         return jsonify({'error': 'Skill not found'}), 404
     
-    content = manager.get_skill_content(name)
+    content = manager.get_skill_content(identifier)
     
     return jsonify({
         'skill': asdict(skill),
         'content': content
     })
 
-@app.route('/api/skills/<name>/install', methods=['POST'])
-def install_skill(name: str):
+@app.route('/api/skills/<path:identifier>/install', methods=['POST'])
+def install_skill(identifier: str):
     """Install skill"""
-    skill = manager.get_skill(name)
+    skill = manager.get_skill(identifier)
     
     if not skill:
         return jsonify({'error': 'Skill not found'}), 404
     
-    success = manager.install_skill(name)
+    success = manager.install_skill(identifier)
     
     if success:
         return jsonify({
             'status': 'installed',
-            'skill': name,
-            'path': str(manager.skills_dir / skill.category / skill.name)
+            'skill': skill.id,
+            'path': str(manager.skills_dir / Path(skill.path).relative_to('skills'))
         })
     else:
         return jsonify({'error': 'Installation failed'}), 500
@@ -375,8 +387,8 @@ def index():
         'endpoints': {
             'GET /health': 'Health check',
             'GET /api/skills': 'List all skills',
-            'GET /api/skills/:name': 'Get skill details',
-            'POST /api/skills/:name/install': 'Install skill',
+            'GET /api/skills/:id': 'Get skill details',
+            'POST /api/skills/:id/install': 'Install skill',
             'GET /api/skills/search?q=query': 'Search skills',
             'GET /api/categories': 'List categories',
             'GET /api/stats': 'Usage statistics'
@@ -411,8 +423,8 @@ def main():
 📚 API Endpoints:
    GET  /health                      - Health check
    GET  /api/skills                  - List all skills
-   GET  /api/skills/:name            - Get skill details
-   POST /api/skills/:name/install    - Install skill
+   GET  /api/skills/:id              - Get skill details
+   POST /api/skills/:id/install      - Install skill
    GET  /api/skills/search?q=query   - Search skills
    GET  /api/categories              - List categories
    GET  /api/stats                   - Usage statistics

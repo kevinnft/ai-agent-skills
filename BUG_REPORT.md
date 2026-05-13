@@ -33,7 +33,7 @@ README.md references docs that don't exist:
 
 **Fix Required:**
 1. Create `docs/` directory
-2. Create `docs/categories.md` — List all 31 categories with descriptions
+2. Create `docs/categories.md` — List populated categories with descriptions
 3. Create `docs/installation.md` — Detailed installation guide
 4. Create `docs/usage.md` — Usage examples and tutorials
 
@@ -158,7 +158,7 @@ docs/
 ✅ CONTRIBUTING.md exists
 ✅ CHANGELOG.md exists
 ✅ .gitignore proper
-✅ 191 skills present
+✅ 189 skills present
 ✅ Sample skills validated (addyosmani)
 ✅ venv not tracked by git
 ✅ No empty SKILL.md files
