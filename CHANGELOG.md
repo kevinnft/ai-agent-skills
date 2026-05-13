@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2026-05-13
+
+### Fixed
+- Synced public documentation counts with recursive skill discovery: 189 skills, 26 populated categories, 31 skill directories.
+- Fixed CI shell validation to use recursive globbing safely with `globstar` and `nullglob`.
+- Updated the Skills Manager API to discover nested/submodule skills recursively and support stable path-based skill IDs.
+- Replaced the generic PR template with public-trust review gates for validation, provenance/license checks, API impact, and secret safety.
+
 ## [1.4.0] - 2026-05-12
 
 ### Added
@@ -75,7 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **docker-compose** (devops) — Multi-container Docker orchestration
 - **api-testing** (software-development) — REST/GraphQL API testing
 
-#### Curated Skills (191 total)
+#### Curated Skills (189 total)
 - **addyosmani** (22 skills) — Production engineering from Addy Osmani (Google Chrome)
 - **mattpocock** (28 skills) — TypeScript & workflows from Matt Pocock
 - **superpowers** (14 skills) — Agentic workflows from obra
@@ -115,7 +123,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CHANGELOG.md** — This file
 
 #### Repository Structure
-- Organized by categories (31 categories)
+- Organized by 26 populated categories (31 skill directories total)
 - Clear skill format with YAML frontmatter
 - Examples and best practices
 - Support files (templates, scripts, references)
@@ -150,7 +158,7 @@ Skills curated from:
 #### Documentation (26KB total)
 - **docs/installation.md** (5.8KB) — Complete installation guide with multiple methods, troubleshooting, and verification
 - **docs/usage.md** (9.3KB) — Usage examples, workflows, best practices, and tips
-- **docs/categories.md** (11KB) — All 31 categories documented with descriptions and recommendations
+- **docs/categories.md** — Populated categories documented with descriptions and recommendations
 
 #### Tools
 - **scripts/update.sh** (4.8KB) — Auto-update script with backup, changelog display, and verification

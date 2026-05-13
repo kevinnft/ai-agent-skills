@@ -10,14 +10,22 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
 
       - name: Validate shell scripts
         run: |
-          for f in scripts/*.sh skills/**/*.sh; do
-            [ -f "$f" ] && bash -n "$f" && echo "OK: $f" || { echo "FAIL: $f"; exit 1; }
+          shopt -s globstar nullglob
+          shell_scripts=(scripts/*.sh skills/**/*.sh)
+          if [ ${#shell_scripts[@]} -eq 0 ]; then
+            echo "No shell scripts found"
+            exit 0
+          fi
+
+          for f in "${shell_scripts[@]}"; do
+            bash -n "$f"
+            echo "OK: $f"
           done
 
       - name: Validate Python syntax

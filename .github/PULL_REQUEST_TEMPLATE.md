@@ -1,77 +1,62 @@
 # Pull Request
 
-## Description
+## Summary
 
-Brief description of what this PR does.
+<!-- What changed and why? Keep this reviewer-focused. -->
 
 ## Type of Change
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New skill (adds a new skill to the collection)
-- [ ] Enhancement (improves existing skill or feature)
+- [ ] Enhancement (improves existing skill, script, API, or workflow)
 - [ ] Documentation update
-- [ ] Script improvement
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] CI / automation update
+- [ ] Breaking change (requires migration notes below)
 
 ## Related Issue
 
-Fixes #(issue number)
+Fixes #
 
 ## Changes Made
 
-- Change 1
-- Change 2
-- Change 3
+-
+-
+-
 
-## New Skills (if applicable)
+## Validation
 
-### Skill Name: `category/skill-name`
+Paste command output or links where possible.
 
-**Description:** Brief description of the skill
+- [ ] `python3 -m compileall scripts skills`
+- [ ] `bash -n` for changed shell scripts
+- [ ] YAML / JSON syntax validation for changed files
+- [ ] SKILL.md frontmatter validation
+- [ ] Documentation updated for changed behavior
+- [ ] Broken links checked when docs change
 
-**When to Use:** Trigger conditions
+## New / Changed Skills
 
-**Key Features:**
-- Feature 1
-- Feature 2
+<!-- Fill this out for skill changes. Delete if not applicable. -->
 
-## Testing
+- Skill ID: `category/path/to-skill`
+- Source / provenance:
+- License compatibility checked: [ ]
+- Trigger / when-to-use is clear: [ ]
+- Examples or concrete commands included: [ ]
+- No secrets, tokens, or private URLs: [ ]
 
-Describe how you tested your changes:
+## API / Automation Impact
 
-- [ ] Ran `./scripts/validate.sh` (all skills pass)
-- [ ] Ran `./scripts/install.sh --category [category]` (installs successfully)
-- [ ] Tested skill in [Agent Name]
-- [ ] Verified documentation is accurate
-- [ ] Checked for broken links
+<!-- Fill this out for scripts, workflows, and public API changes. Delete if not applicable. -->
 
-## Checklist
+- Backward compatible: [ ] Yes [ ] No
+- Affected commands/endpoints:
+- Migration notes:
 
-- [ ] My code follows the project's style guidelines
-- [ ] I have performed a self-review of my own changes
-- [ ] I have commented my code where necessary
-- [ ] I have updated the documentation accordingly
-- [ ] My changes generate no new warnings or errors
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing tests pass locally with my changes
-- [ ] I have checked my code and corrected any misspellings
-- [ ] I have updated CHANGELOG.md (if applicable)
+## Screenshots / Logs
 
-## Skill Quality (for new skills)
+<!-- Add screenshots, CI links, or terminal output if useful. -->
 
-- [ ] Has valid YAML frontmatter (name, description, tags)
-- [ ] Name is lowercase with hyphens/underscores
-- [ ] Description is clear and concise
-- [ ] Has "When to Use" section
-- [ ] Has concrete examples
-- [ ] Has proper markdown formatting
-- [ ] No broken links
-- [ ] Follows existing skill structure
+## Reviewer Notes
 
-## Screenshots (if applicable)
-
-Add screenshots to demonstrate the changes.
-
-## Additional Notes
-
-Any additional information that reviewers should know.
+<!-- Anything risky, intentionally deferred, or worth extra attention. -->

@@ -69,8 +69,8 @@ chmod +x scripts/skills-api.py
 📚 API Endpoints:
    GET  /health                      - Health check
    GET  /api/skills                  - List all skills
-   GET  /api/skills/:name            - Get skill details
-   POST /api/skills/:name/install    - Install skill
+   GET  /api/skills/:id            - Get skill details
+   POST /api/skills/:id/install    - Install skill
    GET  /api/skills/search?q=query   - Search skills
    GET  /api/categories              - List categories
    GET  /api/stats                   - Usage statistics
@@ -109,6 +109,7 @@ Response:
   "total": 189,
   "skills": [
     {
+      "id": "research/web-scraping",
       "name": "web-scraping",
       "category": "research",
       "description": "Extract data from websites",
@@ -125,7 +126,7 @@ Response:
 ### 3. Get Skill Details
 
 ```bash
-GET /api/skills/web-scraping
+GET /api/skills/research/web-scraping
 ```
 
 Response:
@@ -147,14 +148,14 @@ Response:
 ### 4. Install Skill
 
 ```bash
-POST /api/skills/web-scraping/install
+POST /api/skills/research/web-scraping/install
 ```
 
 Response:
 ```json
 {
   "status": "installed",
-  "skill": "web-scraping",
+  "skill": "research/web-scraping",
   "path": "/home/ubuntu/.hermes/skills/research/web-scraping"
 }
 ```
@@ -172,6 +173,7 @@ Response:
   "total": 5,
   "results": [
     {
+      "id": "research/web-scraping",
       "name": "web-scraping",
       "category": "research",
       "description": "Extract data from websites",
@@ -191,7 +193,7 @@ GET /api/categories
 Response:
 ```json
 {
-  "total": 31,
+  "total": 24,
   "categories": [
     {"name": "research", "count": 11},
     {"name": "devops", "count": 9},
@@ -212,7 +214,7 @@ Response:
 {
   "total_installs": 245,
   "total_skills": 189,
-  "total_categories": 31,
+  "total_categories": 26,
   "popular_skills": [
     {"name": "web-scraping", "installs": 45},
     {"name": "github-automation", "installs": 38},
@@ -368,7 +370,7 @@ $ curl "http://localhost:5000/api/skills/search?q=web" | jq '.results[].name'
 $ curl -X POST http://localhost:5000/api/skills/web-scraping/install
 {
   "status": "installed",
-  "skill": "web-scraping",
+  "skill": "research/web-scraping",
   "path": "/home/ubuntu/.hermes/skills/research/web-scraping"
 }
 ```
