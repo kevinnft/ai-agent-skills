@@ -8,6 +8,9 @@ set -uo pipefail
 VERSION="1.7.0"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+# Defined for symmetry with install.sh; not currently consulted by the
+# uninstall path but kept so future per-skill awareness is easy to wire.
+# shellcheck disable=SC2034
 SKILLS_DIR="$REPO_ROOT/skills"
 
 # Colors
