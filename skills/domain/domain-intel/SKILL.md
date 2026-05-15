@@ -2,6 +2,8 @@
 name: domain-intel
 description: Passive domain reconnaissance using Python stdlib. Use this skill for subdomain discovery, SSL certificate inspection, WHOIS lookups, DNS records, domain availability checks, and bulk multi-domain analysis. No API keys required. Triggers on requests like "find subdomains", "check ssl cert", "whois lookup", "is this domain available", "bulk check these domains".
 license: MIT
+origin: original
+language: en
 ---
 
 Passive domain intelligence using only Python stdlib and public data sources.
@@ -19,6 +21,6 @@ Zero dependencies. Zero API keys. Works out of the box.
 ## Data Sources
 
 - crt.sh — Certificate Transparency logs
-- WHOIS servers — Direct TCP to 100+ authoritative TLD servers  
+- WHOIS servers — Direct TCP to 100+ authoritative TLD servers
 - Google DNS-over-HTTPS — MX/NS/TXT/CNAME resolution
 - System DNS — A/AAAA records

@@ -5,6 +5,7 @@ tags: [web, search, scraping, api, integration]
 version: 1.0.0
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # TinyFish Integration

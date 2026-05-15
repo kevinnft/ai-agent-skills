@@ -5,6 +5,7 @@ tags: [github, trending, research, discovery, skills]
 related_skills: [github-repo-management, ecosystem-tool-evaluation]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Trending Repos Discovery

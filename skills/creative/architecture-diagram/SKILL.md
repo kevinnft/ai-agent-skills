@@ -13,6 +13,7 @@ origin: adapted
 source_repo: cocoon-ai/architecture-diagram-skill
 source_url: https://cocoon-ai.com
 source_license: MIT
+language: en
 ---
 
 # Architecture Diagram Skill

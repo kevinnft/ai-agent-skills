@@ -100,7 +100,7 @@ cp -r skills/* ~/.cursor/skills/
 ./scripts/install.sh --all
 ```
 
-Installs all 189 skills across 26 populated categories.
+Installs all 191 skills across 26 populated categories.
 
 ---
 
@@ -167,7 +167,7 @@ hermes chat -q "Use brainstorming to design a feature"
 # Count installed skills
 find ~/.hermes/skills -name "SKILL.md" | wc -l
 
-# Should show 189 (if all installed)
+# Should show 191 (if all installed)
 ```
 
 ---
@@ -341,4 +341,4 @@ MIT License - see [LICENSE](../LICENSE)
 
 **Installation complete!** 🎉
 
-Start using your 189 production-ready skills now!
+Start using your 191 production-ready skills now!

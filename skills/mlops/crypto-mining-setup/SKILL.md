@@ -4,6 +4,7 @@ description: Setup and optimize cryptocurrency mining operations — AI-powered 
 tags: [crypto, mining, blockchain, optimization, parallel-processing]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Crypto Mining Setup & Optimization

@@ -4,6 +4,7 @@ description: Multi-container Docker applications with docker-compose — define 
 tags: [docker, containers, devops, orchestration, development]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Docker Compose — Multi-Container Orchestration

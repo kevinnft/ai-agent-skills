@@ -12,6 +12,7 @@ origin: adapted
 source_repo: obra/superpowers
 source_url: https://github.com/obra/superpowers
 source_license: MIT
+language: en
 ---
 
 # Writing Implementation Plans

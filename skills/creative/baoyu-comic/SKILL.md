@@ -12,6 +12,7 @@ origin: aggregated
 source_license: see upstream
 source_repo: JimLiu/baoyu-skills
 source_url: https://github.com/JimLiu/baoyu-skills/tree/main/skills/creative/baoyu-comic
+language: zh
 ---
 
 # Knowledge Comic Creator

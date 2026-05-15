@@ -99,7 +99,11 @@ jobs:
           ignore_paths: skills
 
   pytest:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd  # v5
         with:
@@ -115,3 +119,14 @@ jobs:
 
       - name: Run pytest
         run: python -m pytest tests/ -v
+
+      - name: Smoke test install.sh + uninstall.sh portability
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp=$(mktemp -d)
+          bash scripts/install.sh --preset minimal --target "$tmp" --agent custom
+          test "$(find "$tmp" -name SKILL.md | wc -l | tr -d ' ')" -gt 0
+          bash scripts/uninstall.sh --preset minimal --target "$tmp" --agent custom --no-backup --yes
+          test "$(find "$tmp" -name SKILL.md 2>/dev/null | wc -l | tr -d ' ')" = "0"
+          rm -rf "$tmp"

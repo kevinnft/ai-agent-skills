@@ -5,6 +5,7 @@ source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
 origin: aggregated
+language: en
 ---
 
 This skill takes the current conversation context and codebase understanding and produces a PRD. Do NOT interview the user — just synthesize what you already know.

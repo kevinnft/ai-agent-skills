@@ -11,6 +11,7 @@ metadata:
   short-description: 生成软著申请资料 Word/TXT
 origin: unknown
 source_license: see upstream
+language: zh
 ---
 
 # 软著申请资料生成

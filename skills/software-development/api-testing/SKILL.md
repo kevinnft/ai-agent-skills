@@ -4,6 +4,7 @@ description: REST/GraphQL API testing with automated validation — test endpoin
 tags: [api, testing, rest, graphql, validation, automation]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # API Testing — Automated Endpoint Validation

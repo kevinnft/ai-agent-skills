@@ -12,6 +12,7 @@ origin: adapted
 source_repo: gsd-build/get-shit-done
 source_url: https://github.com/gsd-build/get-shit-done
 source_license: MIT
+language: en
 ---
 
 # Spike

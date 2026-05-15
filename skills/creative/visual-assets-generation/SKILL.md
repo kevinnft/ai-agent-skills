@@ -5,6 +5,7 @@ tags: [ascii-art, diagrams, visualization, documentation, marketing]
 related_skills: [architecture-diagram, ascii-art, excalidraw]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Visual Assets Generation

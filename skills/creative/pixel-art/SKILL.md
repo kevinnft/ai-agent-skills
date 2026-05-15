@@ -14,6 +14,7 @@ origin: aggregated
 source_license: MIT
 source_repo: NousResearch/hermes-agent
 source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/creative/pixel-art
+language: en
 ---
 
 # Pixel Art

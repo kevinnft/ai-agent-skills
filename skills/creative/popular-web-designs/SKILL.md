@@ -19,6 +19,7 @@ origin: adapted
 source_repo: VoltAgent/awesome-design-md
 source_url: https://github.com/VoltAgent/awesome-design-md
 source_license: MIT
+language: en
 ---
 
 # Popular Web Designs
