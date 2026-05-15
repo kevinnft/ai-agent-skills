@@ -2,6 +2,9 @@
 name: handoff
 description: Compact the current conversation into a handoff document for another agent to pick up.
 argument-hint: "What will the next session be used for?"
+source_repo: "mattpocock/skills"
+source_url: "https://github.com/mattpocock/skills"
+source_license: "MIT"
 ---
 
 # Handoff

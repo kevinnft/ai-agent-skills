@@ -1,6 +1,9 @@
 ---
 name: obsidian-vault
 description: Search, create, and manage notes in the Obsidian vault with wikilinks and index notes. Use when user wants to find, create, or organize notes in Obsidian.
+source_repo: "mattpocock/skills"
+source_url: "https://github.com/mattpocock/skills"
+source_license: "MIT"
 ---
 
 # Obsidian Vault

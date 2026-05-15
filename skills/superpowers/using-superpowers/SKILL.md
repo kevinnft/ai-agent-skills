@@ -1,6 +1,9 @@
 ---
 name: using-superpowers
 description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 <SUBAGENT-STOP>

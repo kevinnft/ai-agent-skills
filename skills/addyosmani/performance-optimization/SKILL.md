@@ -1,6 +1,9 @@
 ---
 name: performance-optimization
 description: Optimizes application performance. Use when performance requirements exist, when you suspect performance regressions, or when Core Web Vitals or load times need improvement. Use when profiling reveals bottlenecks that need fixing.
+source_repo: "addyosmani/agent-skills"
+source_url: "https://github.com/addyosmani/agent-skills"
+source_license: "MIT"
 ---
 
 # Performance Optimization

@@ -1,6 +1,9 @@
 ---
 name: brainstorming
 description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Brainstorming Ideas Into Designs

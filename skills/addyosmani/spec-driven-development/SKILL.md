@@ -1,6 +1,9 @@
 ---
 name: spec-driven-development
 description: Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use when requirements are unclear, ambiguous, or only exist as a vague idea.
+source_repo: "addyosmani/agent-skills"
+source_url: "https://github.com/addyosmani/agent-skills"
+source_license: "MIT"
 ---
 
 # Spec-Driven Development

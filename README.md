@@ -1,568 +1,183 @@
-# AI Agent Skills 🚀
+# AI Agent Skills
 
-> **189 production-ready skills for AI coding agents** — curated from industry experts (Andrej Karpathy, Matt Pocock, Addy Osmani, obra)
+> An aggregated installer of publicly available agent-skill markdown files for AI coding agents (Hermes Agent, Claude Code, Cursor, etc.). 189 skills across 26 categories, sourced from open-source skill repositories.
 
 [![Skills](https://img.shields.io/badge/skills-189-blue)](#categories)
 [![Categories](https://img.shields.io/badge/categories-26-green)](#categories)
-[![Quality](https://img.shields.io/badge/quality-86%25%20good-green)](#automation-tools)
 [![License](https://img.shields.io/badge/license-MIT-orange)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Attribution](https://img.shields.io/badge/attribution-NOTICE-yellow)](./NOTICE)
 [![CI](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
 
 ---
 
-## 🌟 Highlights
+## What this is
 
-- **189 Skills** across 26 populated categories (31 skill directories)
-- **4 Automation Tools** for repository management, quality monitoring, and skills distribution
-- **Industry Experts**: Andrej Karpathy (ex-Tesla AI), Matt Pocock (TypeScript educator), Addy Osmani (Google Chrome), obra (Superpowers)
-- **Production-Tested**: Battle-tested in real projects
-- **Comprehensive Coverage**: Engineering, DevOps, MLOps, Creative, Research, GitHub
-- **Auto-Install**: One-command installation for Hermes Agent
-- **REST API**: Browse and install skills via API
-- **Zero Dependencies**: Pure markdown skills, no external dependencies
+A curated, installable bundle of agent-skill markdown files (the `SKILL.md` format used by Hermes Agent, Claude Code's skills, and similar) drawn from publicly available open-source skill repositories. The value-add is the **aggregation, categorization, validation tooling, and one-command installer** — not the skill content itself.
 
----
+> [!IMPORTANT]
+> **Attribution & honesty notice.** Several category directories (`addyosmani/`, `mattpocock/`, `superpowers/`) are named after well-known authors of public skill repos. Those authors are not affiliated with this repository and have not contributed to it. See [`NOTICE`](./NOTICE) for the full attribution and source-license table. Per-skill `source:` frontmatter is being added progressively.
 
-## 🛠️ Automation Tools
+## What this is NOT
 
-This repository includes **4 production-ready automation tools**:
+- Not a curation by the named authors (Karpathy, Pocock, Osmani, obra) — they did not endorse, contribute to, or review this repo.
+- Not "production-tested in real projects" beyond what the upstream skill files say about themselves.
+- Not a replacement for reading the original repos if you want the latest version of a given skill.
 
-### ⚡ Release Automation
-Auto-generate changelog, semantic versioning, GitHub releases
-```bash
-./scripts/release.py --patch    # 1.4.0 → 1.4.1
-```
-[📚 Documentation](docs/release-automation.md)
-
-### 📊 Quality Dashboard
-Real-time repository health monitoring with quality scores
-```bash
-./scripts/quality-dashboard.py
-```
-**Current Score:** 86/100 (Good) | [📚 Documentation](docs/quality-dashboard.md)
-
-### 🏷️ Auto-Label Bot
-Automatic PR/Issue labeling via GitHub Actions (35 labels, 6 categories)
-- ✅ Active workflow
-- ✅ Instant labeling (2 seconds)
-- ✅ Zero cost, zero maintenance
-
-[📚 Documentation](docs/auto-label-bot.md)
-
-### 🛠️ Skills Manager API
-Lightweight REST API for browsing and installing skills
-```bash
-./scripts/skills-api.py --port 5555
-```
-**API:** 189 skills, 26 populated categories | [📚 Documentation](docs/skills-api.md)
-
-[📖 View All Tools](docs/AUTOMATION.md)
+If you want the canonical version of a specific author's skills, install directly from their repo (linked in [`NOTICE`](./NOTICE)).
 
 ---
 
-## 📦 Quick Start
+## Stats
 
-### For Hermes Agent
+- **189** `SKILL.md` files across **26** categories
+- **2** git submodules (`obsidian-skills`, `patent-disclosure-skill`) — pull with `git submodule update --init`
+- **5** known same-name skills present in multiple categories — see [Conflicts & duplicates](#conflicts--duplicates)
+- **6** automation scripts under `scripts/` (install, validate, update, release, quality-dashboard, skills-api) — original to this repo
+- **MIT** licensed (this repo's added layout + tooling); upstream skills retain their own licenses (see [`NOTICE`](./NOTICE))
+
+---
+
+## Quick start
+
+### Hermes Agent
 
 ```bash
-# Clone repository
-git clone https://github.com/kevinnft/ai-agent-skills.git
+git clone --recurse-submodules https://github.com/kevinnft/ai-agent-skills.git
 cd ai-agent-skills
-
-# Install all skills
-./scripts/install.sh
-
-# Or install specific category
-./scripts/install.sh --category addyosmani
-./scripts/install.sh --category mattpocock
-./scripts/install.sh --category superpowers
+./scripts/install.sh                          # install all
+./scripts/install.sh --category addyosmani    # or one category
+./scripts/install.sh --list                   # see categories
 ```
 
-### For Other AI Agents
+### Claude Code
 
-Skills are pure markdown with YAML frontmatter. Copy the `skills/` directory to your agent's skills folder.
-
-**Claude Code:**
 ```bash
 cp -r skills/* ~/.claude/skills/
 ```
 
-**Cursor:**
+### Cursor
+
 ```bash
 cp -r skills/* ~/.cursor/skills/
 ```
 
-**Custom Agent:**
+### Custom agent
+
 ```bash
 cp -r skills/* /path/to/your/agent/skills/
 ```
 
 ---
 
-## 🎯 Categories
+## Categories
 
-### 🏆 Engineering (66 skills)
+All counts verified by scanning `find skills -name SKILL.md` after `git submodule update --init`. Numbers match this repo's actual contents at the latest commit on `main`.
 
-#### **addyosmani** (22 skills) — Production Engineering
-- `code-review-and-quality` — Multi-axis code review
-- `performance-optimization` — Web performance best practices
-- `security-and-hardening` — Vulnerability prevention
-- `spec-driven-development` — Specs before code
-- `test-driven-development` — TDD workflow
-- `incremental-implementation` — Incremental delivery
-- `debugging-and-error-recovery` — Systematic debugging
-- `api-and-interface-design` — Stable API design
-- `frontend-ui-engineering` — Production-quality UIs
-- `ci-cd-and-automation` — CI/CD pipeline setup
-- `git-workflow-and-versioning` — Git best practices
-- `documentation-and-adrs` — Decision records
-- `shipping-and-launch` — Production launches
-- `planning-and-task-breakdown` — Task decomposition
-- `code-simplification` — Simplify code
-- `context-engineering` — Agent context optimization
-- `deprecation-and-migration` — Deprecation management
-- `doubt-driven-development` — Adversarial review
-- `browser-testing-with-devtools` — Browser testing
-- `idea-refine` — Idea refinement
-- `source-driven-development` — Source-driven patterns
-- `using-agent-skills` — Meta-skill for skill discovery
+### Engineering buckets (80 skills)
 
-#### **mattpocock** (28 skills) — TypeScript & Workflows
-- `tdd` — Test-driven development
-- `diagnose` — Systematic debugging
-- `review` — Code review
-- `prototype` — Throwaway prototypes
-- `grill-me` — Stress-test plans
-- `caveman` — Ultra-compressed communication
-- `design-an-interface` — Multiple interface designs
-- `edit-article` — Article editing
-- `git-guardrails-claude-code` — Git safety hooks
-- `handoff` — Context handoff
-- `improve-codebase-architecture` — Architecture improvements
-- `obsidian-vault` — Note management
-- `qa` — Interactive QA session
-- `request-refactor-plan` — Refactor planning
-- `scaffold-exercises` — Exercise scaffolding
-- `setup-matt-pocock-skills` — Setup
-- `setup-pre-commit` — Pre-commit hooks
-- `to-issues` — Plan → issues
-- `to-prd` — Context → PRD
-- `triage` — Issue workflow
-- `ubiquitous-language` — DDD glossary
-- `write-a-skill` — Skill creation
-- `writing-beats` — Article beats
-- `writing-fragments` — Writing fragments
-- `writing-shape` — Shape articles
-- `zoom-out` — Broader context
-- `migrate-to-shoehorn` — Type assertion migration
-- `grill-with-docs` — Grilling with docs
+#### `addyosmani/` (22) — production engineering practices
+Sourced from [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) (MIT). Topics: code review, performance, security, TDD, spec-driven development, debugging, planning, deprecation.
 
-#### **superpowers** (14 skills) — Agentic Workflows
-- `brainstorming` — Before creative work (MUST USE)
-- `verification-before-completion` — Verify before claiming done
-- `test-driven-development` — TDD with red-green-refactor
-- `executing-plans` — Execute with review checkpoints
-- `writing-skills` — Create new skills
-- `finishing-a-development-branch` — Complete work
-- `receiving-code-review` — Handle feedback
-- `using-git-worktrees` — Isolated workspaces
-- `using-superpowers` — Meta-skill
-- `dispatching-parallel-agents` — Parallel tasks
-- `requesting-code-review` — Pre-commit review
-- `subagent-driven-development` — Subagent execution
-- `systematic-debugging` — 4-phase debugging
-- `writing-plans` — Implementation plans
+#### `mattpocock/` (28) — TypeScript & engineering workflows
+Sourced from [`mattpocock/skills`](https://github.com/mattpocock/skills) (MIT). Topics: TDD, diagnose, review, refactor planning, PRD generation, ubiquitous language, pre-commit hooks, article writing.
 
-#### **software-development** (16 skills)
-- `api-testing` — REST/GraphQL API testing ⭐ NEW
-- `systematic-debugging` — Root cause debugging
-- `test-driven-development` — TDD enforcement
-- `open-source-contribution` — OSS workflow
-- `hermes-agent-skill-authoring` — Skill creation
-- `plan` — Plan mode
-- `debugging-hermes-tui-commands` — Hermes TUI debugging
-- `ecosystem-tool-evaluation` — Tool evaluation
-- `node-inspect-debugger` — Node.js debugging
-- `python-debugpy` — Python debugging
-- `requesting-code-review` — Pre-commit review
-- `spike` — Throwaway experiments
-- `subagent-driven-development` — Subagent execution
-- `user-ryzen-preferences` — User preferences
-- `writing-plans` — Implementation plans
-- `contributing-to-ide-projects` — IDE contribution
+#### `superpowers/` (14) — agentic workflows
+Sourced from [`obra/superpowers`](https://github.com/obra/superpowers) (MIT). Topics: brainstorming, verification-before-completion, executing plans, writing skills, parallel dispatch, code-review feedback, git worktrees.
+
+#### `software-development/` (16) — original + community-curated
+Mix of original skills authored for this repo and additions from the broader Hermes Agent community. Topics: API testing, systematic debugging, Hermes-specific debugging, ecosystem evaluation, IDE contribution, plan mode, spike experiments.
+
+### Other categories
+
+| Category | Count | Notes |
+|---|--:|---|
+| `creative` | 22 | Diagrams, ASCII, p5.js, ComfyUI, design tools |
+| `mlops` | 15 | llama.cpp, Axolotl, Unsloth, vLLM, HF Hub, TRL, DSPy, lm-eval-harness |
+| `research` | 11 | Web scraping, arXiv, blogwatcher, polymarket, crypto/NFT analysis |
+| `github` | 10 | PR workflow, code review, repo management, auth, issues |
+| `devops` | 9 | Docker compose, VPS hardening, browser automation, kanban |
+| `productivity` | 8 | Notion, Google Workspace, Linear, Airtable, PowerPoint, OCR |
+| `media` | 5 | Spotify, YouTube, GIF search, Suno-style music, audio analysis |
+| `obsidian-skills` | 5 | Git submodule from [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills) |
+| `apple` | 4 | macOS-specific tooling |
+| `autonomous-ai-agents` | 4 | Claude Code, Codex, OpenCode, Hermes-Agent meta-skills |
+| `mlops` (deeper) | — | Plus subcategory specs |
+| `note-taking`, `social-media`, `gaming`, `software-copyright` | 2 each | |
+| `data-science`, `dogfood`, `email`, `mcp`, `red-teaming`, `smart-home`, `yuanbao`, `patent-disclosure-skill` | 1 each | |
+
+See [`docs/categories.md`](./docs/categories.md) for the full per-skill list.
 
 ---
 
-### 🎨 Creative (22 skills)
+## Conflicts & duplicates
 
-Visual content generation, diagrams, and design tools:
+The same skill name appears under multiple category directories. Pick **one** to install per machine — having two skills with the same name confuses Hermes Agent's loader. The differences are usually upstream-author flavor.
 
-- `architecture-diagram` — Dark-themed SVG diagrams
-- `ascii-art` — ASCII art generation
-- `ascii-video` — ASCII video conversion
-- `drawio-headless` — Draw.io diagrams (headless)
-- `excalidraw` — Hand-drawn diagrams
-- `pixel-art` — Pixel art with era palettes
-- `manim-video` — 3Blue1Brown-style animations
-- `p5js` — Generative art sketches
-- `claude-design` — HTML artifacts
-- `sketch` — Throwaway HTML mockups
-- `humanizer` — Humanize AI text
-- `ideation` — Project idea generation
-- `baoyu-comic` — Knowledge comics
-- `baoyu-infographic` — Infographics
-- `design-md` — Google DESIGN.md tokens
-- `popular-web-designs` — 54 design systems
-- `pretext` — DOM-free text layout
-- `social-media-slideshow-video` — Slideshow videos
-- `songwriting-and-ai-music` — Suno AI music
-- `touchdesigner-mcp` — TouchDesigner control
-- `visual-assets-generation` — Visual assets
-- `comfyui` — ComfyUI image/video/audio
+| Skill name | Locations | Suggested pick |
+|---|---|---|
+| `test-driven-development` | `addyosmani/`, `superpowers/`, `software-development/` | `superpowers/` (most detailed RED-GREEN-REFACTOR loop) or `addyosmani/` (more breadth) |
+| `systematic-debugging` | `superpowers/`, `software-development/` | `superpowers/` (4-phase) |
+| `requesting-code-review` | `superpowers/`, `software-development/` | `superpowers/` |
+| `subagent-driven-development` | `superpowers/`, `software-development/` | `superpowers/` |
+| `writing-plans` | `superpowers/`, `software-development/` | `superpowers/` |
+
+The installer (`scripts/install.sh`) currently does **not** auto-resolve these — it copies all of them, last-write-wins. If you install everything, double-check `~/.hermes/skills/` after.
 
 ---
 
-### 🤖 MLOps (15 skills)
+## Tooling
 
-Machine learning operations and AI workflows:
+Original to this repo, MIT-licensed under the project root `LICENSE`.
 
-- `llama-cpp` — Local GGUF inference
-- `axolotl` — YAML LLM fine-tuning
-- `unsloth` — Fast LoRA training
-- `serving-llms-vllm` — High-throughput serving
-- `huggingface-hub` — Model management
-- `fine-tuning-with-trl` — RLHF training
-- `dspy` — Declarative LM programs
-- `evaluating-llms-harness` — LLM benchmarking
-- `weights-and-biases` — Experiment tracking
-- `outlines` — Structured generation
-- `obliteratus` — Abliterate refusals
-- `segment-anything-model` — Image segmentation
-- `audiocraft-audio-generation` — Music/sound generation
-- `crypto-mining-setup` — AI-powered mining
-- `windows-local-ai-services` — Windows AI services
+### `scripts/install.sh`
+Copies skills into your agent's skills directory. Supports `--all`, `--category NAME`, `--list`, `--validate`, `--help`.
 
----
+### `scripts/validate.sh`
+Lints `SKILL.md` files for required YAML frontmatter and broken links.
 
-### 🔧 DevOps (9 skills)
+### `scripts/update.sh`
+Pulls latest changes, backs up existing skills, applies updates.
 
-Infrastructure, deployment, and operations:
+### `scripts/release.py`
+Generates changelog entries and tags a semver release.
 
-- `docker-compose` — Multi-container orchestration ⭐ NEW
-- `vps-cleanup` — Systematic VPS cleanup
-- `vps-security-hardening` — Security hardening
-- `cloud-browser-automation` — Browserbase integration
-- `tinyfish-integration` — Web toolkit
-- `api-monitoring-bots` — Monitoring bots
-- `kanban-orchestrator` — Kanban orchestration
-- `kanban-worker` — Kanban worker patterns
-- `webhook-subscriptions` — Event-driven runs
+### `scripts/quality-dashboard.py`
+Computes a self-scored quality metric. **Note:** the score is a heuristic produced by this repo's own script — do not interpret it as third-party validation.
+
+### `scripts/skills-api.py`
+Local REST server (default port 5555) for browsing skills programmatically.
+
+### CI: `.github/workflows/ci.yml`
+Runs `validate.sh` on every push/PR.
+
+### Auto-label bot
+`.github/workflows/` includes label automation for PRs and issues.
 
 ---
 
-### 🐙 GitHub (10 skills)
+## Contributing
 
-GitHub workflows and repository management:
+PRs welcome. See [`CONTRIBUTING.md`](./CONTRIBUTING.md). Two kinds of contributions:
 
-- `github-pr-workflow` — PR lifecycle
-- `github-code-review` — Code review
-- `public-repo-creation` — Production-ready repos
-- `comprehensive-public-repo-setup` — Full repo setup
-- `github-repo-visual-assets` — Visual assets
-- `repo-quality-maksimalisasi` — Quality maximization
-- `github-auth` — Authentication setup
-- `github-issues` — Issue management
-- `github-repo-management` — Repo operations
-- `codebase-inspection` — Codebase analysis
+1. **Original skills** — author your own `SKILL.md`. Include `author:` and a brief license note in frontmatter.
+2. **Aggregated skills** — pull in a public skill from another repo. Include `source:`, `source_url:`, and `source_license:` in the frontmatter so attribution is preserved.
+
+We **do not** accept contributions that misrepresent authorship or strip attribution from upstream sources.
 
 ---
 
-### 🔬 Research (11 skills)
+## License
 
-Research, analysis, and data extraction:
+This repo's tooling, layout, and aggregation work: **MIT** ([`LICENSE`](./LICENSE)).
 
-- `web-scraping` — Data extraction
-- `arxiv` — Paper search
-- `credential-pooling-analysis` — Business analysis
-- `telegram-bot-security-analysis` — Security testing
-- `crypto-token-analysis` — Token analysis
-- `nft-analysis` — NFT project analysis
-- `trending-repos-discovery` — Trending repos
-- `blogwatcher` — RSS/Atom monitoring
-- `llm-wiki` — Interlinked markdown KB
-- `polymarket` — Polymarket queries
-- `research-paper-writing` — ML paper writing
+Skill content sourced from upstream repos: each skill retains its upstream license. See [`NOTICE`](./NOTICE) for the source/license table.
 
 ---
 
-### 📝 Productivity (8 skills)
-
-Productivity tools and integrations:
-
-- `notion` — Notion API
-- `google-workspace` — Gmail, Drive, Docs
-- `linear` — Issue management
-- `airtable` — Database API
-- `powerpoint` — .pptx creation
-- `ocr-and-documents` — PDF text extraction
-- `nano-pdf` — PDF editing
-- `maps` — Geocoding, routes
-
----
-
-### 🎮 Other Categories
-
-- **autonomous-ai-agents** (4 skills): claude-code, codex, hermes-agent, opencode
-- **note-taking** (2 skills): obsidian, obsidian-mobile-sync
-- **obsidian-skills** (5 skills): defuddle, json-canvas, obsidian-bases, obsidian-cli, obsidian-markdown
-- **media** (5 skills): gif-search, heartmula, songsee, spotify, youtube-content
-- **gaming** (2 skills): minecraft-modpack-server, pokemon-player
-- **social-media** (2 skills): social-media-account-audit, xurl
-- **smart-home** (1 skill): openhue
-- **email** (1 skill): himalaya
-- **mcp** (1 skill): native-mcp
-- **red-teaming** (1 skill): godmode
-- **data-science** (1 skill): jupyter-live-kernel
-- **patent-disclosure-skill** (1 skill): patent-disclosure-skill
-- **software-copyright** (2 skills): software-copyright-materials, docx-toolkit
-- **prism** (5 skills): prism-3way, prism-discover, prism-full, prism-reflect, prism-scan
-- **dogfood** (1 skill): dogfood
-- **yuanbao** (1 skill): yuanbao
-
-[See full category list →](./docs/categories.md)
-
----
-
-## 🏆 Featured Skills
-
-### From Andrej Karpathy (ex-Tesla AI Director)
-
-**CLAUDE.md** — Behavioral guidelines to reduce common LLM coding mistakes
-
-Key principles:
-1. **Think Before Coding** — Don't assume, surface tradeoffs
-2. **Simplicity First** — Minimum code, no speculation
-3. **Surgical Changes** — Touch only what you must
-4. **Goal-Driven Execution** — Define success criteria, loop until verified
-
-Source: [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) (125K ⭐)
-
----
-
-### From Matt Pocock (TypeScript Educator)
-
-**TDD** — Test-driven development with red-green-refactor loop
-- Write failing test first
-- Make it pass with minimal code
-- Refactor while keeping tests green
-
-**Diagnose** — Systematic debugging for hard bugs
-- Reproduce → minimize → hypothesize → instrument → fix → regression-test
-
-**Review** — Multi-axis code review
-- Standards: Does code follow repo conventions?
-- Spec: Does code match requirements?
-
-Source: [mattpocock/skills](https://github.com/mattpocock/skills) (73K ⭐)
-
----
-
-### From Addy Osmani (Google Chrome Team)
-
-**Code Review & Quality** — Production-grade multi-axis review
-- Correctness, security, performance, maintainability
-
-**Performance Optimization** — Web performance best practices
-- Core Web Vitals, bundle optimization, lazy loading
-
-**Security & Hardening** — Vulnerability prevention
-- Input validation, auth/authz, secure patterns
-
-Source: [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) (39K ⭐)
-
----
-
-### From obra (Superpowers Framework)
-
-**Brainstorming** — MUST USE before any creative work
-- Explores user intent, requirements, design before implementation
-
-**Verification Before Completion** — Verify before claiming done
-- Run verification commands, confirm output, evidence before assertions
-
-**Executing Plans** — Execute with review checkpoints
-- Written plan → separate session → review at checkpoints
-
-Source: [obra/superpowers](https://github.com/obra/superpowers) (186K ⭐)
-
----
-
-## 📚 Documentation
-
-### Skills Documentation
-- [Installation Guide](./docs/installation.md)
-- [Usage Examples](./docs/usage.md)
-- [Category Overview](./docs/categories.md)
-
-### Automation Tools Documentation
-- [Automation Overview](./docs/AUTOMATION.md)
-- [Release Automation](./docs/release-automation.md)
-- [Quality Dashboard](./docs/quality-dashboard.md)
-- [Auto-Label Bot](./docs/auto-label-bot.md)
-- [Skills Manager API](./docs/skills-api.md)
-
-### Project Documentation
-- [Contributing Guide](./CONTRIBUTING.md)
-- [Changelog](./CHANGELOG.md)
-
----
-
-## ✨ Features Comparison
-
-| Feature | This Repo | Other Repos |
-|---------|-----------|-------------|
-| **Skills Count** | 189 | 20-50 |
-| **Categories** | 31 | 5-10 |
-| **Industry Experts** | 4 | 1-2 |
-| **Auto-Install** | ✅ | ❌ |
-| **Validation** | ✅ | ❌ |
-| **Auto-Update** | ✅ | ❌ |
-| **Release Automation** | ✅ | ❌ |
-| **Quality Dashboard** | ✅ | ❌ |
-| **Auto-Label Bot** | ✅ | ❌ |
-| **REST API** | ✅ | ❌ |
-| **CI/CD** | ✅ | ❌ |
-| **Documentation** | Comprehensive | Basic |
-| **License** | MIT | Varies |
-
----
-
-## 🛠️ Tools & Scripts
-
-### Installation Script
-
-```bash
-./scripts/install.sh [OPTIONS]
-
-Options:
-  --all                Install all skills (default)
-  --category NAME      Install specific category
-  --list               List available categories
-  --validate           Validate skills before install
-  --help               Show help message
-
-Examples:
-  ./scripts/install.sh --all
-  ./scripts/install.sh --category addyosmani
-  ./scripts/install.sh --category mattpocock --validate
-```
-
-### Validation Script
-
-```bash
-./scripts/validate.sh
-
-Checks:
-  ✓ SKILL.md exists
-  ✓ Valid YAML frontmatter
-  ✓ Required fields present
-  ✓ No broken links
-  ✓ Proper markdown formatting
-```
-
-### Update Script
-
-```bash
-./scripts/update.sh
-
-Updates:
-  ✓ Pull latest changes
-  ✓ Backup existing skills
-  ✓ Install new/updated skills
-  ✓ Show changelog
-```
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! We accept:
-
-- ✅ New skills (with examples and documentation)
-- ✅ Improvements to existing skills
-- ✅ Bug fixes
-- ✅ Documentation improvements
-- ✅ Translation to other languages
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](./LICENSE)
-
-You are free to:
-- ✅ Use commercially
-- ✅ Modify
-- ✅ Distribute
-- ✅ Private use
-
----
-
-## 🙏 Credits
-
-### Skills Curated From
-
-- [obra/superpowers](https://github.com/obra/superpowers) (186K ⭐) — Agentic workflows
-- [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) (125K ⭐) — Coding guidelines
-- [mattpocock/skills](https://github.com/mattpocock/skills) (73K ⭐) — TypeScript & engineering
-- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) (39K ⭐) — Production engineering
-
-### Industry Experts
-
-- **Andrej Karpathy** — ex-Tesla AI Director, OpenAI founding member
-- **Matt Pocock** — TypeScript educator, Total TypeScript
-- **Addy Osmani** — Google Chrome team, web performance expert
-- **Jesse Vincent (obra)** — Keyboard.io founder, Superpowers creator
-
-### Community
-
-Special thanks to all contributors and the Hermes Agent community.
-
----
-
-## ⭐ Star History
-
-If you find this useful, please star the repo!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=kevinnft/ai-agent-skills&type=Date)](https://star-history.com/#kevinnft/ai-agent-skills&Date)
-
----
-
-## 📊 Stats
-
-- **189 Skills** across 26 populated categories (31 skill directories)
-- **4 Automation Tools** (Release, Quality, Auto-Label, API)
-- **424K+ Combined Stars** from source repos
-- **4 Industry Experts** contributing knowledge
-- **Production-Tested** in real projects
-- **Zero Dependencies** — pure markdown
-- **Quality Score:** 86/100 (Good)
-
----
-
-## 🔗 Links
+## Links
 
 - [Hermes Agent](https://github.com/nousresearch/hermes-agent)
-- [Documentation](https://hermes-agent.nousresearch.com/docs)
-- [Automation Tools](docs/AUTOMATION.md)
-- [Issue Tracker](https://github.com/kevinnft/ai-agent-skills/issues)
-- [Changelog](CHANGELOG.md)
-
----
-
-**Made with ❤️ by the AI Agent community**
-
-**189 skills + 4 automation tools to make your AI agent production-ready** 🚀
+- [Hermes Agent docs](https://hermes-agent.nousresearch.com/docs)
+- [Issue tracker](https://github.com/kevinnft/ai-agent-skills/issues)
+- [`NOTICE` — full attribution](./NOTICE)
+- [`CHANGELOG`](./CHANGELOG.md)

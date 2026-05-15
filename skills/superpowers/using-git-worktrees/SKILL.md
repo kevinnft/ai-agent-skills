@@ -1,6 +1,9 @@
 ---
 name: using-git-worktrees
 description: Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Using Git Worktrees

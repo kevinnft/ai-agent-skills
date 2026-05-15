@@ -1,6 +1,9 @@
 ---
 name: superpowers-systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Systematic Debugging

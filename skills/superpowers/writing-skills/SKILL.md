@@ -1,6 +1,9 @@
 ---
 name: writing-skills
 description: Use when creating new skills, editing existing skills, or verifying skills work before deployment
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Writing Skills

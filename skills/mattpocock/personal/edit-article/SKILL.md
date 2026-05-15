@@ -1,6 +1,9 @@
 ---
 name: edit-article
 description: Edit and improve articles by restructuring sections, improving clarity, and tightening prose. Use when user wants to edit, revise, or improve an article draft.
+source_repo: "mattpocock/skills"
+source_url: "https://github.com/mattpocock/skills"
+source_license: "MIT"
 ---
 
 # Edit Article

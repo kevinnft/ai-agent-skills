@@ -1,6 +1,9 @@
 ---
 name: superpowers-writing-plans
 description: Use when you have a spec or requirements for a multi-step task, before touching code
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Writing Plans

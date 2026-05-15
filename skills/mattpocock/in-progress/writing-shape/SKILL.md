@@ -1,6 +1,9 @@
 ---
 name: writing-shape
 description: Take a markdown file of raw material and shape it into an article through a conversational session — drafting candidate openings, growing the piece paragraph by paragraph, arguing about format (lists, tables, callouts, quotes) at each step. Use when the user has a pile of notes, fragments, or a rough draft and wants help turning it into something publishable.
+source_repo: "mattpocock/skills"
+source_url: "https://github.com/mattpocock/skills"
+source_license: "MIT"
 ---
 
 <what-to-do>
