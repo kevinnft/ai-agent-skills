@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <style>
+    @keyframes blink { 0%,50% { opacity: 1 } 51%,100% { opacity: 0 } }
+    @keyframes appear1 { 0%,2% { opacity: 0 } 3% { opacity: 1 } }
+    @keyframes appear2 { 0%,8% { opacity: 0 } 9% { opacity: 1 } }
+    @keyframes appear3 { 0%,14% { opacity: 0 } 15% { opacity: 1 } }
+    @keyframes appear4 { 0%,18% { opacity: 0 } 19% { opacity: 1 } }
+    @keyframes appear5 { 0%,24% { opacity: 0 } 25% { opacity: 1 } }
+    @keyframes appear6 { 0%,28% { opacity: 0 } 29% { opacity: 1 } }
+    @keyframes appear7 { 0%,32% { opacity: 0 } 33% { opacity: 1 } }
+    @keyframes appear8 { 0%,36% { opacity: 0 } 37% { opacity: 1 } }
+    @keyframes appear9 { 0%,40% { opacity: 0 } 41% { opacity: 1 } }
+    @keyframes appear10 { 0%,44% { opacity: 0 } 45% { opacity: 1 } }
+    @keyframes appear11 { 0%,48% { opacity: 0 } 49% { opacity: 1 } }
+    @keyframes appear12 { 0%,52% { opacity: 0 } 53% { opacity: 1 } }
+    @keyframes appear13 { 0%,56% { opacity: 0 } 57% { opacity: 1 } }
+    @keyframes appear14 { 0%,60% { opacity: 0 } 61% { opacity: 1 } }
+    @keyframes appear15 { 0%,64% { opacity: 0 } 65% { opacity: 1 } }
+    @keyframes appear16 { 0%,68% { opacity: 0 } 69% { opacity: 1 } }
+    @keyframes appear17 { 0%,72% { opacity: 0 } 73% { opacity: 1 } }
+    @keyframes appear18 { 0%,76% { opacity: 0 } 77% { opacity: 1 } }
+    @keyframes appear19 { 0%,80% { opacity: 0 } 81% { opacity: 1 } }
+    @keyframes appear20 { 0%,84% { opacity: 0 } 85% { opacity: 1 } }
+    @keyframes appear21 { 0%,88% { opacity: 0 } 89% { opacity: 1 } }
+    @keyframes appear22 { 0%,92% { opacity: 0 } 93% { opacity: 1 } }
+    @keyframes type1 { 0%,2% { width: 0 } 7% { width: 100% } }
+    @keyframes type2 { 0%,8% { width: 0 } 12% { width: 100% } }
+    @keyframes type3 { 0%,14% { width: 0 } 22% { width: 100% } }
+    text { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace; font-size: 13px; }
+    .prompt { fill: #50fa7b; }
+    .cmd { fill: #f8f8f2; }
+    .output { fill: #bd93f9; }
+    .green { fill: #50fa7b; }
+    .yellow { fill: #f1fa8c; }
+    .blue { fill: #8be9fd; }
+    .white { fill: #f8f8f2; }
+    .dim { fill: #6272a4; }
+    .cursor { animation: blink 1s step-end infinite; fill: #f8f8f2; }
+    .l1 { opacity: 0; animation: appear1 20s infinite; }
+    .l2 { opacity: 0; animation: appear2 20s infinite; }
+    .l3 { opacity: 0; animation: appear3 20s infinite; }
+    .l4 { opacity: 0; animation: appear4 20s infinite; }
+    .l5 { opacity: 0; animation: appear5 20s infinite; }
+    .l6 { opacity: 0; animation: appear6 20s infinite; }
+    .l7 { opacity: 0; animation: appear7 20s infinite; }
+    .l8 { opacity: 0; animation: appear8 20s infinite; }
+    .l9 { opacity: 0; animation: appear9 20s infinite; }
+    .l10 { opacity: 0; animation: appear10 20s infinite; }
+    .l11 { opacity: 0; animation: appear11 20s infinite; }
+    .l12 { opacity: 0; animation: appear12 20s infinite; }
+    .l13 { opacity: 0; animation: appear13 20s infinite; }
+    .l14 { opacity: 0; animation: appear14 20s infinite; }
+    .l15 { opacity: 0; animation: appear15 20s infinite; }
+    .l16 { opacity: 0; animation: appear16 20s infinite; }
+    .l17 { opacity: 0; animation: appear17 20s infinite; }
+    .l18 { opacity: 0; animation: appear18 20s infinite; }
+    .l19 { opacity: 0; animation: appear19 20s infinite; }
+    .l20 { opacity: 0; animation: appear20 20s infinite; }
+    .l21 { opacity: 0; animation: appear21 20s infinite; }
+    .l22 { opacity: 0; animation: appear22 20s infinite; }
+  </style>
+  <!-- Terminal window -->
+  <rect width="720" height="480" rx="8" fill="#282a36"/>
+  <!-- Title bar -->
+  <rect width="720" height="32" rx="8" fill="#1e1f29"/>
+  <rect y="24" width="720" height="8" fill="#1e1f29"/>
+  <circle cx="20" cy="16" r="6" fill="#ff5555"/>
+  <circle cx="40" cy="16" r="6" fill="#f1fa8c"/>
+  <circle cx="60" cy="16" r="6" fill="#50fa7b"/>
+  <text x="340" y="20" text-anchor="middle" fill="#6272a4" font-size="12">Terminal</text>
+  <!-- Line 1: git clone -->
+  <g class="l1">
+    <text x="16" y="60"><tspan class="prompt">❯ </tspan><tspan class="cmd">git clone https://github.com/nousresearch/ai-agent-skills.git</tspan></text>
+  </g>
+  <!-- Line 2: clone output -->
+  <g class="l2">
+    <text x="16" y="78" class="dim">Cloning into 'ai-agent-skills'... done.</text>
+  </g>
+  <!-- Line 3: cd -->
+  <g class="l3">
+    <text x="16" y="100"><tspan class="prompt">❯ </tspan><tspan class="cmd">cd ai-agent-skills</tspan></text>
+  </g>
+  <!-- Line 4: install command -->
+  <g class="l4">
+    <text x="16" y="122"><tspan class="prompt">❯ </tspan><tspan class="cmd">./scripts/install.sh --preset minimal</tspan></text>
+  </g>
+  <!-- Line 5: header -->
+  <g class="l5">
+    <text x="16" y="148" class="yellow">📦 AI Agent Skills Installer v1.7.1</text>
+  </g>
+  <!-- Line 6: preset info -->
+  <g class="l6">
+    <text x="16" y="166" class="blue">→ Installing preset: minimal (1 category)</text>
+  </g>
+  <!-- Lines 7-20: skills with checkmarks -->
+  <g class="l7">
+    <text x="16" y="188"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/using-superpowers</tspan></text>
+  </g>
+  <g class="l8">
+    <text x="16" y="206"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/brainstorming</tspan></text>
+  </g>
+  <g class="l9">
+    <text x="16" y="224"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/writing-skills</tspan></text>
+  </g>
+  <g class="l10">
+    <text x="16" y="242"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/research-skills</tspan></text>
+  </g>
+  <g class="l11">
+    <text x="16" y="260"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/coding-skills</tspan></text>
+  </g>
+  <g class="l12">
+    <text x="16" y="278"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/analysis-skills</tspan></text>
+  </g>
+  <g class="l13">
+    <text x="16" y="296"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/problem-solving</tspan></text>
+  </g>
+  <g class="l14">
+    <text x="16" y="314"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/communication</tspan></text>
+  </g>
+  <g class="l15">
+    <text x="16" y="332"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/task-management</tspan></text>
+  </g>
+  <g class="l16">
+    <text x="16" y="350"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/self-improvement</tspan></text>
+  </g>
+  <g class="l17">
+    <text x="16" y="368"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/tool-usage</tspan></text>
+  </g>
+  <g class="l18">
+    <text x="16" y="386"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/memory-management</tspan></text>
+  </g>
+  <g class="l19">
+    <text x="16" y="404"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/context-awareness</tspan></text>
+  </g>
+  <g class="l20">
+    <text x="16" y="422"><tspan class="green">  ✓ </tspan><tspan class="white">superpowers/reasoning</tspan></text>
+  </g>
+  <!-- Line 21: Done message -->
+  <g class="l21">
+    <text x="16" y="446" class="green">🎉 Done! Skills installed to: ~/.hermes/skills</text>
+  </g>
+  <!-- Line 22: Next steps -->
+  <g class="l22">
+    <text x="16" y="468" class="dim">Next steps: Restart Hermes Agent · Skills auto-load on next session</text>
+  </g>
+</svg>

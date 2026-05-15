@@ -30,6 +30,41 @@
 
 ---
 
+## 🤔 What are agent skills?
+
+**Agent skills are instruction files that teach AI coding agents how to do specific tasks.** Think of them like recipes — each `SKILL.md` file contains step-by-step procedures, best practices, and pitfalls for a particular workflow (debugging, code review, deploying, etc.).
+
+When you give your AI agent access to these files, it can:
+- Follow proven workflows instead of improvising
+- Avoid common mistakes documented in the skill
+- Use the right tools and commands for each task
+- Work more consistently across sessions
+
+**No code to install, no dependencies.** Skills are just markdown files your agent reads. Drop them in a folder, point your agent at it, done.
+
+<details>
+<summary><b>Which agents support this?</b></summary>
+<br/>
+
+Any agent that reads markdown instruction files:
+- **Hermes Agent** — `~/.hermes/skills/`
+- **Claude Code** — `~/.claude/skills/`
+- **Cursor** — `~/.cursor/skills/`
+- **OpenCode, Windsurf, Cline** — configure your skills directory
+- **Any custom agent** — just point it at the folder
+
+</details>
+
+---
+
+## 🎬 Demo
+
+<div align="center">
+<img src="./docs/demo.svg" alt="Installation demo" width="600" />
+</div>
+
+---
+
 ## ⚡ The 30-second pitch
 
 ```text
@@ -94,6 +129,18 @@ cp -r skills/* ~/.cursor/skills/
 
 ```bash
 cp -r skills/* /path/to/your/agent/skills/
+```
+
+</td></tr>
+<tr><td>
+
+🐍 **Windows (no WSL)**
+
+</td><td>
+
+```powershell
+git clone --recurse-submodules https://github.com/kevinnft/ai-agent-skills.git
+cd ai-agent-skills && python scripts/install.py
 ```
 
 </td></tr>
@@ -222,7 +269,7 @@ Same-name skills exist under multiple categories. Pick **one** when installing �
 | `subagent-driven-development` | `superpowers/`, `software-development/` | 🥇 `superpowers/` |
 | `writing-plans` | `superpowers/`, `software-development/` | 🥇 `superpowers/` |
 
-The installer does **not** auto-resolve these — auditing your `~/.hermes/skills/` after a full install is recommended. See [`docs/sync.md`](./docs/sync.md) for the upstream-drift strategy.
+The installer **auto-resolves** these: by default it keeps the `superpowers/` copy and skips duplicates from other categories. Override with `--prefer <category>` if you want a different pick. See [`docs/sync.md`](./docs/sync.md) for the upstream-drift strategy.
 
 ---
 
@@ -230,13 +277,16 @@ The installer does **not** auto-resolve these — auditing your `~/.hermes/skill
 
 | Script | Purpose | Notes |
 |---|---|---|
-| [`install.sh`](scripts/install.sh) | Copy skills to your agent's skills dir | `--all`, `--category`, `--list`, `--validate` |
+| [`install.sh`](scripts/install.sh) | Copy skills to your agent's skills dir (Linux/macOS) | `--all`, `--category`, `--list`, `--validate` |
+| [`install.py`](scripts/install.py) | Cross-platform installer (Windows/macOS/Linux) | Same flags as install.sh, Python 3.7+ stdlib only |
 | [`validate.sh`](scripts/validate.sh) | Lint frontmatter + broken links | Non-zero exit on failure |
 | [`update.sh`](scripts/update.sh) | Pull latest, back up existing, apply | Safe re-run |
 | [`release.py`](scripts/release.py) | Generate changelog + tag semver | Tested ✅ |
 | [`quality-dashboard.py`](scripts/quality-dashboard.py) | Self-scored repo health metric | **Heuristic — not third-party validation** |
 | [`skills-api.py`](scripts/skills-api.py) | Local REST server (`:5555`) | `GET /api/skills`, `GET /api/skills/search?q=...` |
+| [`generate_site.py`](scripts/generate_site.py) | Generate searchable HTML catalog | Outputs `docs/index.html` |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Validation + pytest on push/PR | 22 unit tests |
+| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy searchable catalog to GitHub Pages | Auto on push to main |
 | [`.github/workflows/upstream-sync-check.yml`](.github/workflows/upstream-sync-check.yml) | Weekly drift report from upstream sources | Mondays 06:17 UTC |
 | [`.github/workflows/auto-label.yml`](.github/workflows/auto-label.yml) | PR/issue auto-labeling | 35 labels |
 
@@ -248,11 +298,11 @@ All tooling MIT-licensed under [`LICENSE`](./LICENSE).
 
 ```text
   191  SKILL.md files                            ✅ verified each release
-   26  populated categories                      ✅
+   28  populated categories                      ✅
   161  skills with source_repo metadata          (89 aggregated + 11 adapted + 61 original-self-link)
    22  skills awaiting upstream identification   🤝 help wanted
-    9  scripts under scripts/
-    3  GitHub Actions workflows                  CI · auto-label · upstream-sync-check
+   11  scripts under scripts/
+    4  GitHub Actions workflows                  CI · auto-label · upstream-sync-check · pages
    28  pytest unit tests                         scripts/release · skills-api · quality-dashboard
     2  git submodules                            obsidian-skills · patent-disclosure-skill
 ```
@@ -314,6 +364,20 @@ A weekly GitHub Action (Mondays 06:17 UTC) opens or updates a tracking issue wit
 <br/>
 
 This repo's tooling: yes (MIT). Skill content from upstream: yes if their license permits — see per-skill `source_license` frontmatter or [`NOTICE`](./NOTICE).
+</details>
+
+<details>
+<summary><b>Is there a way to browse skills without cloning?</b></summary>
+<br/>
+
+Yes — the [searchable catalog](https://kevinnft.github.io/ai-agent-skills/) is deployed via GitHub Pages. Filter by category, search by name/tag, and preview any skill before installing.
+</details>
+
+<details>
+<summary><b>I'm on Windows without WSL — can I still install?</b></summary>
+<br/>
+
+Yes. Use `python scripts/install.py` — it's a cross-platform installer with the same flags as `install.sh`, requires only Python 3.7+ stdlib (no pip dependencies).
 </details>
 
 ---
