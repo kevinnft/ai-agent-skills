@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-05-15
+
+### Changed
+- **README rewritten for visual polish** — centered hero with for-the-badge style badges, two-column category cards, "30-second pitch" diagram, FAQ section. No new claims; positioning unchanged. Goal is faster orientation for first-time visitors without sacrificing the honesty added in 1.4.x.
+- Stats card now shows the 4 most useful repo metrics (skill count, attribution coverage, scripts, CI, submodules) instead of vague counts.
+- Quick start grouped by agent (Hermes / Claude Code / Cursor / custom) with a "try one category first" tip.
+- Conflicts table promoted to a top-level section.
+
+### Added
+- `## ❓ FAQ` answering: upstream authorship, why aggregator vs upstream-direct, what the quality score actually means, version-mismatch handling, commercial use.
+- Per-section deep links from the hero so navigation is fewer clicks.
+
+### Notes
+- Bumping minor (1.4.2 → 1.5.0) because the README is the primary contract with new users; the rewrite materially changes how the project is presented even though no behaviour changed.
+- No skill content changed.
+- No tooling changed.
+- No license/attribution wording changed (still MIT, still non-affiliation disclaimer).
+
 ## [1.4.2] - 2026-05-15
 
 ### Fixed

@@ -1,183 +1,208 @@
+<div align="center">
+
 # AI Agent Skills
 
-> An aggregated installer of publicly available agent-skill markdown files for AI coding agents (Hermes Agent, Claude Code, Cursor, etc.). 189 skills across 26 categories, sourced from open-source skill repositories.
+**An honest, attribution-first installer for 189 publicly available agent-skill markdown files.**
 
-[![Skills](https://img.shields.io/badge/skills-189-blue)](#categories)
-[![Categories](https://img.shields.io/badge/categories-26-green)](#categories)
-[![License](https://img.shields.io/badge/license-MIT-orange)](./LICENSE)
-[![Attribution](https://img.shields.io/badge/attribution-NOTICE-yellow)](./NOTICE)
-[![CI](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
+Hermes Agent · Claude Code · Cursor · OpenCode · any agent that reads `SKILL.md`.
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-orange.svg?style=for-the-badge)](./LICENSE)
+[![Skills](https://img.shields.io/badge/skills-189-blue?style=for-the-badge)](#-categories)
+[![Categories](https://img.shields.io/badge/categories-26-green?style=for-the-badge)](./docs/categories.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/kevinnft/ai-agent-skills/ci.yml?style=for-the-badge&label=CI)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge)](./CONTRIBUTING.md)
+
+[Quick start](#-quick-start) ·
+[Categories](#-categories) ·
+[Conflicts to know](#-conflicts--duplicates) ·
+[Contributing](./CONTRIBUTING.md) ·
+[Attribution (`NOTICE`)](./NOTICE)
+
+</div>
 
 ---
 
-## What this is
+## ⚡ The 30-second pitch
 
-A curated, installable bundle of agent-skill markdown files (the `SKILL.md` format used by Hermes Agent, Claude Code's skills, and similar) drawn from publicly available open-source skill repositories. The value-add is the **aggregation, categorization, validation tooling, and one-command installer** — not the skill content itself.
+```
+189 SKILL.md files  +  one-command installer  +  validation CI  +  REST API
+                              ↓
+                      drop into your agent
+```
+
+This is a **derivative work** — most skill content was authored by other people in their public repos. The value-add here is: aggregation, categorization, conflict detection, validation tooling, attribution metadata, and a portable installer. **Original authors did not contribute to or endorse this repo.** See [`NOTICE`](./NOTICE) for full attribution.
 
 > [!IMPORTANT]
-> **Attribution & honesty notice.** Several category directories (`addyosmani/`, `mattpocock/`, `superpowers/`) are named after well-known authors of public skill repos. Those authors are not affiliated with this repository and have not contributed to it. See [`NOTICE`](./NOTICE) for the full attribution and source-license table. Per-skill `source:` frontmatter is being added progressively.
-
-## What this is NOT
-
-- Not a curation by the named authors (Karpathy, Pocock, Osmani, obra) — they did not endorse, contribute to, or review this repo.
-- Not "production-tested in real projects" beyond what the upstream skill files say about themselves.
-- Not a replacement for reading the original repos if you want the latest version of a given skill.
-
-If you want the canonical version of a specific author's skills, install directly from their repo (linked in [`NOTICE`](./NOTICE)).
+> If you want the canonical version of a specific author's skills, install from their repo directly. Links in [`NOTICE`](./NOTICE).
 
 ---
 
-## Stats
-
-- **189** `SKILL.md` files across **26** categories
-- **2** git submodules (`obsidian-skills`, `patent-disclosure-skill`) — pull with `git submodule update --init`
-- **5** known same-name skills present in multiple categories — see [Conflicts & duplicates](#conflicts--duplicates)
-- **6** automation scripts under `scripts/` (install, validate, update, release, quality-dashboard, skills-api) — original to this repo
-- **MIT** licensed (this repo's added layout + tooling); upstream skills retain their own licenses (see [`NOTICE`](./NOTICE))
-
----
-
-## Quick start
+## 📦 Quick start
 
 ### Hermes Agent
 
 ```bash
 git clone --recurse-submodules https://github.com/kevinnft/ai-agent-skills.git
 cd ai-agent-skills
-./scripts/install.sh                          # install all
-./scripts/install.sh --category addyosmani    # or one category
-./scripts/install.sh --list                   # see categories
+./scripts/install.sh                        # all 189 skills
+./scripts/install.sh --category addyosmani  # one category
+./scripts/install.sh --list                 # browse before installing
+./scripts/install.sh --validate             # dry-run + lint
 ```
 
-### Claude Code
+### Claude Code · Cursor · custom agent
 
 ```bash
-cp -r skills/* ~/.claude/skills/
+cp -r skills/* ~/.claude/skills/      # Claude Code
+cp -r skills/* ~/.cursor/skills/      # Cursor
+cp -r skills/* /your/agent/skills/    # anything that reads SKILL.md
 ```
 
-### Cursor
+### Tip: install one category, see if it clicks
 
 ```bash
-cp -r skills/* ~/.cursor/skills/
+./scripts/install.sh --category superpowers   # 14 agentic-workflow skills
 ```
 
-### Custom agent
-
-```bash
-cp -r skills/* /path/to/your/agent/skills/
-```
+If you like the way it works, `--all`. If not, the rest is one `cp` away.
 
 ---
 
-## Categories
+## 🎯 Categories
 
-All counts verified by scanning `find skills -name SKILL.md` after `git submodule update --init`. Numbers match this repo's actual contents at the latest commit on `main`.
+Verified counts (via `find skills -name SKILL.md` after `git submodule update --init`):
 
-### Engineering buckets (80 skills)
+<table>
+<tr>
+<td valign="top">
 
-#### `addyosmani/` (22) — production engineering practices
-Sourced from [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) (MIT). Topics: code review, performance, security, TDD, spec-driven development, debugging, planning, deprecation.
+**Engineering — 80 skills**
+- [`addyosmani/`](skills/addyosmani) — 22 (production engineering)
+- [`mattpocock/`](skills/mattpocock) — 28 (TypeScript & workflows)
+- [`superpowers/`](skills/superpowers) — 14 (agentic patterns)
+- [`software-development/`](skills/software-development) — 16 (mixed)
 
-#### `mattpocock/` (28) — TypeScript & engineering workflows
-Sourced from [`mattpocock/skills`](https://github.com/mattpocock/skills) (MIT). Topics: TDD, diagnose, review, refactor planning, PRD generation, ubiquitous language, pre-commit hooks, article writing.
+**Creative — 22 skills**
+- Diagrams · ASCII · p5.js · ComfyUI · DESIGN.md tokens · pixel art · Manim · TouchDesigner
 
-#### `superpowers/` (14) — agentic workflows
-Sourced from [`obra/superpowers`](https://github.com/obra/superpowers) (MIT). Topics: brainstorming, verification-before-completion, executing plans, writing skills, parallel dispatch, code-review feedback, git worktrees.
+**MLOps — 15 skills**
+- llama.cpp · Axolotl · Unsloth · vLLM · TRL · DSPy · lm-eval-harness
 
-#### `software-development/` (16) — original + community-curated
-Mix of original skills authored for this repo and additions from the broader Hermes Agent community. Topics: API testing, systematic debugging, Hermes-specific debugging, ecosystem evaluation, IDE contribution, plan mode, spike experiments.
+</td>
+<td valign="top">
 
-### Other categories
+**Research — 11 skills**
+- arXiv · web scraping · blogwatcher · polymarket · NFT/crypto analysis
 
-| Category | Count | Notes |
-|---|--:|---|
-| `creative` | 22 | Diagrams, ASCII, p5.js, ComfyUI, design tools |
-| `mlops` | 15 | llama.cpp, Axolotl, Unsloth, vLLM, HF Hub, TRL, DSPy, lm-eval-harness |
-| `research` | 11 | Web scraping, arXiv, blogwatcher, polymarket, crypto/NFT analysis |
-| `github` | 10 | PR workflow, code review, repo management, auth, issues |
-| `devops` | 9 | Docker compose, VPS hardening, browser automation, kanban |
-| `productivity` | 8 | Notion, Google Workspace, Linear, Airtable, PowerPoint, OCR |
-| `media` | 5 | Spotify, YouTube, GIF search, Suno-style music, audio analysis |
-| `obsidian-skills` | 5 | Git submodule from [`kepano/obsidian-skills`](https://github.com/kepano/obsidian-skills) |
-| `apple` | 4 | macOS-specific tooling |
-| `autonomous-ai-agents` | 4 | Claude Code, Codex, OpenCode, Hermes-Agent meta-skills |
-| `mlops` (deeper) | — | Plus subcategory specs |
-| `note-taking`, `social-media`, `gaming`, `software-copyright` | 2 each | |
-| `data-science`, `dogfood`, `email`, `mcp`, `red-teaming`, `smart-home`, `yuanbao`, `patent-disclosure-skill` | 1 each | |
+**GitHub — 10 skills**
+- PR workflow · code review · repo mgmt · auth · issues
 
-See [`docs/categories.md`](./docs/categories.md) for the full per-skill list.
+**DevOps — 9 skills**
+- Docker compose · VPS hardening · browser automation · kanban · webhooks
+
+**Productivity — 8 skills**
+- Notion · Google Workspace · Linear · Airtable · PowerPoint · OCR · maps
+
+</td>
+</tr>
+</table>
+
+Plus `media (5)` · `obsidian-skills (5, submodule)` · `apple (4)` · `autonomous-ai-agents (4)` · `note-taking, social-media, gaming, software-copyright (2 each)` · `data-science, dogfood, email, mcp, red-teaming, smart-home, yuanbao, patent-disclosure-skill (1 each)`.
+
+📚 Full catalog: [`docs/categories.md`](./docs/categories.md)
 
 ---
 
-## Conflicts & duplicates
+## ⚠️ Conflicts & duplicates
 
-The same skill name appears under multiple category directories. Pick **one** to install per machine — having two skills with the same name confuses Hermes Agent's loader. The differences are usually upstream-author flavor.
+Same-name skills exist under multiple categories. Pick **one** when installing — duplicates confuse the loader (last-write-wins).
 
-| Skill name | Locations | Suggested pick |
+| Skill | Locations | Recommended pick |
 |---|---|---|
-| `test-driven-development` | `addyosmani/`, `superpowers/`, `software-development/` | `superpowers/` (most detailed RED-GREEN-REFACTOR loop) or `addyosmani/` (more breadth) |
+| `test-driven-development` | `addyosmani/`, `superpowers/`, `software-development/` | `superpowers/` (most explicit RED-GREEN-REFACTOR loop) |
 | `systematic-debugging` | `superpowers/`, `software-development/` | `superpowers/` (4-phase) |
 | `requesting-code-review` | `superpowers/`, `software-development/` | `superpowers/` |
 | `subagent-driven-development` | `superpowers/`, `software-development/` | `superpowers/` |
 | `writing-plans` | `superpowers/`, `software-development/` | `superpowers/` |
 
-The installer (`scripts/install.sh`) currently does **not** auto-resolve these — it copies all of them, last-write-wins. If you install everything, double-check `~/.hermes/skills/` after.
+The installer currently does **not** auto-resolve these — auditing your `~/.hermes/skills/` (or equivalent) after a full install is recommended.
 
 ---
 
-## Tooling
+## 🛠️ Tooling (original to this repo)
 
-Original to this repo, MIT-licensed under the project root `LICENSE`.
+| Script | Purpose |
+|---|---|
+| [`scripts/install.sh`](scripts/install.sh) | Copy skills into your agent's skills dir. `--all`, `--category`, `--list`, `--validate`. |
+| [`scripts/validate.sh`](scripts/validate.sh) | Lint `SKILL.md` frontmatter + check broken links. Returns non-zero on invalid skill. |
+| [`scripts/update.sh`](scripts/update.sh) | Pull latest, back up existing, apply updates. |
+| [`scripts/release.py`](scripts/release.py) | Generate changelog + tag a semver release. |
+| [`scripts/quality-dashboard.py`](scripts/quality-dashboard.py) | Compute a self-scored repo health metric. **Heuristic — not third-party validation.** |
+| [`scripts/skills-api.py`](scripts/skills-api.py) | Local REST server (default `:5555`) for browsing skills programmatically. |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Validation runs on every push / PR. |
+| [`.github/workflows/auto-label.yml`](.github/workflows/auto-label.yml) | PR/issue label automation. |
 
-### `scripts/install.sh`
-Copies skills into your agent's skills directory. Supports `--all`, `--category NAME`, `--list`, `--validate`, `--help`.
-
-### `scripts/validate.sh`
-Lints `SKILL.md` files for required YAML frontmatter and broken links.
-
-### `scripts/update.sh`
-Pulls latest changes, backs up existing skills, applies updates.
-
-### `scripts/release.py`
-Generates changelog entries and tags a semver release.
-
-### `scripts/quality-dashboard.py`
-Computes a self-scored quality metric. **Note:** the score is a heuristic produced by this repo's own script — do not interpret it as third-party validation.
-
-### `scripts/skills-api.py`
-Local REST server (default port 5555) for browsing skills programmatically.
-
-### CI: `.github/workflows/ci.yml`
-Runs `validate.sh` on every push/PR.
-
-### Auto-label bot
-`.github/workflows/` includes label automation for PRs and issues.
+All MIT-licensed under the project root [`LICENSE`](./LICENSE).
 
 ---
 
-## Contributing
+## 📊 Stats
 
-PRs welcome. See [`CONTRIBUTING.md`](./CONTRIBUTING.md). Two kinds of contributions:
-
-1. **Original skills** — author your own `SKILL.md`. Include `author:` and a brief license note in frontmatter.
-2. **Aggregated skills** — pull in a public skill from another repo. Include `source:`, `source_url:`, and `source_license:` in the frontmatter so attribution is preserved.
-
-We **do not** accept contributions that misrepresent authorship or strip attribution from upstream sources.
-
----
-
-## License
-
-This repo's tooling, layout, and aggregation work: **MIT** ([`LICENSE`](./LICENSE)).
-
-Skill content sourced from upstream repos: each skill retains its upstream license. See [`NOTICE`](./NOTICE) for the source/license table.
+```
+189  SKILL.md files            ✅
+ 26  populated categories      ✅
+ 64  skills with explicit      source_repo + source_url + source_license
+                                in YAML frontmatter (addyosmani / mattpocock / superpowers)
+  8  scripts under scripts/    install · validate · update · release · dashboard · skills-api · create-labels · helper
+  2  GitHub Actions            CI · auto-label
+  2  git submodules            obsidian-skills · patent-disclosure-skill
+```
 
 ---
 
-## Links
+## 🤝 Contributing
 
-- [Hermes Agent](https://github.com/nousresearch/hermes-agent)
-- [Hermes Agent docs](https://hermes-agent.nousresearch.com/docs)
-- [Issue tracker](https://github.com/kevinnft/ai-agent-skills/issues)
-- [`NOTICE` — full attribution](./NOTICE)
-- [`CHANGELOG`](./CHANGELOG.md)
+PRs welcome — see [`CONTRIBUTING.md`](./CONTRIBUTING.md). Two contribution types with **different rules**:
+
+1. **Original skills** — author your own. Required: `name`, `description`, `author`, `tags`. Tested in at least one real session.
+2. **Aggregated skills** — pull in a public skill from another repo. Required: `source_repo`, `source_url`, `source_license`. Upstream license must permit redistribution.
+
+We **reject** PRs that strip attribution or misrepresent upstream authorship as a contribution to this repo. Reviewers see the attribution checklist on every PR.
+
+---
+
+## ❓ FAQ
+
+**Is this maintained by the named upstream authors?**
+No. They have not contributed to or endorsed this repo. See [`NOTICE`](./NOTICE) for the non-affiliation disclaimer.
+
+**Why not just install from upstream directly?**
+You can — and should, if you only want one author's skills. The win here is one command for 189 skills across 26 categories, plus categorization, conflict detection, validation, and a REST API.
+
+**The "Quality 86/100" dashboard score — what does it actually mean?**
+It's a heuristic computed by `scripts/quality-dashboard.py` (this repo's own script) based on README presence, LICENSE, CI status, broken-link check, and a few other surface signals. Not third-party validation. Don't read it as endorsement.
+
+**The repo description says "189" but I see "191+" elsewhere — which is right?**
+Currently **189** (verified each release via `find skills -name SKILL.md`). Older docs may say "191+" — if you find one, please open a PR.
+
+**Can I use this commercially?**
+This repo's tooling: yes (MIT). Skill content from upstream: yes if their license permits — see per-skill `source_license` frontmatter or [`NOTICE`](./NOTICE).
+
+---
+
+## 📄 License & attribution
+
+- **This repo's tooling, layout, aggregation work:** MIT — [`LICENSE`](./LICENSE).
+- **Skill content from upstream repos:** each skill keeps its upstream license. See per-skill frontmatter and [`NOTICE`](./NOTICE).
+
+If you are an upstream author and would like a skill removed, renamed, or attributed differently, please [open an issue](https://github.com/kevinnft/ai-agent-skills/issues/new).
+
+---
+
+<div align="center">
+
+**Hermes Agent** · [docs](https://hermes-agent.nousresearch.com/docs) · [repo](https://github.com/nousresearch/hermes-agent)
+
+[`NOTICE`](./NOTICE) · [`CHANGELOG`](./CHANGELOG.md) · [`SECURITY`](./SECURITY.md) · [Issues](https://github.com/kevinnft/ai-agent-skills/issues)
+
+</div>
