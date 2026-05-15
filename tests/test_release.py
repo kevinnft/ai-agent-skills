@@ -64,3 +64,40 @@ class TestCategorizeCommits:
     def test_empty_input_yields_empty_buckets(self):
         cats = release.categorize_commits([])
         assert cats["features"] == [] and cats["fixes"] == []
+
+    def test_address_is_not_a_feature(self):
+        # Regression: previous substring check matched "add" inside "address"
+        # and silently miscategorized fixes as features.
+        commits = [{"hash": "abc", "message": "address security issue in auth"}]
+        cats = release.categorize_commits(commits)
+        assert all(c["message"] != "address security issue in auth" for c in cats["features"])
+
+    def test_fix_keyword_wins_over_add(self):
+        # "fix add bug" is a fix, not a feature.
+        commits = [{"hash": "abc", "message": "fix add bug in checkout"}]
+        cats = release.categorize_commits(commits)
+        assert any(c["message"] == "fix add bug in checkout" for c in cats["fixes"])
+
+    def test_conventional_scope(self):
+        commits = [{"hash": "abc", "message": "feat(api): add endpoint"}]
+        cats = release.categorize_commits(commits)
+        assert any(c["message"] == "feat(api): add endpoint" for c in cats["features"])
+
+    def test_conventional_breaking(self):
+        commits = [{"hash": "abc", "message": "fix!: drop legacy flag"}]
+        cats = release.categorize_commits(commits)
+        assert any(c["message"] == "fix!: drop legacy flag" for c in cats["fixes"])
+
+
+class TestGenerateChangelog:
+    def test_empty_message_does_not_crash(self):
+        # Regression: previous implementation crashed with IndexError on
+        # commits whose subject was empty after stripping the prefix.
+        commits = [{"hash": "abc", "message": ""}]
+        out = release.generate_changelog("9.9.9", commits)
+        assert "9.9.9" in out
+
+    def test_feat_only_prefix(self):
+        commits = [{"hash": "abc", "message": "feat:"}]
+        out = release.generate_changelog("1.0.0", commits)
+        assert "1.0.0" in out

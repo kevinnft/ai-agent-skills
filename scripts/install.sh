@@ -21,6 +21,7 @@ INSTALL_ALL=true
 CATEGORY=""
 VALIDATE=false
 TARGET_DIR="$HOME/.hermes/skills"
+TARGET_EXPLICIT=false
 AGENT="hermes"
 
 # Print colored message
@@ -202,6 +203,11 @@ install_all() {
 
 # Set target directory based on agent
 set_target_dir() {
+    # Honor an explicit --target even if --agent was also passed.
+    if [ "$TARGET_EXPLICIT" = true ]; then
+        return 0
+    fi
+
     case "$AGENT" in
         hermes)
             TARGET_DIR="$HOME/.hermes/skills"
@@ -245,7 +251,7 @@ main() {
                 ;;
             --target)
                 TARGET_DIR="$2"
-                AGENT="custom"
+                TARGET_EXPLICIT=true
                 shift 2
                 ;;
             --agent)

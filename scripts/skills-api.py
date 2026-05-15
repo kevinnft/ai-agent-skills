@@ -66,8 +66,10 @@ app = Flask(__name__) if Flask else _MissingFlaskApp()
 CORS(app)  # Enable CORS for web access when Flask is installed
 
 # Configuration
-SKILLS_DIR = Path.home() / '.hermes' / 'skills'
-REPO_DIR = Path.cwd()
+# Use script-relative paths so the API works regardless of cwd.
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_DIR = SCRIPT_DIR.parent
+SKILLS_DIR = Path(os.environ.get('SKILLS_TARGET_DIR', Path.home() / '.hermes' / 'skills'))
 STATS_FILE = REPO_DIR / '.skills-stats.json'
 
 @dataclass
@@ -405,7 +407,7 @@ def main():
     )
     
     parser.add_argument('--host', type=str, default='127.0.0.1', help='Host to bind to')
-    parser.add_argument('--port', type=int, default=5000, help='Port to bind to')
+    parser.add_argument('--port', type=int, default=5555, help='Port to bind to')
     parser.add_argument('--debug', action='store_true', help='Enable debug mode')
     
     args = parser.parse_args()

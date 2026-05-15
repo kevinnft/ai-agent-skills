@@ -123,20 +123,22 @@ verify_installation() {
 
 # Cleanup old backups
 cleanup_backups() {
-    local backup_parent=$(dirname "$BACKUP_DIR")
-    local backup_count=$(find "$backup_parent" -maxdepth 1 -type d -name "skills_backup_*" 2>/dev/null | wc -l)
-    
-    if [ $backup_count -gt 5 ]; then
+    local backup_parent
+    backup_parent=$(dirname "$BACKUP_DIR")
+    local backup_count
+    backup_count=$(find "$backup_parent" -maxdepth 1 -type d -name "skills_backup_*" 2>/dev/null | wc -l)
+
+    if [ "$backup_count" -gt 5 ]; then
         print_msg "$BLUE" "🧹 Cleaning up old backups..."
-        
-        # Keep only 5 most recent backups
-        find "$backup_parent" -maxdepth 1 -type d -name "skills_backup_*" -printf '%T@ %p\n' | \
-            sort -rn | \
-            tail -n +6 | \
-            cut -d' ' -f2- | \
-            while read dir; do
+
+        # Keep only 5 most recent backups (portable across GNU + BSD `find`)
+        # by sorting on the timestamp embedded in the directory name.
+        find "$backup_parent" -maxdepth 1 -type d -name "skills_backup_*" \
+            | sort -r \
+            | tail -n +6 \
+            | while IFS= read -r dir; do
                 rm -rf "$dir"
-                print_msg "$GREEN" "  ✓ Removed old backup: $(basename $dir)"
+                print_msg "$GREEN" "  ✓ Removed old backup: $(basename "$dir")"
             done
     fi
 }

@@ -1,5 +1,7 @@
 #!/bin/bash
-set +e
+# Use a defensive mode that still lets the validator continue past
+# individual skill failures so we can report all issues in one pass.
+set -uo pipefail
 
 # AI Agent Skills - Validation Script
 # Validates all skills for correctness
