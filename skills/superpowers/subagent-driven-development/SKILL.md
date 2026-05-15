@@ -1,6 +1,9 @@
 ---
 name: superpowers-subagent-driven-development
 description: Use when executing implementation plans with independent tasks in the current session
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Subagent-Driven Development

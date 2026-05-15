@@ -1,6 +1,9 @@
 ---
 name: addyosmani-tdd
 description: Drives development with tests. Use when implementing any logic, fixing any bug, or changing any behavior. Use when you need to prove that code works, when a bug report arrives, or when you're about to modify existing functionality.
+source_repo: "addyosmani/agent-skills"
+source_url: "https://github.com/addyosmani/agent-skills"
+source_license: "MIT"
 ---
 
 # Test-Driven Development

@@ -1,6 +1,9 @@
 ---
 name: security-and-hardening
 description: Hardens code against vulnerabilities. Use when handling user input, authentication, data storage, or external integrations. Use when building any feature that accepts untrusted data, manages user sessions, or interacts with third-party services.
+source_repo: "addyosmani/agent-skills"
+source_url: "https://github.com/addyosmani/agent-skills"
+source_license: "MIT"
 ---
 
 # Security and Hardening

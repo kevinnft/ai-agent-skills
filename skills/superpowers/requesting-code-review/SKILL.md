@@ -1,6 +1,9 @@
 ---
 name: superpowers-requesting-code-review
 description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Requesting Code Review

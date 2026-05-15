@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 AI Agent Skills Contributors
+Copyright (c) 2026 kevinnft and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-## Attribution
-
-This repository curates skills from the following sources:
-
-- obra/superpowers (https://github.com/obra/superpowers) - MIT License
-- forrestchang/andrej-karpathy-skills (https://github.com/forrestchang/andrej-karpathy-skills) - MIT License
-- mattpocock/skills (https://github.com/mattpocock/skills) - MIT License
-- addyosmani/agent-skills (https://github.com/addyosmani/agent-skills) - MIT License
-
-All original skills maintain their original licenses and attributions.

@@ -1,6 +1,9 @@
 ---
 name: superpowers-tdd
 description: Use when implementing any feature or bugfix, before writing implementation code
+source_repo: "obra/superpowers"
+source_url: "https://github.com/obra/superpowers"
+source_license: "MIT"
 ---
 
 # Test-Driven Development (TDD)

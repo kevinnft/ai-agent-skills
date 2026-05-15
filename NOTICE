@@ -1,0 +1,32 @@
+# NOTICE — Third-Party Attribution
+
+This repository aggregates publicly available agent-skill content from third-party open-source projects. The original authors did not contribute to this repository directly; their work is included under their respective licenses.
+
+## Sources
+
+| Source repository | License | Used for category |
+|---|---|---|
+| [obra/superpowers](https://github.com/obra/superpowers) | MIT | `skills/superpowers/` |
+| [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) | MIT | inline guidance referenced in docs |
+| [mattpocock/skills](https://github.com/mattpocock/skills) | MIT | `skills/mattpocock/` |
+| [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | MIT | `skills/addyosmani/` |
+| [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | (see upstream) | `skills/obsidian-skills/` (git submodule) |
+| [handsomestWei/patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill) | (see upstream) | `skills/patent-disclosure-skill/` (git submodule) |
+
+## Disclaimer
+
+The skills under category directories named after individuals (e.g. `addyosmani/`, `mattpocock/`, `superpowers/`) were aggregated from those authors' publicly published skill repositories. **The named authors are not affiliated with this repository, have not endorsed it, and do not maintain it.** Per-skill `source:` and `source_url:` frontmatter fields are progressively being added so each skill points back to its original source.
+
+If you are an upstream author and would like a skill removed, renamed, or attributed differently, please open an issue.
+
+## Original-to-this-repo additions
+
+The following are original contributions to this repository (not derived from upstream sources):
+
+- `scripts/install.sh`, `scripts/validate.sh`, `scripts/update.sh` — installer/validator
+- `scripts/release.py`, `scripts/quality-dashboard.py`, `scripts/skills-api.py` — automation tools
+- `.github/workflows/` — CI and auto-label workflows
+- Documentation under `docs/`
+- Aggregation/categorization layout itself (`skills/<category>/<skill>/`)
+
+These are released under the MIT License (see `LICENSE`).
