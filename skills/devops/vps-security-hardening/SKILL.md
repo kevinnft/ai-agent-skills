@@ -2,6 +2,8 @@
 name: vps-security-hardening
 description: Audit and harden VPS security — fail2ban, SSH hardening, firewall setup
 tags: [security, vps, ssh, fail2ban, linux, ubuntu]
+origin: unknown
+source_license: see upstream
 ---
 
 # VPS Security Hardening

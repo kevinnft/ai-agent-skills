@@ -4,6 +4,10 @@ description: "Query Polymarket: markets, prices, orderbooks, history."
 version: 1.0.0
 author: Hermes Agent + Teknium
 tags: [polymarket, prediction-markets, market-data, trading]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Polymarket — Prediction Market Data

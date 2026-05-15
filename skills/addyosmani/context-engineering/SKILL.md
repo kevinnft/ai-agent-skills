@@ -4,6 +4,7 @@ description: Optimizes agent context setup. Use when starting a new session, whe
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Context Engineering

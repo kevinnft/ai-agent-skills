@@ -4,6 +4,7 @@ description: Triage issues through a state machine driven by triage roles. Use w
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Triage

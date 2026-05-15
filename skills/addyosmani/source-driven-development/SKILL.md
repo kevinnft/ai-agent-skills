@@ -4,6 +4,7 @@ description: Grounds every implementation decision in official documentation. Us
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Source-Driven Development

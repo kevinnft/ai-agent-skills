@@ -8,7 +8,10 @@ dependencies: [segment-anything, transformers>=4.30.0, torch>=1.7.0]
 metadata:
   hermes:
     tags: [Multimodal, Image Segmentation, Computer Vision, SAM, Zero-Shot]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Segment Anything Model (SAM)

@@ -4,6 +4,7 @@ description: Set up Claude Code hooks to block dangerous git commands (push, res
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Setup Git Guardrails

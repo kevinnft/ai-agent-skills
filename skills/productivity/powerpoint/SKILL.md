@@ -2,6 +2,8 @@
 name: powerpoint
 description: "Create, read, edit .pptx decks, slides, notes, templates."
 license: Proprietary. LICENSE.txt has complete terms
+origin: unknown
+source_license: see upstream
 ---
 
 # Powerpoint Skill

@@ -4,6 +4,7 @@ description: Use when implementing any feature or bugfix, before writing impleme
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Test-Driven Development (TDD)

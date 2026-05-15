@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [Windows, WSL2, networking, ports, firewall, AI proxy, local services]
     related_skills: [llama-cpp, serving-llms-vllm]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Windows Local AI Services

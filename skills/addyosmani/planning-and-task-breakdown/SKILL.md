@@ -4,6 +4,7 @@ description: Breaks work into ordered tasks. Use when you have a spec or clear r
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Planning and Task Breakdown

@@ -2,6 +2,8 @@
 name: crypto-token-analysis
 description: Deep-dive framework for analyzing crypto tokens — market data, liquidity health, tokenomics, unlock schedules, and risk assessment. Combines on-chain data, API queries, and multi-source validation to generate actionable investment verdicts.
 tags: [crypto, token-analysis, defi, research, trading, airdrop, risk-assessment]
+origin: unknown
+source_license: see upstream
 ---
 
 # Crypto Token Deep Analysis Framework

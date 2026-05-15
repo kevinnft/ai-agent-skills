@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [planning, design, implementation, workflow, documentation]
     related_skills: [subagent-driven-development, test-driven-development, requesting-code-review]
+origin: adapted
+source_repo: obra/superpowers
+source_url: https://github.com/obra/superpowers
+source_license: MIT
 ---
 
 # Writing Implementation Plans

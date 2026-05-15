@@ -8,6 +8,8 @@ metadata:
   hermes:
     tags: [infographic, visual-summary, creative, image-generation]
     homepage: https://github.com/JimLiu/baoyu-skills#baoyu-infographic
+origin: unknown
+source_license: see upstream
 ---
 
 # Infographic Generator

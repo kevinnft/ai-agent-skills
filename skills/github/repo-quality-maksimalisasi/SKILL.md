@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [GitHub, Quality, CI/CD, Testing, Documentation, Templates]
     related_skills: [github-repo-management, github-pr-workflow]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Repository Quality Evaluation & Maksimalisasi

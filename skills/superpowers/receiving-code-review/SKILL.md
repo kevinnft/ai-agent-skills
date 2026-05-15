@@ -4,6 +4,7 @@ description: Use when receiving code review feedback, before implementing sugges
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Code Review Reception

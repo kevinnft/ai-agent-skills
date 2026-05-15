@@ -6,6 +6,8 @@ metadata:
   hermes:
     tags: [qa, testing, browser, web, dogfood]
     related_skills: []
+origin: unknown
+source_license: see upstream
 ---
 
 # Dogfood: Systematic Web Application QA Testing

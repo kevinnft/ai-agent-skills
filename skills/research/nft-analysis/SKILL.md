@@ -8,6 +8,8 @@ triggers:
   - is this NFT a good investment
   - NFT project evaluation
   - NFT due diligence
+origin: unknown
+source_license: see upstream
 ---
 
 # NFT Project Analysis

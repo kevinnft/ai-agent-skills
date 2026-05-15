@@ -3,6 +3,8 @@ name: visual-assets-generation
 description: Generate visual assets (ASCII art, diagrams, banners) for repos and documentation
 tags: [ascii-art, diagrams, visualization, documentation, marketing]
 related_skills: [architecture-diagram, ascii-art, excalidraw]
+origin: unknown
+source_license: see upstream
 ---
 
 # Visual Assets Generation

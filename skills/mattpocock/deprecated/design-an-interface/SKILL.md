@@ -4,6 +4,7 @@ description: Generate multiple radically different interface designs for a modul
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Design an Interface

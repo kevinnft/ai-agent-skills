@@ -3,6 +3,8 @@ name: credential-pooling-analysis
 description: Analyze credential pooling operations and API reseller business models — economics, risks, detection patterns, and sustainability
 tags: [business-analysis, api-reseller, credential-pooling, arbitrage, economics]
 related_skills: [web-scraping, cloud-browser-automation]
+origin: unknown
+source_license: see upstream
 ---
 
 # Credential Pooling Analysis

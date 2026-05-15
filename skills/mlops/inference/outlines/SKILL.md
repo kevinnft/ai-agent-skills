@@ -8,7 +8,10 @@ dependencies: [outlines, transformers, vllm, pydantic]
 metadata:
   hermes:
     tags: [Prompt Engineering, Outlines, Structured Generation, JSON Schema, Pydantic, Local Models, Grammar-Based Generation, vLLM, Transformers, Type Safety]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Outlines: Structured Text Generation

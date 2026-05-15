@@ -2,6 +2,8 @@
 name: crypto-mining-setup
 description: Setup and optimize cryptocurrency mining operations — AI-powered mining (soul.md protocol), parallel agent deployment, accumulation strategies, and performance optimization.
 tags: [crypto, mining, blockchain, optimization, parallel-processing]
+origin: unknown
+source_license: see upstream
 ---
 
 # Crypto Mining Setup & Optimization

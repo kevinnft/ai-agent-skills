@@ -8,7 +8,10 @@ dependencies: [axolotl, torch, transformers, datasets, peft, accelerate, deepspe
 metadata:
   hermes:
     tags: [Fine-Tuning, Axolotl, LLM, LoRA, QLoRA, DPO, KTO, ORPO, GRPO, YAML, HuggingFace, DeepSpeed, Multimodal]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Axolotl Skill

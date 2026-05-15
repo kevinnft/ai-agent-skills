@@ -3,6 +3,8 @@ name: public-repo-creation
 description: Create production-ready public GitHub repositories with comprehensive documentation, automated setup, and quality assurance
 tags: [github, documentation, open-source, repository, automation]
 version: 1.0.0
+origin: unknown
+source_license: see upstream
 ---
 
 # Public Repository Creation

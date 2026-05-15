@@ -4,6 +4,7 @@ description: Structures git workflow practices. Use when making any code change.
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Git Workflow and Versioning

@@ -5,6 +5,10 @@ version: 1.0.0
 author: Hugging Face
 license: MIT
 tags: [huggingface, hf, models, datasets, hub, mlops]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Hugging Face CLI (`hf`) Reference Guide

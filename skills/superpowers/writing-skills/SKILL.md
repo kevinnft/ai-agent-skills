@@ -4,6 +4,7 @@ description: Use when creating new skills, editing existing skills, or verifying
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Writing Skills

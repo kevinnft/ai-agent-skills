@@ -4,6 +4,7 @@ description: Tests in real browsers. Use when building or debugging anything tha
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Browser Testing with DevTools

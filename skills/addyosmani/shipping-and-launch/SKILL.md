@@ -4,6 +4,7 @@ description: Prepares production launches. Use when preparing to deploy to produ
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Shipping and Launch

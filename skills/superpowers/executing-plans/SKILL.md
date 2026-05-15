@@ -4,6 +4,7 @@ description: Use when you have a written implementation plan to execute in a sep
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Executing Plans

@@ -10,6 +10,8 @@ triggers:
   - parody song
   - adapting a song
   - AI music generation
+origin: unknown
+source_license: see upstream
 ---
 
 # Songwriting & AI Music Generation

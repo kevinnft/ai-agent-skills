@@ -4,6 +4,7 @@ description: Guides stable API and interface design. Use when designing APIs, mo
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # API and Interface Design

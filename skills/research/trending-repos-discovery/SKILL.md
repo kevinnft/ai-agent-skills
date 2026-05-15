@@ -3,6 +3,8 @@ name: trending-repos-discovery
 description: Discover and analyze trending GitHub repositories from TrendShift and other sources — evaluate usefulness, extract learnings, and identify valuable skills/tools
 tags: [github, trending, research, discovery, skills]
 related_skills: [github-repo-management, ecosystem-tool-evaluation]
+origin: unknown
+source_license: see upstream
 ---
 
 # Trending Repos Discovery

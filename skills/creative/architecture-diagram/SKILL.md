@@ -9,6 +9,10 @@ metadata:
   hermes:
     tags: [architecture, diagrams, SVG, HTML, visualization, infrastructure, cloud]
     related_skills: [concept-diagrams, excalidraw]
+origin: adapted
+source_repo: cocoon-ai/architecture-diagram-skill
+source_url: https://cocoon-ai.com
+source_license: MIT
 ---
 
 # Architecture Diagram Skill

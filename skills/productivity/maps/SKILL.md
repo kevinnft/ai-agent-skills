@@ -10,6 +10,8 @@ metadata:
     category: productivity
     requires_toolsets: [terminal]
     supersedes: [find-nearby]
+origin: unknown
+source_license: see upstream
 ---
 
 # Maps Skill

@@ -4,6 +4,7 @@ description: Break a plan, spec, or PRD into independently-grabbable issues on t
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # To Issues

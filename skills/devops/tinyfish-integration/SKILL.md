@@ -3,6 +3,8 @@ name: tinyfish-integration
 description: Integrate TinyFish web toolkit (search, fetch, browser automation) into Hermes Agent
 tags: [web, search, scraping, api, integration]
 version: 1.0.0
+origin: unknown
+source_license: see upstream
 ---
 
 # TinyFish Integration

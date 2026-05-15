@@ -4,6 +4,7 @@ description: Create new agent skills with proper structure, progressive disclosu
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Writing Skills

@@ -15,6 +15,10 @@ triggers:
   - landing page
   - dashboard design
   - website styled like
+origin: adapted
+source_repo: VoltAgent/awesome-design-md
+source_url: https://github.com/VoltAgent/awesome-design-md
+source_license: MIT
 ---
 
 # Popular Web Designs

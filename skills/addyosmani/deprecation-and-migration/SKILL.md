@@ -4,6 +4,7 @@ description: Manages deprecation and migration. Use when removing old systems, A
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Deprecation and Migration

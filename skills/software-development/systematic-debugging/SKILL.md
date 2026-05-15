@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [debugging, troubleshooting, problem-solving, root-cause, investigation]
     related_skills: [test-driven-development, writing-plans, subagent-driven-development]
+origin: adapted
+source_repo: obra/superpowers
+source_url: https://github.com/obra/superpowers
+source_license: MIT
 ---
 
 # Systematic Debugging
