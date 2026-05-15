@@ -23,6 +23,18 @@ VALIDATE=false
 TARGET_DIR="$HOME/.hermes/skills"
 TARGET_EXPLICIT=false
 AGENT="hermes"
+PREFER="superpowers"
+
+# Skills that exist under multiple categories. The installer keeps a single
+# copy per name based on $PREFER (default: superpowers).
+# Format: "skill-name:cat1,cat2,cat3"
+DUPLICATE_SKILLS=(
+    "test-driven-development:addyosmani,superpowers,software-development"
+    "systematic-debugging:superpowers,software-development"
+    "requesting-code-review:superpowers,software-development"
+    "subagent-driven-development:superpowers,software-development"
+    "writing-plans:superpowers,software-development"
+)
 
 # Print colored message
 print_msg() {
@@ -45,6 +57,8 @@ Options:
     --validate           Validate skills before install
     --target DIR         Target directory (default: ~/.hermes/skills)
     --agent NAME         Agent type: hermes, claude, cursor, custom
+    --prefer NAME        For duplicate skill names, keep the copy from
+                         this category (default: superpowers)
     --help               Show this help message
 
 Examples:
@@ -114,6 +128,38 @@ validate_skill() {
     fi
 }
 
+# Should this duplicate copy be skipped?
+# Returns 0 (skip) if the skill is in DUPLICATE_SKILLS, lists this category,
+# AND $PREFER lists it differently. Returns 1 otherwise.
+should_skip_duplicate() {
+    local skill_name=$1
+    local current_category=$2
+
+    for entry in "${DUPLICATE_SKILLS[@]}"; do
+        local name="${entry%%:*}"
+        local cats_csv="${entry#*:}"
+        if [ "$name" != "$skill_name" ]; then
+            continue
+        fi
+
+        # If $PREFER is itself one of the candidate categories AND the
+        # current copy comes from a different category, skip this copy.
+        if [[ ",${cats_csv}," == *",${PREFER},"* ]] && [ "$current_category" != "$PREFER" ]; then
+            return 0
+        fi
+        # If $PREFER isn't one of the candidate categories, fall through
+        # to a stable order: keep the first listed category.
+        if [[ ",${cats_csv}," != *",${PREFER},"* ]]; then
+            local first_cat="${cats_csv%%,*}"
+            if [ "$current_category" != "$first_cat" ]; then
+                return 0
+            fi
+        fi
+        return 1
+    done
+    return 1
+}
+
 # Install category
 install_category() {
     local category=$1
@@ -160,10 +206,34 @@ install_category() {
         print_msg "$GREEN" "  ✓ All skills valid ($valid skills)"
     fi
     
-    # Copy skills
-    cp -r "$source_dir"/* "$target_cat_dir/" 2>/dev/null || true
-    
-    print_msg "$GREEN" "  ✓ Installed $skill_count skills"
+    # Copy skills, but skip duplicates that lose the --prefer tiebreak.
+    local skipped=0
+    while IFS= read -r skill_file; do
+        local skill_dir
+        skill_dir=$(dirname "$skill_file")
+        local skill_name
+        skill_name=$(basename "$skill_dir")
+        local rel
+        rel=${skill_dir#"$source_dir/"}
+
+        if should_skip_duplicate "$skill_name" "$category"; then
+            skipped=$((skipped + 1))
+            print_msg "$YELLOW" "  ⤳ skip duplicate: $skill_name (kept from --prefer=$PREFER)"
+            continue
+        fi
+
+        mkdir -p "$target_cat_dir/$rel"
+        cp -r "$skill_dir"/. "$target_cat_dir/$rel/" 2>/dev/null || true
+    done < <(find "$source_dir" -name "SKILL.md" -type f)
+
+    # Copy non-skill files at the category root (DESCRIPTION.md, README, etc.).
+    find "$source_dir" -maxdepth 1 -type f -exec cp {} "$target_cat_dir/" \; 2>/dev/null || true
+
+    if [ "$skipped" -gt 0 ]; then
+        print_msg "$GREEN" "  ✓ Installed $((skill_count - skipped)) skills (skipped $skipped duplicate(s))"
+    else
+        print_msg "$GREEN" "  ✓ Installed $skill_count skills"
+    fi
     return 0
 }
 
@@ -256,6 +326,10 @@ main() {
                 ;;
             --agent)
                 AGENT="$2"
+                shift 2
+                ;;
+            --prefer)
+                PREFER="$2"
                 shift 2
                 ;;
             --help)
