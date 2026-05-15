@@ -208,14 +208,17 @@ When user asks if trending repos are useful:
 
 **Example:**
 ```
-✅ ADA YANG BERGUNA! TOP 4 WAJIB DICEK!
+✅ ADA YANG MENARIK — review dulu sebelum klaim apapun
 
-1. obra/superpowers (186K stars) - Skills framework
-2. andrej-karpathy-skills (125K stars) - Coding quality
-3. mattpocock/skills (73K stars) - TypeScript mastery
-4. addyosmani/agent-skills (39K stars) - Performance
+1. obra/superpowers — Skills framework
+2. andrej-karpathy-skills — coding guidelines
+3. mattpocock/skills — TypeScript / engineering workflows
+4. addyosmani/agent-skills — frontend & performance practices
 
-Total: 424K+ stars, 4 industry experts, production-tested
+Mention star counts only when reporting raw findings; do not aggregate
+them into "X K combined stars" or claim authors as contributors to a
+downstream repo. Authors of upstream public skill repos have not endorsed
+or contributed to any aggregator unless they explicitly say so.
 
 MAU GUE CLONE & ANALISA SEKARANG? 🚀
 ```

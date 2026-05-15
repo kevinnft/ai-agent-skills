@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2026-05-15
+
+### Fixed
+- **License classifier**: GitHub was detecting `Other`/NOASSERTION instead of MIT because the `LICENSE` file mixed clean MIT text with an "Attribution" appendix. Replaced with SPDX-compliant pure MIT; attribution moved to the new `NOTICE` file.
+- **README accuracy**: Removed unsupported claims ("production-tested in real projects", self-scored "Quality 86/100" badge, "424K+ Combined Stars" aggregated borrowing, comparison table vs unnamed "Other Repos"). Reframed positioning as "aggregated installer" and added explicit non-affiliation disclaimer for upstream authors.
+- **`docs/categories.md`**: Removed "Combined Impact / 424K+ stars / 4 industry experts contributing knowledge" block — replaced with honest source/license table and a non-affiliation disclaimer.
+- **`skills/research/trending-repos-discovery/SKILL.md`**: Updated example output so it does not encourage downstream agents to aggregate stars or claim authors as contributors.
+
+### Added
+- `NOTICE` — full third-party attribution table with explicit "upstream authors are not affiliated" disclaimer.
+- Per-skill `source_repo`, `source_url`, `source_license` YAML frontmatter on all 64 skills under `addyosmani/`, `mattpocock/`, `superpowers/` so loaders/auditors can trace origin without grepping README.
+- `README.md` "What this is NOT" + "Conflicts & duplicates" sections (lists 5 same-name skills present in multiple categories so users pick one).
+- `CONTRIBUTING.md` now distinguishes original vs aggregated contributions, and **requires** `source_repo`/`source_url`/`source_license` frontmatter for aggregated skills. Reviewers are instructed to reject aggregations missing attribution.
+
+### Moved
+- `BUG_REPORT.md` → `.github/internal/BUG_REPORT.md`
+- `CRITICAL_BUGS_V2.md` → `.github/internal/CRITICAL_BUGS_V2.md`
+  (Were the first thing visitors saw at repo root; signaled instability.)
+
+### Repo metadata (GitHub-side, not in tree)
+- Sidebar description rewritten: "Aggregated installer of 189 publicly available agent-skill markdown files for Hermes Agent, Claude Code, Cursor — categorized + validated. See NOTICE for upstream attribution."
+- Topics replaced with 12 specific tags (was 12 generic): `hermes-agent`, `claude-skills`, `cursor-skills`, `agent-skills`, `skill-md`, `ai-coding-agents`, `skills-installer`, `skills-aggregator`, `ai-tooling`, `anthropic-skills`, `developer-tools`, `openai-codex`.
+
 ## [1.4.1] - 2026-05-13
 
 ### Fixed
