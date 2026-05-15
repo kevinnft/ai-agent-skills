@@ -32,6 +32,7 @@ triggers:
   - 套模板
 origin: unknown
 source_license: see upstream
+language: zh
 ---
 
 # docx-toolkit

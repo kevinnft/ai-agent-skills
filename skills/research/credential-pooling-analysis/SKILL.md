@@ -5,6 +5,7 @@ tags: [business-analysis, api-reseller, credential-pooling, arbitrage, economics
 related_skills: [web-scraping, cloud-browser-automation]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Credential Pooling Analysis

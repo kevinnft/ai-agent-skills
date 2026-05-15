@@ -5,6 +5,7 @@ source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
 origin: aggregated
+language: en
 ---
 
 This skill will be invoked when the user wants to create a refactor request. You should go through the steps below. You may skip steps if you don't consider them necessary.

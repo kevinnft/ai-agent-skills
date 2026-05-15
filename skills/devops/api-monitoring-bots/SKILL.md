@@ -12,6 +12,7 @@ triggers:
   - watchdog script
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # API Monitoring Bots

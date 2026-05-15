@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-05-15
+
+UX-focused release: lower the barrier to entry for first-time users, kill the misleading "stub category" count, and prove the macOS portability claims with actual CI.
+
+### Added
+- **Curated starter packs (`install.sh --preset NAME`)**. Six bundles for the common personas: `developer` (~92), `researcher` (~29), `content-creator` (~37), `devops` (~24), `agentic` (~20), `minimal` (14). Browse with `--list-presets`.
+- **`scripts/uninstall.sh`** — reverses `install.sh` with the same flag surface (`--all`, `--category`, `--preset`, `--target`, `--agent`). Creates a timestamped backup before removal unless `--no-backup` is passed. `--dry-run` and `--yes` for scripted use.
+- **`install.sh --dry-run`** — prints the install plan (incl. duplicate-skip decisions) without touching the filesystem.
+- **`language:` field on every non-submodule SKILL.md** — 180 `en`, 5 `zh`. Auto-detected via Han-script density with manual override list (yuanbao, baoyu-comic, baoyu-infographic, software-copyright + vendored docx-toolkit). Catalog now flags zh-language skills with 🇨🇳.
+- **Auto-generated `docs/categories.md`** — every skill's name, one-line description, origin badge, and language flag, regenerated from frontmatter via `python3 scripts/generate_catalog.py`. Runs as part of the release workflow.
+- **macOS in CI matrix** — the pytest job now runs on `ubuntu-latest` AND `macos-latest`, plus a per-OS smoke test that installs `--preset minimal` then uninstalls it and asserts the filesystem is clean. Backs the macOS portability fix landed in v1.6.1.
+- **`skills/domain/domain-intel/`** — promoted from descriptor-only stub to a real `original`-origin skill (passive domain reconnaissance via Python stdlib).
+- **`skills/inference-sh/inference-sh/`** — promoted from descriptor-only stub to a real `original`-origin skill (inference.sh CLI access to 150+ models).
+- **`scripts/backfill/backfill_language_v1.7.0.py`** — idempotent script that produced the language tags. Checked in as audit trail.
+
+### Changed
+- **Skill count: 189 → 191** (two stub categories promoted to real skills).
+- **Category count: 31 dirs → 28 populated dirs** (5 stubs collapsed; see Removed).
+- **README**: stats card, banner, badges, FAQ all synced to 191 skills / 28 categories. Quick start now leads with `--preset` and links to the uninstall path.
+- **`docs/categories.md`** is now auto-generated. Hand-edits will be overwritten on the next release.
+- **`docs/installation.md`, `docs/AUTOMATION.md`, `docs/skills-api.md`**: count references synced to 191.
+
+### Removed
+- **3 truly empty stub categories**: `skills/diagramming/`, `skills/feeds/`, `skills/gifs/`. Each was a 3-line `DESCRIPTION.md` with no skill content. Their themes are already covered by other categories (creative/, research/, media/).
+
+### Why minor bump (1.6.2 → 1.7.0)
+- New CLI surface area: `--preset`, `--list-presets`, `--dry-run`, plus a brand-new `uninstall.sh` companion. New SKILL.md frontmatter contract (`language:`). Auto-generated catalog. macOS in CI for the first time. Patch would understate the surface change. No skill content was modified beyond the two newly promoted skills, so install behavior for existing categories is unchanged.
+
 ## [1.6.2] - 2026-05-15
 
 ### Changed

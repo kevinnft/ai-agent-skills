@@ -4,7 +4,7 @@ set +e
 # AI Agent Skills - Installation Script
 # Installs skills to Hermes Agent or other AI agents
 
-VERSION="1.2.0"
+VERSION="1.7.0"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 SKILLS_DIR="$REPO_ROOT/skills"
@@ -19,7 +19,9 @@ NC='\033[0m' # No Color
 # Default values
 INSTALL_ALL=true
 CATEGORY=""
+PRESET=""
 VALIDATE=false
+DRY_RUN=false
 TARGET_DIR="$HOME/.hermes/skills"
 TARGET_EXPLICIT=false
 AGENT="hermes"
@@ -34,6 +36,17 @@ DUPLICATE_SKILLS=(
     "requesting-code-review:superpowers,software-development"
     "subagent-driven-development:superpowers,software-development"
     "writing-plans:superpowers,software-development"
+)
+
+# Curated starter packs. Each entry is "preset_name:cat1,cat2,cat3"; categories
+# resolve against the directory names under skills/. Listed in usage() too.
+PRESETS=(
+    "developer:superpowers,software-development,addyosmani,mattpocock,github"
+    "researcher:research,mlops,data-science,note-taking"
+    "content-creator:creative,media,social-media,productivity"
+    "devops:devops,github,mcp,autonomous-ai-agents"
+    "agentic:superpowers,autonomous-ai-agents,mcp,red-teaming"
+    "minimal:superpowers"
 )
 
 # Print colored message
@@ -53,20 +66,38 @@ Usage: $0 [OPTIONS]
 Options:
     --all                Install all skills (default)
     --category NAME      Install specific category
+    --preset NAME        Install a curated starter pack (see below)
     --list               List available categories
+    --list-presets       List curated starter packs
     --validate           Validate skills before install
+    --dry-run            Print what would be installed without copying
     --target DIR         Target directory (default: ~/.hermes/skills)
     --agent NAME         Agent type: hermes, claude, cursor, custom
     --prefer NAME        For duplicate skill names, keep the copy from
                          this category (default: superpowers)
     --help               Show this help message
 
+Curated presets:
+    developer            Engineering-focused: superpowers, software-development,
+                         addyosmani, mattpocock, github (~92 skills)
+    researcher           Research workflows: research, mlops, data-science,
+                         note-taking (~28 skills)
+    content-creator      Visual + media: creative, media, social-media,
+                         productivity (~37 skills)
+    devops               Infra + ops: devops, github, mcp,
+                         autonomous-ai-agents (~24 skills)
+    agentic              Agent patterns: superpowers, autonomous-ai-agents,
+                         mcp, red-teaming (~20 skills)
+    minimal              Just the superpowers core (14 skills)
+
 Examples:
-    $0 --all
+    $0 --preset developer --agent claude
+    $0 --preset minimal --dry-run
     $0 --category addyosmani
     $0 --category mattpocock --validate
     $0 --agent claude --target ~/.claude/skills
     $0 --list
+    $0 --list-presets
 
 EOF
     exit 0
@@ -76,7 +107,7 @@ EOF
 list_categories() {
     print_msg "$BLUE" "📋 Available Categories:"
     echo ""
-    
+
     local count=0
     for dir in "$SKILLS_DIR"/*; do
         if [ -d "$dir" ]; then
@@ -88,10 +119,43 @@ list_categories() {
             count=$((count + 1))
         fi
     done
-    
+
     echo ""
     print_msg "$GREEN" "Total: $count categories"
     exit 0
+}
+
+# List presets
+list_presets() {
+    print_msg "$BLUE" "📦 Curated Starter Packs:"
+    echo ""
+    for entry in "${PRESETS[@]}"; do
+        local name="${entry%%:*}"
+        local cats_csv="${entry#*:}"
+        local total=0
+        IFS=',' read -ra cats <<< "$cats_csv"
+        for c in "${cats[@]}"; do
+            local n
+            n=$(find "$SKILLS_DIR/$c" -name "SKILL.md" -type f 2>/dev/null | wc -l)
+            total=$((total + n))
+        done
+        printf "  %-18s %3d skills    %s\n" "$name" "$total" "$cats_csv"
+    done
+    echo ""
+    print_msg "$GREEN" "Use: $0 --preset NAME"
+    exit 0
+}
+
+# Resolve preset name to comma-separated categories. Echoes "" if no match.
+resolve_preset() {
+    local name=$1
+    for entry in "${PRESETS[@]}"; do
+        if [ "${entry%%:*}" = "$name" ]; then
+            echo "${entry#*:}"
+            return 0
+        fi
+    done
+    return 1
 }
 
 # Validate skill
@@ -174,7 +238,24 @@ install_category() {
     fi
     
     print_msg "$BLUE" "📦 Installing category: $category"
-    
+
+    # In dry-run mode just enumerate and bail out.
+    if [ "$DRY_RUN" = true ]; then
+        local skill_count
+        skill_count=$(find "$source_dir" -name "SKILL.md" -type f | wc -l)
+        local would_skip=0
+        while IFS= read -r skill_file; do
+            local skill_name
+            skill_name=$(basename "$(dirname "$skill_file")")
+            if should_skip_duplicate "$skill_name" "$category"; then
+                would_skip=$((would_skip + 1))
+                print_msg "$YELLOW" "  ⤳ would skip: $skill_name (kept from --prefer=$PREFER)"
+            fi
+        done < <(find "$source_dir" -name "SKILL.md" -type f)
+        print_msg "$GREEN" "  ⓘ would install $((skill_count - would_skip)) skills (would skip $would_skip)"
+        return 0
+    fi
+
     # Create target directory
     mkdir -p "$target_cat_dir"
     
@@ -238,6 +319,34 @@ install_category() {
         print_msg "$GREEN" "  ✓ Installed $skill_count skills"
     fi
     return 0
+}
+
+# Install a list of categories specified by name (used by --preset).
+install_preset_categories() {
+    local cats_csv=$1
+    print_msg "$BLUE" "📦 Installing preset: $PRESET ($cats_csv)"
+    echo ""
+
+    IFS=',' read -ra cats <<< "$cats_csv"
+    local installed=0
+    local failed=0
+    for c in "${cats[@]}"; do
+        if install_category "$c"; then
+            installed=$((installed + 1))
+        else
+            failed=$((failed + 1))
+        fi
+        echo ""
+    done
+
+    if [ "$DRY_RUN" = true ]; then
+        print_msg "$YELLOW" "ⓘ Dry run complete. Re-run without --dry-run to apply."
+    else
+        print_msg "$GREEN" "✅ Preset '$PRESET' installation complete!"
+    fi
+    echo "  Categories installed: $installed"
+    echo "  Failed: $failed"
+    echo "  Target: $TARGET_DIR"
 }
 
 # Install all categories
@@ -317,11 +426,23 @@ main() {
                 CATEGORY="$2"
                 shift 2
                 ;;
+            --preset)
+                INSTALL_ALL=false
+                PRESET="$2"
+                shift 2
+                ;;
             --list)
                 list_categories
                 ;;
+            --list-presets)
+                list_presets
+                ;;
             --validate)
                 VALIDATE=true
+                shift
+                ;;
+            --dry-run)
+                DRY_RUN=true
                 shift
                 ;;
             --target)
@@ -362,11 +483,21 @@ main() {
         exit 1
     fi
     
-    # Create target directory
-    mkdir -p "$TARGET_DIR"
-    
+    # Create target directory (skipped in dry-run to keep filesystem untouched).
+    if [ "$DRY_RUN" = false ]; then
+        mkdir -p "$TARGET_DIR"
+    fi
+
     # Install
-    if [ "$INSTALL_ALL" = true ]; then
+    if [ -n "$PRESET" ]; then
+        local preset_cats
+        if ! preset_cats=$(resolve_preset "$PRESET"); then
+            print_msg "$RED" "✗ Unknown preset: $PRESET"
+            print_msg "$YELLOW" "  Run --list-presets to see available bundles."
+            exit 1
+        fi
+        install_preset_categories "$preset_cats"
+    elif [ "$INSTALL_ALL" = true ]; then
         install_all
     else
         if [ -z "$CATEGORY" ]; then
@@ -375,7 +506,13 @@ main() {
         fi
         install_category "$CATEGORY"
     fi
-    
+
+    if [ "$DRY_RUN" = true ]; then
+        echo ""
+        print_msg "$YELLOW" "ⓘ Dry run only. No files were copied."
+        return 0
+    fi
+
     echo ""
     print_msg "$GREEN" "🎉 Done! Skills installed to: $TARGET_DIR"
     

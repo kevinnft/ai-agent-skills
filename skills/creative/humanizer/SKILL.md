@@ -14,6 +14,7 @@ origin: adapted
 source_repo: blader/humanizer
 source_url: https://github.com/blader/humanizer
 source_license: MIT
+language: en
 ---
 
 # Humanizer: Remove AI Writing Patterns

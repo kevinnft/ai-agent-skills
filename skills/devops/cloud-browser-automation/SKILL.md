@@ -5,6 +5,7 @@ tags: [browserbase, cloudflare, scraping, automation, cloud]
 related_skills: [web-scraping]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Cloud Browser Automation

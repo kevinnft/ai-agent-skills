@@ -16,6 +16,7 @@ origin: aggregated
 source_license: MIT
 source_repo: NousResearch/hermes-agent
 source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/social-media/xurl
+language: en
 ---
 
 # xurl — X (Twitter) API via the Official CLI

@@ -3,6 +3,7 @@ name: social-media-slideshow-video
 description: "PIL + ffmpeg slideshow videos: product reviews, promos, TikTok/Reels/Shorts."
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Social Media Slideshow Video Generator

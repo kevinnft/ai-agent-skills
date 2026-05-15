@@ -99,7 +99,7 @@ Overall Quality Score: 92/100
 Lightweight REST API for browsing, searching, and installing skills.
 
 **Features:**
-- ✅ Browse all 189 skills
+- ✅ Browse all 191 skills
 - ✅ Search & filter
 - ✅ Get skill details
 - ✅ One-click install

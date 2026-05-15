@@ -9,6 +9,7 @@ triggers:
   - headless browser automation
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Web Scraping

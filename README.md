@@ -1,16 +1,16 @@
 <div align="center">
 
-<a href="#-quick-start"><img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,2,30,16&height=200&section=header&text=AI%20Agent%20Skills&fontSize=70&fontAlignY=38&fontColor=ffffff&desc=189%20attribution-first%20skills%20for%20any%20agent%20that%20reads%20SKILL.md&descAlignY=62&descSize=14&animation=fadeIn" alt="AI Agent Skills banner" /></a>
+<a href="#-quick-start"><img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,2,30,16&height=200&section=header&text=AI%20Agent%20Skills&fontSize=70&fontAlignY=38&fontColor=ffffff&desc=191%20attribution-first%20skills%20for%20any%20agent%20that%20reads%20SKILL.md&descAlignY=62&descSize=14&animation=fadeIn" alt="AI Agent Skills banner" /></a>
 
 <p>
-  <em>One installer. 189 skills. 26 categories. Zero borrowed credibility.</em><br/>
+  <em>One installer. 191 skills. 28 categories. Zero borrowed credibility.</em><br/>
   <sub>Hermes Agent · Claude Code · Cursor · OpenCode · anything that reads <code>SKILL.md</code></sub>
 </p>
 
 <p>
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-A8E6CF?style=for-the-badge&labelColor=2D3748" /></a>
-  <a href="#-categories"><img alt="189 skills" src="https://img.shields.io/badge/skills-189-7AB8FF?style=for-the-badge&labelColor=2D3748" /></a>
-  <a href="./docs/categories.md"><img alt="26 categories" src="https://img.shields.io/badge/categories-26-FFB3BA?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="#-categories"><img alt="191 skills" src="https://img.shields.io/badge/skills-191-7AB8FF?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="./docs/categories.md"><img alt="28 categories" src="https://img.shields.io/badge/categories-28-FFB3BA?style=for-the-badge&labelColor=2D3748" /></a>
   <a href="https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/kevinnft/ai-agent-skills/ci.yml?style=for-the-badge&label=CI&labelColor=2D3748&color=B5EAD7" /></a>
   <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-FFD93D?style=for-the-badge&labelColor=2D3748" /></a>
   <a href="./NOTICE"><img alt="Attribution NOTICE" src="https://img.shields.io/badge/attribution-NOTICE-C7B6FF?style=for-the-badge&labelColor=2D3748" /></a>
@@ -34,7 +34,7 @@
 
 ```text
    ┌─ obra/superpowers ─────┐
-   ├─ mattpocock/skills ────┤      189 SKILL.md files
+   ├─ mattpocock/skills ────┤      191 SKILL.md files
    ├─ addyosmani/agent-… ──→│  →   one-command installer  →   ~/.hermes/skills/
    ├─ kepano/obsidian-skills┤      validation CI                ~/.claude/skills/
    ├─ original (Hermes/Nous)┤      REST API (:5555)             ~/.cursor/skills/
@@ -102,13 +102,39 @@ cp -r skills/* /path/to/your/agent/skills/
 ### Installer flags
 
 ```bash
-./scripts/install.sh --list                  # browse before installing
-./scripts/install.sh --category superpowers  # install just one category
-./scripts/install.sh --validate              # dry-run + lint
+./scripts/install.sh --list                  # browse all categories
+./scripts/install.sh --list-presets          # browse curated starter packs
+./scripts/install.sh --preset developer      # 5-category dev bundle (~92 skills)
+./scripts/install.sh --preset minimal        # just superpowers (14 skills)
+./scripts/install.sh --category superpowers  # install one category
+./scripts/install.sh --dry-run --preset full # preview without copying
+./scripts/install.sh --validate              # lint frontmatter
 ./scripts/install.sh --help
 ```
 
-> **Tip:** start with one category (`--category superpowers` is 14 well-tested agentic-workflow skills). If you like it, `--all`. If not, the rest is one `cp` away.
+### Curated starter packs
+
+| Preset | Categories | Approx size |
+|---|---|--:|
+| `developer` | superpowers, software-development, addyosmani, mattpocock, github | ~92 |
+| `researcher` | research, mlops, data-science, note-taking | ~29 |
+| `content-creator` | creative, media, social-media, productivity | ~37 |
+| `devops` | devops, github, mcp, autonomous-ai-agents | ~24 |
+| `agentic` | superpowers, autonomous-ai-agents, mcp, red-teaming | ~20 |
+| `minimal` | superpowers | 14 |
+
+### Uninstalling
+
+```bash
+./scripts/uninstall.sh --preset minimal       # remove a preset
+./scripts/uninstall.sh --category creative    # remove one category
+./scripts/uninstall.sh --all --dry-run        # preview a full wipe
+./scripts/uninstall.sh --help
+```
+
+A timestamped backup is created before each removal unless you pass `--no-backup`.
+
+> **Tip:** start with one preset. `--preset minimal` is the smallest meaningful slice. If you like the way the agentic loop feels, scale up with `--preset developer` or another category. The rest is one `cp` away — or one `uninstall.sh` invocation back.
 
 ---
 
@@ -168,10 +194,10 @@ Every `SKILL.md` declares where it came from. Run `grep -h "^origin:" skills/**/
    22  │ ▓▓▓▓▓▓▓▓▓                                                   │  unknown ⚠
    11  │ ▓▓▓▓                                                        │  adapted
        └─────────────────────────────────────────────────────────────┘
-                                                          189 total*
+                                                          191 total*
 ```
 
-<sub>*189 SKILL.md files total. 6 are inside the obsidian-skills / patent-disclosure-skill git submodules — those keep upstream-owned frontmatter and are excluded from the `origin:` provenance contract.</sub>
+<sub>*191 SKILL.md files total. 6 are inside the obsidian-skills / patent-disclosure-skill git submodules — those keep upstream-owned frontmatter and are excluded from the `origin:` provenance contract.</sub>
 
 | `origin:` | Count | Meaning |
 |---|--:|---|
@@ -221,7 +247,7 @@ All tooling MIT-licensed under [`LICENSE`](./LICENSE).
 ## 📈 Stats at a glance
 
 ```text
-  189  SKILL.md files                            ✅ verified each release
+  191  SKILL.md files                            ✅ verified each release
    26  populated categories                      ✅
   161  skills with source_repo metadata          (89 aggregated + 11 adapted + 61 original-self-link)
    22  skills awaiting upstream identification   🤝 help wanted
@@ -259,7 +285,7 @@ No. They have not contributed to or endorsed this repo. See [`NOTICE`](./NOTICE)
 <summary><b>Why not just install from upstream directly?</b></summary>
 <br/>
 
-You can — and should, if you only want one author's skills. The win here is one command for 189 skills across 26 categories, plus categorization, conflict detection, validation, and a REST API. We diff against upstream weekly (see [`docs/sync.md`](./docs/sync.md)) and surface drift via [`upstream-sync-check.yml`](./.github/workflows/upstream-sync-check.yml).
+You can — and should, if you only want one author's skills. The win here is one command for 191 skills across 28 categories, plus categorization, conflict detection, validation, and a REST API. We diff against upstream weekly (see [`docs/sync.md`](./docs/sync.md)) and surface drift via [`upstream-sync-check.yml`](./.github/workflows/upstream-sync-check.yml).
 </details>
 
 <details>
@@ -270,10 +296,10 @@ It's a heuristic computed by [`scripts/quality-dashboard.py`](scripts/quality-da
 </details>
 
 <details>
-<summary><b>The repo description says "189" but older docs say "191+" — which is right?</b></summary>
+<summary><b>The repo description says "191" but older docs say "189" or "191+" — which is right?</b></summary>
 <br/>
 
-**189** (verified each release via `find skills -name SKILL.md`). Older docs may say "191+" — open a PR if you find one.
+**191** as of v1.7.0 (verified each release via `find skills -name SKILL.md`). v1.6.x was 189; v1.7.0 promoted `domain/domain-intel` and `inference-sh/inference-sh` from descriptor-only stubs to real skills. Open a PR if you find a stale figure.
 </details>
 
 <details>

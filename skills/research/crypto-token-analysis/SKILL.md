@@ -4,6 +4,7 @@ description: Deep-dive framework for analyzing crypto tokens — market data, li
 tags: [crypto, token-analysis, defi, research, trading, airdrop, risk-assessment]
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # Crypto Token Deep Analysis Framework

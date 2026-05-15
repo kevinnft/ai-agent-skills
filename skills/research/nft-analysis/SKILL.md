@@ -10,6 +10,7 @@ triggers:
   - NFT due diligence
 origin: unknown
 source_license: see upstream
+language: en
 ---
 
 # NFT Project Analysis

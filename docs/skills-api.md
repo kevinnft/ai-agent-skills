@@ -4,7 +4,7 @@ Lightweight REST API for browsing, searching, and installing skills.
 
 ## 🎯 Features
 
-- ✅ Browse all 189 skills
+- ✅ Browse all 191 skills
 - ✅ Search & filter
 - ✅ Get skill details
 - ✅ One-click install
@@ -106,7 +106,7 @@ GET /api/skills?installed=true
 Response:
 ```json
 {
-  "total": 189,
+  "total": 191,
   "skills": [
     {
       "id": "research/web-scraping",
@@ -213,7 +213,7 @@ Response:
 ```json
 {
   "total_installs": 245,
-  "total_skills": 189,
+  "total_skills": 191,
   "total_categories": 26,
   "popular_skills": [
     {"name": "web-scraping", "installs": 45},
@@ -352,7 +352,7 @@ server {
 
 ```bash
 $ curl http://localhost:5555/api/skills | jq '.total'
-189
+191
 ```
 
 ### Example 2: Search
