@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [sketch, mockup, design, ui, prototype, html, variants, exploration, wireframe, comparison]
     related_skills: [spike, claude-design, popular-web-designs, excalidraw]
+origin: adapted
+source_repo: gsd-build/get-shit-done
+source_url: https://github.com/gsd-build/get-shit-done
+source_license: MIT
 ---
 
 # Sketch

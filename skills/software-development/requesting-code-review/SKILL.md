@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [code-review, security, verification, quality, pre-commit, auto-fix]
     related_skills: [subagent-driven-development, writing-plans, test-driven-development, github-code-review]
+origin: adapted
+source_repo: obra/superpowers
+source_url: https://github.com/obra/superpowers
+source_license: MIT
 ---
 
 # Pre-Commit Code Verification

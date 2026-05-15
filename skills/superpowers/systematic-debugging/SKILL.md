@@ -4,6 +4,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Systematic Debugging

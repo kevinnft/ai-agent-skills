@@ -8,6 +8,10 @@ dependencies: [llama-cpp-python>=0.2.0]
 metadata:
   hermes:
     tags: [llama.cpp, GGUF, Quantization, Hugging Face Hub, CPU Inference, Apple Silicon, Edge Deployment, AMD GPUs, Intel GPUs, NVIDIA, URL-first]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # llama.cpp + GGUF

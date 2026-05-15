@@ -1,0 +1,574 @@
+{
+  "original": [
+    {
+      "path": "skills/apple/apple-notes/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/apple/apple-reminders/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/apple/findmy/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/apple/imessage/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/autonomous-ai-agents/claude-code/SKILL.md",
+      "author": "Hermes Agent + Teknium"
+    },
+    {
+      "path": "skills/autonomous-ai-agents/codex/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+      "author": "Hermes Agent + Teknium"
+    },
+    {
+      "path": "skills/autonomous-ai-agents/opencode/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/creative/design-md/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/creative/excalidraw/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/creative/pretext/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/data-science/jupyter-live-kernel/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/email/himalaya/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/github/codebase-inspection/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/comprehensive-public-repo-setup/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-auth/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-code-review/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-issues/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-pr-workflow/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-repo-management/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/github-repo-visual-assets/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/github/repo-quality-maksimalisasi/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/mcp/native-mcp/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/media/gif-search/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/media/songsee/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/media/spotify/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/mlops/evaluation/lm-evaluation-harness/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/evaluation/weights-and-biases/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/huggingface-hub/SKILL.md",
+      "author": "Hugging Face"
+    },
+    {
+      "path": "skills/mlops/inference/llama-cpp/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/mlops/inference/outlines/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/inference/vllm/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/models/audiocraft/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/models/segment-anything/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/research/dspy/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/training/axolotl/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/training/trl-fine-tuning/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/training/unsloth/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/mlops/windows-local-ai-services/SKILL.md",
+      "author": "Nous Research"
+    },
+    {
+      "path": "skills/productivity/airtable/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/productivity/google-workspace/SKILL.md",
+      "author": "Nous Research"
+    },
+    {
+      "path": "skills/productivity/linear/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/productivity/nano-pdf/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/productivity/notion/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/productivity/ocr-and-documents/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/red-teaming/godmode/SKILL.md",
+      "author": "Hermes Agent + Teknium"
+    },
+    {
+      "path": "skills/research/arxiv/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/research/llm-wiki/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/research/polymarket/SKILL.md",
+      "author": "Hermes Agent + Teknium"
+    },
+    {
+      "path": "skills/research/research-paper-writing/SKILL.md",
+      "author": "Orchestra Research"
+    },
+    {
+      "path": "skills/smart-home/openhue/SKILL.md",
+      "author": "community"
+    },
+    {
+      "path": "skills/software-development/contributing-to-ide-projects/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/debugging-hermes-tui-commands/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/ecosystem-tool-evaluation/SKILL.md",
+      "author": "Nous Research"
+    },
+    {
+      "path": "skills/software-development/hermes-agent-skill-authoring/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/node-inspect-debugger/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/open-source-contribution/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/plan/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/python-debugpy/SKILL.md",
+      "author": "Hermes Agent"
+    },
+    {
+      "path": "skills/software-development/user-ryzen-preferences/SKILL.md",
+      "author": "Hermes Agent"
+    }
+  ],
+  "adapted": [
+    {
+      "path": "skills/creative/architecture-diagram/SKILL.md",
+      "author": "Cocoon AI (hello@cocoon-ai.com), ported by Hermes Agent"
+    },
+    {
+      "path": "skills/creative/humanizer/SKILL.md",
+      "author": "Siqi Chen (@blader, https://github.com/blader/humanizer), ported by Hermes Agent"
+    },
+    {
+      "path": "skills/creative/popular-web-designs/SKILL.md",
+      "author": "Hermes Agent + Teknium (design systems sourced from VoltAgent/awesome-design-md)"
+    },
+    {
+      "path": "skills/creative/sketch/SKILL.md",
+      "author": "Hermes Agent (adapted from gsd-build/get-shit-done)"
+    },
+    {
+      "path": "skills/research/blogwatcher/SKILL.md",
+      "author": "JulienTant (fork of Hyaxia/blogwatcher)"
+    },
+    {
+      "path": "skills/software-development/requesting-code-review/SKILL.md",
+      "author": "Hermes Agent (adapted from obra/superpowers + MorAlekss)"
+    },
+    {
+      "path": "skills/software-development/spike/SKILL.md",
+      "author": "Hermes Agent (adapted from gsd-build/get-shit-done)"
+    },
+    {
+      "path": "skills/software-development/subagent-driven-development/SKILL.md",
+      "author": "Hermes Agent (adapted from obra/superpowers)"
+    },
+    {
+      "path": "skills/software-development/systematic-debugging/SKILL.md",
+      "author": "Hermes Agent (adapted from obra/superpowers)"
+    },
+    {
+      "path": "skills/software-development/test-driven-development/SKILL.md",
+      "author": "Hermes Agent (adapted from obra/superpowers)"
+    },
+    {
+      "path": "skills/software-development/writing-plans/SKILL.md",
+      "author": "Hermes Agent (adapted from obra/superpowers)"
+    }
+  ],
+  "unknown": [
+    {
+      "path": "skills/creative/ascii-art/SKILL.md",
+      "author": "0xbyt4, Hermes Agent"
+    },
+    {
+      "path": "skills/creative/ascii-video/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/SKILL.md",
+      "author": "\u5b9d\u7389 (JimLiu)"
+    },
+    {
+      "path": "skills/creative/baoyu-infographic/SKILL.md",
+      "author": "\u5b9d\u7389 (JimLiu)"
+    },
+    {
+      "path": "skills/creative/claude-design/SKILL.md",
+      "author": "BadTechBandit"
+    },
+    {
+      "path": "skills/creative/comfyui/SKILL.md",
+      "author": "[kshitijk4poor, alt-glitch]"
+    },
+    {
+      "path": "skills/creative/creative-ideation/SKILL.md",
+      "author": "SHL0MS"
+    },
+    {
+      "path": "skills/creative/drawio-headless/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/manim-video/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/p5js/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/pixel-art/SKILL.md",
+      "author": "dodo-reach"
+    },
+    {
+      "path": "skills/creative/social-media-slideshow-video/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/songwriting-and-ai-music/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/SKILL.md",
+      "author": "kshitijk4poor"
+    },
+    {
+      "path": "skills/creative/visual-assets-generation/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/api-monitoring-bots/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/cloud-browser-automation/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/docker-compose/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/kanban-orchestrator/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/kanban-worker/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/tinyfish-integration/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/vps-cleanup/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/vps-security-hardening/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/devops/webhook-subscriptions/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/dogfood/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/gaming/minecraft-modpack-server/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/gaming/pokemon-player/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/github/public-repo-creation/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/media/heartmula/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/media/youtube-content/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/mlops/crypto-mining-setup/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/note-taking/obsidian-mobile-sync/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/note-taking/obsidian/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/obsidian-skills/skills/defuddle/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/obsidian-skills/skills/json-canvas/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/obsidian-skills/skills/obsidian-bases/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/obsidian-skills/skills/obsidian-cli/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/obsidian-skills/skills/obsidian-markdown/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/patent-disclosure-skill/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/productivity/maps/SKILL.md",
+      "author": "Mibayy"
+    },
+    {
+      "path": "skills/productivity/powerpoint/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/credential-pooling-analysis/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/crypto-token-analysis/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/nft-analysis/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/telegram-bot-security-analysis/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/trending-repos-discovery/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/research/web-scraping/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/social-media/social-media-account-audit/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/social-media/xurl/SKILL.md",
+      "author": "xdevplatform + openclaw + Hermes Agent"
+    },
+    {
+      "path": "skills/software-copyright/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/software-copyright/vendor/docx-toolkit/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/software-development/api-testing/SKILL.md",
+      "author": "(empty)"
+    },
+    {
+      "path": "skills/yuanbao/SKILL.md",
+      "author": "(empty)"
+    }
+  ],
+  "attributed": [
+    "skills/addyosmani/api-and-interface-design/SKILL.md",
+    "skills/addyosmani/browser-testing-with-devtools/SKILL.md",
+    "skills/addyosmani/ci-cd-and-automation/SKILL.md",
+    "skills/addyosmani/code-review-and-quality/SKILL.md",
+    "skills/addyosmani/code-simplification/SKILL.md",
+    "skills/addyosmani/context-engineering/SKILL.md",
+    "skills/addyosmani/debugging-and-error-recovery/SKILL.md",
+    "skills/addyosmani/deprecation-and-migration/SKILL.md",
+    "skills/addyosmani/documentation-and-adrs/SKILL.md",
+    "skills/addyosmani/doubt-driven-development/SKILL.md",
+    "skills/addyosmani/frontend-ui-engineering/SKILL.md",
+    "skills/addyosmani/git-workflow-and-versioning/SKILL.md",
+    "skills/addyosmani/idea-refine/SKILL.md",
+    "skills/addyosmani/incremental-implementation/SKILL.md",
+    "skills/addyosmani/performance-optimization/SKILL.md",
+    "skills/addyosmani/planning-and-task-breakdown/SKILL.md",
+    "skills/addyosmani/security-and-hardening/SKILL.md",
+    "skills/addyosmani/shipping-and-launch/SKILL.md",
+    "skills/addyosmani/source-driven-development/SKILL.md",
+    "skills/addyosmani/spec-driven-development/SKILL.md",
+    "skills/addyosmani/test-driven-development/SKILL.md",
+    "skills/addyosmani/using-agent-skills/SKILL.md",
+    "skills/mattpocock/deprecated/design-an-interface/SKILL.md",
+    "skills/mattpocock/deprecated/qa/SKILL.md",
+    "skills/mattpocock/deprecated/request-refactor-plan/SKILL.md",
+    "skills/mattpocock/deprecated/ubiquitous-language/SKILL.md",
+    "skills/mattpocock/engineering/diagnose/SKILL.md",
+    "skills/mattpocock/engineering/grill-with-docs/SKILL.md",
+    "skills/mattpocock/engineering/improve-codebase-architecture/SKILL.md",
+    "skills/mattpocock/engineering/prototype/SKILL.md",
+    "skills/mattpocock/engineering/setup-matt-pocock-skills/SKILL.md",
+    "skills/mattpocock/engineering/tdd/SKILL.md",
+    "skills/mattpocock/engineering/to-issues/SKILL.md",
+    "skills/mattpocock/engineering/to-prd/SKILL.md",
+    "skills/mattpocock/engineering/triage/SKILL.md",
+    "skills/mattpocock/engineering/zoom-out/SKILL.md",
+    "skills/mattpocock/in-progress/review/SKILL.md",
+    "skills/mattpocock/in-progress/writing-beats/SKILL.md",
+    "skills/mattpocock/in-progress/writing-fragments/SKILL.md",
+    "skills/mattpocock/in-progress/writing-shape/SKILL.md",
+    "skills/mattpocock/misc/git-guardrails-claude-code/SKILL.md",
+    "skills/mattpocock/misc/migrate-to-shoehorn/SKILL.md",
+    "skills/mattpocock/misc/scaffold-exercises/SKILL.md",
+    "skills/mattpocock/misc/setup-pre-commit/SKILL.md",
+    "skills/mattpocock/personal/edit-article/SKILL.md",
+    "skills/mattpocock/personal/obsidian-vault/SKILL.md",
+    "skills/mattpocock/productivity/caveman/SKILL.md",
+    "skills/mattpocock/productivity/grill-me/SKILL.md",
+    "skills/mattpocock/productivity/handoff/SKILL.md",
+    "skills/mattpocock/productivity/write-a-skill/SKILL.md",
+    "skills/superpowers/brainstorming/SKILL.md",
+    "skills/superpowers/dispatching-parallel-agents/SKILL.md",
+    "skills/superpowers/executing-plans/SKILL.md",
+    "skills/superpowers/finishing-a-development-branch/SKILL.md",
+    "skills/superpowers/receiving-code-review/SKILL.md",
+    "skills/superpowers/requesting-code-review/SKILL.md",
+    "skills/superpowers/subagent-driven-development/SKILL.md",
+    "skills/superpowers/systematic-debugging/SKILL.md",
+    "skills/superpowers/test-driven-development/SKILL.md",
+    "skills/superpowers/using-git-worktrees/SKILL.md",
+    "skills/superpowers/using-superpowers/SKILL.md",
+    "skills/superpowers/verification-before-completion/SKILL.md",
+    "skills/superpowers/writing-plans/SKILL.md",
+    "skills/superpowers/writing-skills/SKILL.md"
+  ]
+}

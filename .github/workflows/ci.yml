@@ -88,3 +88,21 @@ jobs:
           print(f'Checked all SKILL.md files: {\"PASS\" if errors == 0 else \"FAIL\"}')
           sys.exit(errors)
           "
+
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run pytest
+        run: python -m pytest tests/ -v

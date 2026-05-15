@@ -10,6 +10,10 @@ metadata:
     homepage: https://developers.notion.com
 prerequisites:
   env_vars: [NOTION_API_KEY]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Notion API

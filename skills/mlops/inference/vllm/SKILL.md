@@ -8,7 +8,10 @@ dependencies: [vllm, torch, transformers]
 metadata:
   hermes:
     tags: [vLLM, Inference Serving, PagedAttention, Continuous Batching, High Throughput, Production, OpenAI API, Quantization, Tensor Parallelism]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # vLLM - High-Performance LLM Serving

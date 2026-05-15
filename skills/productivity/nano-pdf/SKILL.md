@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [PDF, Documents, Editing, NLP, Productivity]
     homepage: https://pypi.org/project/nano-pdf/
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # nano-pdf

@@ -4,6 +4,7 @@ description: Find deepening opportunities in a codebase, informed by the domain 
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Improve Codebase Architecture

@@ -4,6 +4,7 @@ description: Automates CI/CD pipeline setup. Use when setting up or modifying bu
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # CI/CD and Automation

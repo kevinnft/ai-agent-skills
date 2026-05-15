@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-05-15
+
+### Added
+- **`origin:` provenance metadata on every `SKILL.md`** (189/189 = 100% coverage). Values: `aggregated` (64), `original` (61), `adapted` (11), `unknown` (53). Programmatically auditable via `grep -h "^origin:" skills/**/SKILL.md`.
+- **`source_repo` / `source_url` / `source_license` frontmatter on 72 additional skills** beyond the previous 64 (now 136 with explicit upstream link, 53 awaiting community identification).
+- **[`.github/workflows/upstream-sync-check.yml`](./.github/workflows/upstream-sync-check.yml)** — weekly cron (Mondays 06:17 UTC) diffs vendored copies vs. upstream HEAD and opens or updates a single tracking issue. Manual dispatch supported.
+- **[`docs/sync.md`](./docs/sync.md)** — explicit vendored-vs-submodule trade-off, manual-sync instructions, per-skill provenance counts.
+- **[`docs/archive/`](./docs/archive/)** with `historical-bugs/` subfolder — `BUG_REPORT.md` and `CRITICAL_BUGS_V2.md` moved here from `.github/internal/` with HISTORICAL banners pointing at v1.2.0 resolution. The `internal/` naming was misleading since the folder was public anyway.
+- **`tests/` directory** with 22 pytest unit tests covering `release.py` (semver, commit categorization), `skills-api.py` (skill discovery, search, categories), and `quality-dashboard.py` (dataclass shape, no-token sys.exit guard).
+- **`requirements-dev.txt`** — pytest + PyGithub + Flask + PyYAML pinned for CI reproducibility.
+- **`pytest` job in [`ci.yml`](./.github/workflows/ci.yml)** — runs alongside the existing skill-validation job on every push/PR.
+- **`scripts/backfill/`** — `classify_skills.py` + `patch_skills.py` + `classification.json` audit trail of how the v1.6.0 attribution backfill was generated. Idempotent — safe to re-run.
+
+### Changed
+- **README rewritten for visual appeal** — animated capsule-render gradient banner, color-tinted shields badges, agent-icon Quick start table, ASCII bar-chart provenance panel, collapsible FAQ entries. Honesty preserved (still MIT, still non-affiliation disclaimer, still no "industry experts" / "424K stars" / self-scored badges).
+- **Stats card now shows attribution coverage explicitly** (136/189 with `source_repo`, 53 awaiting identification, 22 unit tests, 3 workflows).
+- **Tooling table now includes `upstream-sync-check.yml`** alongside `ci.yml` and `auto-label.yml`.
+
+### Moved
+- `.github/internal/BUG_REPORT.md` → `docs/archive/historical-bugs/01-bug-report-pre-v1.2.0.md`
+- `.github/internal/CRITICAL_BUGS_V2.md` → `docs/archive/historical-bugs/02-critical-bugs-v2-pre-v1.2.0.md`
+- Both files received a HISTORICAL banner at the top with a link back to `CHANGELOG.md`.
+
+### Why minor bump (1.5.0 → 1.6.0)
+- Real new behavior: weekly upstream drift detection workflow, pytest CI job, programmatic provenance metadata. Patch would understate the surface area added.
+- No skill content was edited (only frontmatter); install.sh / validate.sh / update.sh CLI surfaces unchanged.
+- `validate.sh` still reports 189/189 valid.
+
 ## [1.5.0] - 2026-05-15
 
 ### Changed

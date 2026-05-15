@@ -4,6 +4,7 @@ description: Grilling session that mines the user for fragments — heterogeneou
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 <what-to-do>

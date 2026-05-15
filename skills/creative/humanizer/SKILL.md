@@ -10,6 +10,10 @@ metadata:
     category: creative
     homepage: https://github.com/blader/humanizer
     related_skills: [songwriting-and-ai-music]
+origin: adapted
+source_repo: blader/humanizer
+source_url: https://github.com/blader/humanizer
+source_license: MIT
 ---
 
 # Humanizer: Remove AI Writing Patterns

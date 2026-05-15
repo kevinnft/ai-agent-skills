@@ -4,6 +4,7 @@ description: Use when starting any conversation - establishes how to find and us
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 <SUBAGENT-STOP>

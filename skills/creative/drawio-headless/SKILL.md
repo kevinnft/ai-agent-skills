@@ -13,6 +13,8 @@ tags:
   - visualization
   - headless
   - wsl2
+origin: unknown
+source_license: see upstream
 ---
 
 # Draw.io Headless Diagram Generation

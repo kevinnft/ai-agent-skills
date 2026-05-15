@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [GitHub, Repositories, Git, Releases, Secrets, Configuration]
     related_skills: [github-auth, github-pr-workflow, github-issues]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # GitHub Repository Management

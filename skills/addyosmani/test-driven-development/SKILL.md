@@ -4,6 +4,7 @@ description: Drives development with tests. Use when implementing any logic, fix
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Test-Driven Development

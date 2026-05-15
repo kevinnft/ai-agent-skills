@@ -4,6 +4,7 @@ description: Use when facing 2+ independent tasks that can be worked on without 
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Dispatching Parallel Agents

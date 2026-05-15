@@ -8,7 +8,10 @@ dependencies: [trl, transformers, datasets, peft, accelerate, torch]
 metadata:
   hermes:
     tags: [Post-Training, TRL, Reinforcement Learning, Fine-Tuning, SFT, DPO, PPO, GRPO, RLHF, Preference Alignment, HuggingFace]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # TRL - Transformer Reinforcement Learning

@@ -5,6 +5,8 @@ version: 1.1.0
 metadata:
   hermes:
     tags: [webhook, events, automation, integrations, notifications, push]
+origin: unknown
+source_license: see upstream
 ---
 
 # Webhook Subscriptions

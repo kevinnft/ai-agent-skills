@@ -4,6 +4,7 @@ description: Use when about to claim work is complete, fixed, or passing, before
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Verification Before Completion

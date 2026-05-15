@@ -4,6 +4,7 @@ description: Shape an article as a journey of beats, choose-your-own-adventure s
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 <what-to-do>

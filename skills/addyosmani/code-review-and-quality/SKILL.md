@@ -4,6 +4,7 @@ description: Conducts multi-axis code review. Use before merging any change. Use
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Code Review and Quality

@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [ecosystem, tools, installation, evaluation, user-preference]
     related_skills: [hermes-agent, spike]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Ecosystem Tool Evaluation

@@ -4,6 +4,7 @@ description: Use when you have a spec or requirements for a multi-step task, bef
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Writing Plans

@@ -4,6 +4,7 @@ description: Set up Husky pre-commit hooks with lint-staged (Prettier), type che
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Setup Pre-Commit Hooks

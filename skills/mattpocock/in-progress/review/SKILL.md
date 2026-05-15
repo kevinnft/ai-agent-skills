@@ -4,6 +4,7 @@ description: Review the changes since a fixed point (commit, branch, tag, or mer
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Review

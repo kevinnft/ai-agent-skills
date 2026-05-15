@@ -9,6 +9,10 @@ metadata:
   hermes:
     tags: [github, visual-assets, design, branding, documentation]
     related_skills: [architecture-diagram, comprehensive-public-repo-setup]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # GitHub Repository Visual Assets

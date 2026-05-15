@@ -1,22 +1,30 @@
 <div align="center">
 
-# AI Agent Skills
+<a href="#-quick-start"><img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,2,30,16&height=200&section=header&text=AI%20Agent%20Skills&fontSize=70&fontAlignY=38&fontColor=ffffff&desc=189%20attribution-first%20skills%20for%20any%20agent%20that%20reads%20SKILL.md&descAlignY=62&descSize=14&animation=fadeIn" alt="AI Agent Skills banner" /></a>
 
-**An honest, attribution-first installer for 189 publicly available agent-skill markdown files.**
+<p>
+  <em>One installer. 189 skills. 26 categories. Zero borrowed credibility.</em><br/>
+  <sub>Hermes Agent · Claude Code · Cursor · OpenCode · anything that reads <code>SKILL.md</code></sub>
+</p>
 
-Hermes Agent · Claude Code · Cursor · OpenCode · any agent that reads `SKILL.md`.
+<p>
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-A8E6CF?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="#-categories"><img alt="189 skills" src="https://img.shields.io/badge/skills-189-7AB8FF?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="./docs/categories.md"><img alt="26 categories" src="https://img.shields.io/badge/categories-26-FFB3BA?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/kevinnft/ai-agent-skills/ci.yml?style=for-the-badge&label=CI&labelColor=2D3748&color=B5EAD7" /></a>
+  <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-FFD93D?style=for-the-badge&labelColor=2D3748" /></a>
+  <a href="./NOTICE"><img alt="Attribution NOTICE" src="https://img.shields.io/badge/attribution-NOTICE-C7B6FF?style=for-the-badge&labelColor=2D3748" /></a>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-orange.svg?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/skills-189-blue?style=for-the-badge)](#-categories)
-[![Categories](https://img.shields.io/badge/categories-26-green?style=for-the-badge)](./docs/categories.md)
-[![CI](https://img.shields.io/github/actions/workflow/status/kevinnft/ai-agent-skills/ci.yml?style=for-the-badge&label=CI)](https://github.com/kevinnft/ai-agent-skills/actions/workflows/ci.yml)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=for-the-badge)](./CONTRIBUTING.md)
-
-[Quick start](#-quick-start) ·
-[Categories](#-categories) ·
-[Conflicts to know](#-conflicts--duplicates) ·
-[Contributing](./CONTRIBUTING.md) ·
-[Attribution (`NOTICE`)](./NOTICE)
+<p>
+  <a href="#-quick-start"><b>Quick start</b></a> ·
+  <a href="#-categories">Categories</a> ·
+  <a href="#-provenance">Provenance</a> ·
+  <a href="#%EF%B8%8F-conflicts--duplicates">Conflicts</a> ·
+  <a href="./docs/sync.md">Sync strategy</a> ·
+  <a href="./CONTRIBUTING.md">Contributing</a> ·
+  <a href="#-faq">FAQ</a>
+</p>
 
 </div>
 
@@ -24,92 +32,153 @@ Hermes Agent · Claude Code · Cursor · OpenCode · any agent that reads `SKILL
 
 ## ⚡ The 30-second pitch
 
-```
-189 SKILL.md files  +  one-command installer  +  validation CI  +  REST API
-                              ↓
-                      drop into your agent
+```text
+   ┌─ obra/superpowers ─────┐
+   ├─ mattpocock/skills ────┤      189 SKILL.md files
+   ├─ addyosmani/agent-… ──→│  →   one-command installer  →   ~/.hermes/skills/
+   ├─ kepano/obsidian-skills┤      validation CI                ~/.claude/skills/
+   ├─ original (Hermes/Nous)┤      REST API (:5555)             ~/.cursor/skills/
+   └─ community + adapted ──┘      attribution metadata
 ```
 
-This is a **derivative work** — most skill content was authored by other people in their public repos. The value-add here is: aggregation, categorization, conflict detection, validation tooling, attribution metadata, and a portable installer. **Original authors did not contribute to or endorse this repo.** See [`NOTICE`](./NOTICE) for full attribution.
+**Derivative work, full attribution.** Most skill content was authored by other people in their public repos. The value-add here is the aggregation, categorization, conflict detection, validation tooling, attribution metadata, and a portable installer. The named upstream authors did not contribute to or endorse this repo — see [`NOTICE`](./NOTICE) and per-skill `source_url:` frontmatter.
 
 > [!IMPORTANT]
-> If you want the canonical version of a specific author's skills, install from their repo directly. Links in [`NOTICE`](./NOTICE).
+> Want the canonical version of one author's skills? Install directly from their repo. Links in [`NOTICE`](./NOTICE).
 
 ---
 
 ## 📦 Quick start
 
-### Hermes Agent
+<table>
+<tr><th width="200">Agent</th><th>Command</th></tr>
+<tr><td>
+
+🜲 **Hermes Agent**
+
+</td><td>
 
 ```bash
 git clone --recurse-submodules https://github.com/kevinnft/ai-agent-skills.git
-cd ai-agent-skills
-./scripts/install.sh                        # all 189 skills
-./scripts/install.sh --category addyosmani  # one category
-./scripts/install.sh --list                 # browse before installing
-./scripts/install.sh --validate             # dry-run + lint
+cd ai-agent-skills && ./scripts/install.sh
 ```
 
-### Claude Code · Cursor · custom agent
+</td></tr>
+<tr><td>
+
+🟧 **Claude Code**
+
+</td><td>
 
 ```bash
-cp -r skills/* ~/.claude/skills/      # Claude Code
-cp -r skills/* ~/.cursor/skills/      # Cursor
-cp -r skills/* /your/agent/skills/    # anything that reads SKILL.md
+cp -r skills/* ~/.claude/skills/
 ```
 
-### Tip: install one category, see if it clicks
+</td></tr>
+<tr><td>
+
+🟦 **Cursor**
+
+</td><td>
 
 ```bash
-./scripts/install.sh --category superpowers   # 14 agentic-workflow skills
+cp -r skills/* ~/.cursor/skills/
 ```
 
-If you like the way it works, `--all`. If not, the rest is one `cp` away.
+</td></tr>
+<tr><td>
+
+🟪 **Anything else**
+
+</td><td>
+
+```bash
+cp -r skills/* /path/to/your/agent/skills/
+```
+
+</td></tr>
+</table>
+
+### Installer flags
+
+```bash
+./scripts/install.sh --list                  # browse before installing
+./scripts/install.sh --category superpowers  # install just one category
+./scripts/install.sh --validate              # dry-run + lint
+./scripts/install.sh --help
+```
+
+> **Tip:** start with one category (`--category superpowers` is 14 well-tested agentic-workflow skills). If you like it, `--all`. If not, the rest is one `cp` away.
 
 ---
 
 ## 🎯 Categories
 
-Verified counts (via `find skills -name SKILL.md` after `git submodule update --init`):
+Counts verified at every release with `find skills -name SKILL.md` after `git submodule update --init`.
 
 <table>
 <tr>
-<td valign="top">
+<td valign="top" width="50%">
 
-**Engineering — 80 skills**
-- [`addyosmani/`](skills/addyosmani) — 22 (production engineering)
-- [`mattpocock/`](skills/mattpocock) — 28 (TypeScript & workflows)
-- [`superpowers/`](skills/superpowers) — 14 (agentic patterns)
-- [`software-development/`](skills/software-development) — 16 (mixed)
+#### 🛠️ Engineering — 80
+- 🔵 [`addyosmani/`](skills/addyosmani) — **22** &nbsp; production engineering
+- 🟣 [`mattpocock/`](skills/mattpocock) — **28** &nbsp; TypeScript & workflows
+- 🟢 [`superpowers/`](skills/superpowers) — **14** &nbsp; agentic patterns
+- 🟡 [`software-development/`](skills/software-development) — **16** &nbsp; mixed
 
-**Creative — 22 skills**
-- Diagrams · ASCII · p5.js · ComfyUI · DESIGN.md tokens · pixel art · Manim · TouchDesigner
+#### 🎨 Creative — 22
+Diagrams · ASCII art · p5.js · ComfyUI · DESIGN.md tokens · pixel art · Manim · TouchDesigner · Excalidraw
 
-**MLOps — 15 skills**
-- llama.cpp · Axolotl · Unsloth · vLLM · TRL · DSPy · lm-eval-harness
+#### 🤖 MLOps — 15
+llama.cpp · Axolotl · Unsloth · vLLM · TRL · DSPy · lm-eval-harness · Hugging Face Hub
 
 </td>
-<td valign="top">
+<td valign="top" width="50%">
 
-**Research — 11 skills**
-- arXiv · web scraping · blogwatcher · polymarket · NFT/crypto analysis
+#### 🔬 Research — 11
+arXiv · web scraping · blogwatcher · polymarket · NFT/crypto analysis · trending repos
 
-**GitHub — 10 skills**
-- PR workflow · code review · repo mgmt · auth · issues
+#### 🐙 GitHub — 10
+PR workflow · code review · repo mgmt · auth · issues · visual assets
 
-**DevOps — 9 skills**
-- Docker compose · VPS hardening · browser automation · kanban · webhooks
+#### ⚙️ DevOps — 9
+Docker compose · VPS hardening · browser automation · kanban · webhooks
 
-**Productivity — 8 skills**
-- Notion · Google Workspace · Linear · Airtable · PowerPoint · OCR · maps
+#### 📋 Productivity — 8
+Notion · Google Workspace · Linear · Airtable · PowerPoint · OCR · maps
 
 </td>
 </tr>
 </table>
 
-Plus `media (5)` · `obsidian-skills (5, submodule)` · `apple (4)` · `autonomous-ai-agents (4)` · `note-taking, social-media, gaming, software-copyright (2 each)` · `data-science, dogfood, email, mcp, red-teaming, smart-home, yuanbao, patent-disclosure-skill (1 each)`.
+<sub>Plus `media (5)` · `obsidian-skills (5, submodule)` · `apple (4)` · `autonomous-ai-agents (4)` · `note-taking, social-media, gaming, software-copyright (2 each)` · `data-science, dogfood, email, mcp, red-teaming, smart-home, yuanbao, patent-disclosure-skill (1 each)`</sub>
 
-📚 Full catalog: [`docs/categories.md`](./docs/categories.md)
+📚 Full per-skill catalog → [`docs/categories.md`](./docs/categories.md)
+
+---
+
+## 📊 Provenance
+
+Every `SKILL.md` declares where it came from. Run `grep -h "^origin:" skills/**/SKILL.md | sort | uniq -c` to verify.
+
+```text
+       ┌─────────────────────────────────────────────────────────────┐
+   64  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                  │  aggregated
+   61  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                    │  original
+   53  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                       │  unknown ⚠
+   11  │ ▓▓▓▓                                                        │  adapted
+       └─────────────────────────────────────────────────────────────┘
+                                                          189 total
+```
+
+| `origin:` | Count | Meaning |
+|---|--:|---|
+| 🟦 `aggregated` | **64** | Top-level frontmatter copied from a named upstream repo with full attribution (`addyosmani/`, `mattpocock/`, `superpowers/`) |
+| 🟩 `original` | **61** | Authored for this repo's ecosystem (Hermes / Nous Research / Orchestra / community) |
+| 🟧 `adapted` | **11** | Materially edited from a named upstream — see `source_url` |
+| 🟥 `unknown` | **53** | Author present in frontmatter but upstream repo not yet identified — **help wanted!** |
+
+> **🤝 Help wanted on `unknown`-origin skills.** If you recognize a skill in [`docs/categories.md`](./docs/categories.md) and know its upstream, open a PR adding `source_repo` / `source_url` / `source_license` to the frontmatter. Even one is appreciated.
 
 ---
 
@@ -119,43 +188,45 @@ Same-name skills exist under multiple categories. Pick **one** when installing �
 
 | Skill | Locations | Recommended pick |
 |---|---|---|
-| `test-driven-development` | `addyosmani/`, `superpowers/`, `software-development/` | `superpowers/` (most explicit RED-GREEN-REFACTOR loop) |
-| `systematic-debugging` | `superpowers/`, `software-development/` | `superpowers/` (4-phase) |
-| `requesting-code-review` | `superpowers/`, `software-development/` | `superpowers/` |
-| `subagent-driven-development` | `superpowers/`, `software-development/` | `superpowers/` |
-| `writing-plans` | `superpowers/`, `software-development/` | `superpowers/` |
+| `test-driven-development` | `addyosmani/`, `superpowers/`, `software-development/` | 🥇 `superpowers/` — most explicit RED-GREEN-REFACTOR loop |
+| `systematic-debugging` | `superpowers/`, `software-development/` | 🥇 `superpowers/` — 4-phase |
+| `requesting-code-review` | `superpowers/`, `software-development/` | 🥇 `superpowers/` |
+| `subagent-driven-development` | `superpowers/`, `software-development/` | 🥇 `superpowers/` |
+| `writing-plans` | `superpowers/`, `software-development/` | 🥇 `superpowers/` |
 
-The installer currently does **not** auto-resolve these — auditing your `~/.hermes/skills/` (or equivalent) after a full install is recommended.
+The installer does **not** auto-resolve these — auditing your `~/.hermes/skills/` after a full install is recommended. See [`docs/sync.md`](./docs/sync.md) for the upstream-drift strategy.
 
 ---
 
 ## 🛠️ Tooling (original to this repo)
 
-| Script | Purpose |
-|---|---|
-| [`scripts/install.sh`](scripts/install.sh) | Copy skills into your agent's skills dir. `--all`, `--category`, `--list`, `--validate`. |
-| [`scripts/validate.sh`](scripts/validate.sh) | Lint `SKILL.md` frontmatter + check broken links. Returns non-zero on invalid skill. |
-| [`scripts/update.sh`](scripts/update.sh) | Pull latest, back up existing, apply updates. |
-| [`scripts/release.py`](scripts/release.py) | Generate changelog + tag a semver release. |
-| [`scripts/quality-dashboard.py`](scripts/quality-dashboard.py) | Compute a self-scored repo health metric. **Heuristic — not third-party validation.** |
-| [`scripts/skills-api.py`](scripts/skills-api.py) | Local REST server (default `:5555`) for browsing skills programmatically. |
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Validation runs on every push / PR. |
-| [`.github/workflows/auto-label.yml`](.github/workflows/auto-label.yml) | PR/issue label automation. |
+| Script | Purpose | Notes |
+|---|---|---|
+| [`install.sh`](scripts/install.sh) | Copy skills to your agent's skills dir | `--all`, `--category`, `--list`, `--validate` |
+| [`validate.sh`](scripts/validate.sh) | Lint frontmatter + broken links | Non-zero exit on failure |
+| [`update.sh`](scripts/update.sh) | Pull latest, back up existing, apply | Safe re-run |
+| [`release.py`](scripts/release.py) | Generate changelog + tag semver | Tested ✅ |
+| [`quality-dashboard.py`](scripts/quality-dashboard.py) | Self-scored repo health metric | **Heuristic — not third-party validation** |
+| [`skills-api.py`](scripts/skills-api.py) | Local REST server (`:5555`) | `GET /api/skills`, `GET /api/skills/search?q=...` |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Validation + pytest on push/PR | 22 unit tests |
+| [`.github/workflows/upstream-sync-check.yml`](.github/workflows/upstream-sync-check.yml) | Weekly drift report from upstream sources | Mondays 06:17 UTC |
+| [`.github/workflows/auto-label.yml`](.github/workflows/auto-label.yml) | PR/issue auto-labeling | 35 labels |
 
-All MIT-licensed under the project root [`LICENSE`](./LICENSE).
+All tooling MIT-licensed under [`LICENSE`](./LICENSE).
 
 ---
 
-## 📊 Stats
+## 📈 Stats at a glance
 
-```
-189  SKILL.md files            ✅
- 26  populated categories      ✅
- 64  skills with explicit      source_repo + source_url + source_license
-                                in YAML frontmatter (addyosmani / mattpocock / superpowers)
-  8  scripts under scripts/    install · validate · update · release · dashboard · skills-api · create-labels · helper
-  2  GitHub Actions            CI · auto-label
-  2  git submodules            obsidian-skills · patent-disclosure-skill
+```text
+  189  SKILL.md files                            ✅ verified each release
+   26  populated categories                      ✅
+  136  skills with source_repo metadata          (64 aggregated + 11 adapted + 61 original-self-link)
+   53  skills awaiting upstream identification   🤝 help wanted
+    9  scripts under scripts/
+    3  GitHub Actions workflows                  CI · auto-label · upstream-sync-check
+   22  pytest unit tests                         scripts/release · skills-api · quality-dashboard
+    2  git submodules                            obsidian-skills · patent-disclosure-skill
 ```
 
 ---
@@ -164,36 +235,65 @@ All MIT-licensed under the project root [`LICENSE`](./LICENSE).
 
 PRs welcome — see [`CONTRIBUTING.md`](./CONTRIBUTING.md). Two contribution types with **different rules**:
 
-1. **Original skills** — author your own. Required: `name`, `description`, `author`, `tags`. Tested in at least one real session.
-2. **Aggregated skills** — pull in a public skill from another repo. Required: `source_repo`, `source_url`, `source_license`. Upstream license must permit redistribution.
+| Type | Required frontmatter | What we check |
+|---|---|---|
+| 🟢 **Original skill** | `name`, `description`, `author`, `tags` | Tested in at least one real session — describe how in the PR |
+| 🟡 **Aggregated skill** | `source_repo`, `source_url`, `source_license` (in addition to the above) | Upstream license permits redistribution; you didn't strip credit |
 
-We **reject** PRs that strip attribution or misrepresent upstream authorship as a contribution to this repo. Reviewers see the attribution checklist on every PR.
+We **reject** PRs that strip attribution or misrepresent upstream authorship. Reviewers see the attribution checklist on every PR.
 
 ---
 
 ## ❓ FAQ
 
-**Is this maintained by the named upstream authors?**
+<details>
+<summary><b>Is this maintained by the named upstream authors (Karpathy / Pocock / Osmani / obra)?</b></summary>
+<br/>
+
 No. They have not contributed to or endorsed this repo. See [`NOTICE`](./NOTICE) for the non-affiliation disclaimer.
+</details>
 
-**Why not just install from upstream directly?**
-You can — and should, if you only want one author's skills. The win here is one command for 189 skills across 26 categories, plus categorization, conflict detection, validation, and a REST API.
+<details>
+<summary><b>Why not just install from upstream directly?</b></summary>
+<br/>
 
-**The "Quality 86/100" dashboard score — what does it actually mean?**
-It's a heuristic computed by `scripts/quality-dashboard.py` (this repo's own script) based on README presence, LICENSE, CI status, broken-link check, and a few other surface signals. Not third-party validation. Don't read it as endorsement.
+You can — and should, if you only want one author's skills. The win here is one command for 189 skills across 26 categories, plus categorization, conflict detection, validation, and a REST API. We diff against upstream weekly (see [`docs/sync.md`](./docs/sync.md)) and surface drift via [`upstream-sync-check.yml`](./.github/workflows/upstream-sync-check.yml).
+</details>
 
-**The repo description says "189" but I see "191+" elsewhere — which is right?**
-Currently **189** (verified each release via `find skills -name SKILL.md`). Older docs may say "191+" — if you find one, please open a PR.
+<details>
+<summary><b>The "Quality 86/100" dashboard score — what does it actually mean?</b></summary>
+<br/>
 
-**Can I use this commercially?**
+It's a heuristic computed by [`scripts/quality-dashboard.py`](scripts/quality-dashboard.py) (this repo's own script) based on README presence, LICENSE, CI status, broken-link check, and a few other surface signals. Not third-party validation. Don't read it as endorsement.
+</details>
+
+<details>
+<summary><b>The repo description says "189" but older docs say "191+" — which is right?</b></summary>
+<br/>
+
+**189** (verified each release via `find skills -name SKILL.md`). Older docs may say "191+" — open a PR if you find one.
+</details>
+
+<details>
+<summary><b>How fresh are the vendored skills vs. upstream?</b></summary>
+<br/>
+
+A weekly GitHub Action (Mondays 06:17 UTC) opens or updates a tracking issue with the upstream HEAD SHA of each source repo. If you see drift you care about, open a sync PR — full strategy in [`docs/sync.md`](./docs/sync.md).
+</details>
+
+<details>
+<summary><b>Can I use this commercially?</b></summary>
+<br/>
+
 This repo's tooling: yes (MIT). Skill content from upstream: yes if their license permits — see per-skill `source_license` frontmatter or [`NOTICE`](./NOTICE).
+</details>
 
 ---
 
 ## 📄 License & attribution
 
-- **This repo's tooling, layout, aggregation work:** MIT — [`LICENSE`](./LICENSE).
-- **Skill content from upstream repos:** each skill keeps its upstream license. See per-skill frontmatter and [`NOTICE`](./NOTICE).
+- **This repo's tooling, layout, aggregation work:** MIT — [`LICENSE`](./LICENSE)
+- **Skill content from upstream repos:** each skill keeps its upstream license — see per-skill frontmatter and [`NOTICE`](./NOTICE)
 
 If you are an upstream author and would like a skill removed, renamed, or attributed differently, please [open an issue](https://github.com/kevinnft/ai-agent-skills/issues/new).
 
@@ -201,8 +301,12 @@ If you are an upstream author and would like a skill removed, renamed, or attrib
 
 <div align="center">
 
+<sub>Made for the agent ecosystem · powered by community work · attribution-first.</sub>
+
 **Hermes Agent** · [docs](https://hermes-agent.nousresearch.com/docs) · [repo](https://github.com/nousresearch/hermes-agent)
 
-[`NOTICE`](./NOTICE) · [`CHANGELOG`](./CHANGELOG.md) · [`SECURITY`](./SECURITY.md) · [Issues](https://github.com/kevinnft/ai-agent-skills/issues)
+[`NOTICE`](./NOTICE) · [`CHANGELOG`](./CHANGELOG.md) · [`SECURITY`](./SECURITY.md) · [Sync strategy](./docs/sync.md) · [Issues](https://github.com/kevinnft/ai-agent-skills/issues)
+
+<a href="#"><img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,2,30,16&height=80&section=footer&animation=fadeIn" alt="footer" /></a>
 
 </div>

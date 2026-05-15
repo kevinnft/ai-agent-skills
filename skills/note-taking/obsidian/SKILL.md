@@ -1,6 +1,8 @@
 ---
 name: obsidian
 description: Read, search, create, and edit notes in the Obsidian vault.
+origin: unknown
+source_license: see upstream
 ---
 
 # Obsidian Vault

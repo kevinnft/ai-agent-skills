@@ -1,6 +1,8 @@
 ---
 name: obsidian-mobile-sync
 description: Setup Obsidian mobile sync via GitHub (free) or Obsidian Sync (paid). Includes GitHub CLI automation, MGit/Working Copy setup, and Mnemosyne integration patterns.
+origin: unknown
+source_license: see upstream
 ---
 
 # Obsidian Mobile Sync

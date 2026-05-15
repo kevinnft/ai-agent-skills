@@ -10,6 +10,8 @@ triggers:
   - track API state
   - polling bot
   - watchdog script
+origin: unknown
+source_license: see upstream
 ---
 
 # API Monitoring Bots

@@ -4,6 +4,7 @@ description: Edit and improve articles by restructuring sections, improving clar
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Edit Article

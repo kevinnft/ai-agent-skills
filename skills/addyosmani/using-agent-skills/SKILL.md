@@ -4,6 +4,7 @@ description: Discovers and invokes agent skills. Use when starting a session or 
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Using Agent Skills

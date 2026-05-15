@@ -10,6 +10,8 @@ metadata:
     tags: [Creative, Ideation, Projects, Brainstorming, Inspiration]
     category: creative
     requires_toolsets: []
+origin: unknown
+source_license: see upstream
 ---
 
 # Creative Ideation

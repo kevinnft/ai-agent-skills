@@ -4,6 +4,7 @@ description: Take a markdown file of raw material and shape it into an article t
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 <what-to-do>

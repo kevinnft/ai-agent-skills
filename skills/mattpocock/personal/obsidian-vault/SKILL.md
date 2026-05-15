@@ -4,6 +4,7 @@ description: Search, create, and manage notes in the Obsidian vault with wikilin
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Obsidian Vault

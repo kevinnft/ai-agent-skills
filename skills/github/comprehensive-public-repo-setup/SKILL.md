@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [GitHub, Documentation, Setup Scripts, Open Source, Repository Management]
     related_skills: [github-repo-management, github-pr-workflow, writing-plans]
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # Comprehensive Public Repository Setup

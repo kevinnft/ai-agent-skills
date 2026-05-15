@@ -9,7 +9,8 @@ metadata:
   hermes:
     tags: [ASCII, Art, Banners, Creative, Unicode, Text-Art, pyfiglet, figlet, cowsay, boxes]
     related_skills: [excalidraw]
-
+origin: unknown
+source_license: see upstream
 ---
 
 # ASCII Art Skill

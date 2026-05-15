@@ -10,6 +10,10 @@ metadata:
     homepage: https://github.com/JulienTant/blogwatcher-cli
 prerequisites:
   commands: [blogwatcher-cli]
+origin: adapted
+source_repo: Hyaxia/blogwatcher
+source_url: https://github.com/Hyaxia/blogwatcher
+source_license: MIT
 ---
 
 # Blogwatcher

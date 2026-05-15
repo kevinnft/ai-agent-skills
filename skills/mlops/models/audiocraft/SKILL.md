@@ -8,7 +8,10 @@ dependencies: [audiocraft, torch>=2.0.0, transformers>=4.30.0]
 metadata:
   hermes:
     tags: [Multimodal, Audio Generation, Text-to-Music, Text-to-Audio, MusicGen]
-
+origin: original
+source_repo: kevinnft/ai-agent-skills
+source_url: https://github.com/kevinnft/ai-agent-skills
+source_license: MIT
 ---
 
 # AudioCraft: Audio Generation

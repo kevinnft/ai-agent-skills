@@ -7,6 +7,8 @@ triggers:
   - get data from JavaScript site
   - parse SPA content
   - headless browser automation
+origin: unknown
+source_license: see upstream
 ---
 
 # Web Scraping

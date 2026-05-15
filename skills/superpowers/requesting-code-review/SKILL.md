@@ -4,6 +4,7 @@ description: Use when completing tasks, implementing major features, or before m
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Requesting Code Review

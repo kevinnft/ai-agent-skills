@@ -4,6 +4,7 @@ description: Use when starting feature work that needs isolation from current wo
 source_repo: "obra/superpowers"
 source_url: "https://github.com/obra/superpowers"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Using Git Worktrees

@@ -3,6 +3,8 @@ name: vps-cleanup
 description: Systematic VPS cleanup — analyze files, categorize by importance, safely delete temporary/old data to free disk space
 tags: [vps, cleanup, disk-space, maintenance, linux]
 related_skills: [vps-security-hardening]
+origin: unknown
+source_license: see upstream
 ---
 
 # VPS Cleanup

@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [spike, prototype, experiment, feasibility, throwaway, exploration, research, planning, mvp, proof-of-concept]
     related_skills: [sketch, writing-plans, subagent-driven-development, plan]
+origin: adapted
+source_repo: gsd-build/get-shit-done
+source_url: https://github.com/gsd-build/get-shit-done
+source_license: MIT
 ---
 
 # Spike

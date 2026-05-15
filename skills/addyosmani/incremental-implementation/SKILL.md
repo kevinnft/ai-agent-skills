@@ -4,6 +4,7 @@ description: Delivers changes incrementally. Use when implementing any feature o
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Incremental Implementation

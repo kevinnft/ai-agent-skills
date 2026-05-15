@@ -2,6 +2,8 @@
 name: api-testing
 description: REST/GraphQL API testing with automated validation — test endpoints, validate responses, check status codes, and ensure API contracts
 tags: [api, testing, rest, graphql, validation, automation]
+origin: unknown
+source_license: see upstream
 ---
 
 # API Testing — Automated Endpoint Validation

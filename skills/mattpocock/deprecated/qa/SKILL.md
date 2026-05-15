@@ -4,6 +4,7 @@ description: Interactive QA session where user reports bugs or issues conversati
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # QA Session

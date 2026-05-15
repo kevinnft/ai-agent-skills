@@ -4,6 +4,7 @@ description: Test-driven development with red-green-refactor loop. Use when user
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Test-Driven Development

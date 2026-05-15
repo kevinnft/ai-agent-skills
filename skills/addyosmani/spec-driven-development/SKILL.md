@@ -4,6 +4,7 @@ description: Creates specs before coding. Use when starting a new project, featu
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Spec-Driven Development

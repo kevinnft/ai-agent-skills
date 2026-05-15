@@ -10,6 +10,8 @@ metadata:
     category: creative
     credits:
       - "Hardware palettes and animation loops ported from Synero/pixel-art-studio (MIT) — https://github.com/Synero/pixel-art-studio"
+origin: unknown
+source_license: see upstream
 ---
 
 # Pixel Art

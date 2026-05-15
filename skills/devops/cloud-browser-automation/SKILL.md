@@ -3,6 +3,8 @@ name: cloud-browser-automation
 description: Use cloud browser services (Browserbase) for Cloudflare bypass, JavaScript rendering, and stealth scraping when local tools fail
 tags: [browserbase, cloudflare, scraping, automation, cloud]
 related_skills: [web-scraping]
+origin: unknown
+source_license: see upstream
 ---
 
 # Cloud Browser Automation

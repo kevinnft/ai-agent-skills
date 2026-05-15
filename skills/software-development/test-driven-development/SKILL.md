@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [testing, tdd, development, quality, red-green-refactor]
     related_skills: [systematic-debugging, writing-plans, subagent-driven-development]
+origin: adapted
+source_repo: obra/superpowers
+source_url: https://github.com/obra/superpowers
+source_license: MIT
 ---
 
 # Test-Driven Development (TDD)

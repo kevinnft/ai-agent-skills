@@ -5,6 +5,7 @@ disable-model-invocation: true
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Ubiquitous Language

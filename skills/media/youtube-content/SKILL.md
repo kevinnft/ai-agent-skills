@@ -1,6 +1,8 @@
 ---
 name: youtube-content
 description: "YouTube transcripts to summaries, threads, blogs."
+origin: unknown
+source_license: see upstream
 ---
 
 # YouTube Content Tool

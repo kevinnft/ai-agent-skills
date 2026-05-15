@@ -2,6 +2,8 @@
 name: manim-video
 description: "Manim CE animations: 3Blue1Brown math/algo videos."
 version: 1.0.0
+origin: unknown
+source_license: see upstream
 ---
 
 # Manim Video Production Pipeline

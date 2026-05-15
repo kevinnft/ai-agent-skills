@@ -4,6 +4,7 @@ description: Migrate test files from `as` type assertions to @total-typescript/s
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Migrate to Shoehorn

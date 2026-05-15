@@ -1,3 +1,10 @@
+> [!NOTE]
+> **HISTORICAL — Resolved in v1.2.0 (2026-05-12).**
+> This document is preserved for transparency and post-mortem reference. The bugs described here are fixed in the current code on `main`.
+> See [`CHANGELOG.md`](../../../CHANGELOG.md) for the resolution.
+
+---
+
 # CRITICAL BUGS FOUND — FRESH ANALYSIS v2 🐛
 
 **Date:** 2026-05-12  

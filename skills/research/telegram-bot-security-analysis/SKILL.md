@@ -2,6 +2,8 @@
 name: telegram-bot-security-analysis
 description: Reverse engineer and security-test Telegram bots — API analysis, callback interception, exploit discovery, and vulnerability documentation
 tags: [telegram, security, reverse-engineering, bot-api, exploit-analysis]
+origin: unknown
+source_license: see upstream
 ---
 
 # Telegram Bot Security Analysis

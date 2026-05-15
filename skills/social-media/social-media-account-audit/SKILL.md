@@ -3,6 +3,8 @@ name: social-media-account-audit
 description: "Audit social media accounts (TikTok, IG, etc.): scrape profiles, calculate engagement metrics, diagnose performance drops, interpret analytics screenshots."
 tags: [tiktok, instagram, analytics, audit, engagement, live-streaming, social-commerce]
 related_skills: [social-media-slideshow-video, xurl]
+origin: unknown
+source_license: see upstream
 ---
 
 # Social Media Account Audit

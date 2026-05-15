@@ -4,6 +4,7 @@ description: Interview the user relentlessly about a plan or design until reachi
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Grill Me

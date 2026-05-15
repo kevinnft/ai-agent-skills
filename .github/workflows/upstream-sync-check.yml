@@ -1,0 +1,88 @@
+name: upstream-sync-check
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  diff-vendored-vs-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Compute upstream drift
+        id: drift
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/upstream
+          declare -A SOURCES=(
+            ["addyosmani"]="addyosmani/agent-skills"
+            ["mattpocock"]="mattpocock/skills"
+            ["superpowers"]="obra/superpowers"
+          )
+          report=""
+          for dir in "${!SOURCES[@]}"; do
+            slug="${SOURCES[$dir]}"
+            sha=$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" \
+              "https://api.github.com/repos/${slug}/commits/HEAD" | jq -r '.sha[0:7]' || echo "?")
+            count=$(find "skills/${dir}" -name "SKILL.md" 2>/dev/null | wc -l | tr -d ' ')
+            report+="| \`skills/${dir}/\` | [\`${slug}\`](https://github.com/${slug}) | \`${sha}\` | ${count} skills |"$'\n'
+          done
+          {
+            echo "report<<DRIFT_EOF"
+            echo "$report"
+            echo "DRIFT_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update tracking issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPORT: ${{ steps.drift.outputs.report }}
+        run: |
+          set -euo pipefail
+          title="upstream-sync: weekly vendored-vs-source check"
+          body=$(cat <<MD
+          Automated weekly check of vendored skill copies vs. upstream source repos.
+
+          ## Vendored snapshots vs upstream HEAD
+          | Vendored path | Upstream | Upstream HEAD | Local count |
+          |---|---|---|---|
+          ${REPORT}
+
+          ## What to do
+          - If a vendored skill has materially diverged from upstream, open a sync PR.
+          - If you keep this drift on purpose, document it in the skill's frontmatter (\`derived_from:\`).
+          - If a category is fully in sync and you trust upstream's pace, consider migrating it to a git submodule (see \`docs/sync.md\`).
+
+          *This issue is auto-generated. Re-run via the Actions tab → upstream-sync-check → Run workflow.*
+          MD
+          )
+
+          existing=$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/issues?state=open&labels=upstream-sync" \
+            | jq -r --arg t "$title" '.[] | select(.title==$t) | .number' | head -1 || true)
+
+          if [ -n "${existing}" ]; then
+            curl -fsSL -X PATCH \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Content-Type: application/json" \
+              "https://api.github.com/repos/${{ github.repository }}/issues/${existing}" \
+              -d "$(jq -n --arg b "$body" '{body:$b}')" > /dev/null
+            echo "Updated existing issue #${existing}"
+          else
+            curl -fsSL -X POST \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Content-Type: application/json" \
+              "https://api.github.com/repos/${{ github.repository }}/issues" \
+              -d "$(jq -n --arg t "$title" --arg b "$body" '{title:$t, body:$b, labels:["upstream-sync","automated"]}')" > /dev/null
+            echo "Opened new issue"
+          fi

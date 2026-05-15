@@ -4,6 +4,7 @@ description: Simplifies code for clarity. Use when refactoring code for clarity 
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Code Simplification

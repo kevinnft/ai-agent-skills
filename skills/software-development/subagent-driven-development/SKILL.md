@@ -8,6 +8,10 @@ metadata:
   hermes:
     tags: [delegation, subagent, implementation, workflow, parallel]
     related_skills: [writing-plans, requesting-code-review, test-driven-development]
+origin: adapted
+source_repo: obra/superpowers
+source_url: https://github.com/obra/superpowers
+source_license: MIT
 ---
 
 # Subagent-Driven Development

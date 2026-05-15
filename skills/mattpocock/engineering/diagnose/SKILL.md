@@ -4,6 +4,7 @@ description: Disciplined diagnosis loop for hard bugs and performance regression
 source_repo: "mattpocock/skills"
 source_url: "https://github.com/mattpocock/skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Diagnose

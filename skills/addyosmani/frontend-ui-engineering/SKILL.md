@@ -4,6 +4,7 @@ description: Builds production-quality UIs. Use when building or modifying user-
 source_repo: "addyosmani/agent-skills"
 source_url: "https://github.com/addyosmani/agent-skills"
 source_license: "MIT"
+origin: aggregated
 ---
 
 # Frontend UI Engineering
