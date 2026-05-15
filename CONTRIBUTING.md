@@ -4,27 +4,41 @@ Thank you for your interest in contributing! This document provides guidelines f
 
 ## 🎯 What We Accept
 
-### ✅ New Skills
-- Production-tested skills with real-world use cases
-- Clear documentation with examples
-- Proper YAML frontmatter
-- No external dependencies (pure markdown)
+Two kinds of contributions, with different rules:
+
+### ✅ Original skills (authored for this repo)
+- Author your own `SKILL.md` from scratch
+- **Required frontmatter:** `name`, `description`, `author` (your handle)
+- Clear documentation with concrete examples
+- No external dependencies (pure markdown + linked scripts)
+- Tested by you in at least one real session — describe how in the PR
+
+### ✅ Aggregated skills (pulled from another public repo)
+- **Required frontmatter:** `name`, `description`, `source_repo`, `source_url`, `source_license`
+- Upstream license must permit redistribution (MIT/Apache-2.0/BSD/CC-BY/etc.)
+- Do not modify upstream skill content beyond frontmatter additions
+- If you make substantive edits, mark with `derived_from:` instead of `source_url:`
+- Link directly to the upstream commit hash if the upstream repo is fast-moving
 
 ### ✅ Improvements
 - Bug fixes in existing skills
 - Better examples and documentation
 - Performance improvements
 - Typo fixes
+- Adding missing source attribution to existing aggregated skills
 
 ### ✅ Translations
 - Translate skills to other languages
 - Maintain same structure and quality
+- Add `translation_of:` frontmatter pointing to the original
 
-### ❌ What We Don't Accept
-- Skills with external dependencies
-- Untested or theoretical skills
-- Duplicate skills (check existing first)
+### ❌ What we don't accept
+- Skills with external runtime dependencies that aren't documented
+- Pure theoretical skills with no runnable example
+- Duplicate skills (check existing categories first — `find skills -name SKILL.md | xargs grep -l "your-keyword"`)
 - Skills without proper documentation
+- **Aggregated content without `source_url:` attribution**
+- Skills that misrepresent authorship of upstream work
 
 ## 📝 Skill Format
 
@@ -63,17 +77,26 @@ Tips and recommendations
 Links to documentation
 ```
 
-### Required Fields
+### Required fields (original skills)
 
 - `name`: lowercase, hyphens/underscores only
 - `description`: one-line, clear trigger phrases
+- `author`: your GitHub handle (or other contact)
 - `tags`: relevant keywords
 
-### Optional Fields
+### Required fields (aggregated skills)
 
-- `author`: skill author
+- `name`, `description`, `tags` (as above)
+- `source_repo`: e.g. `"addyosmani/agent-skills"`
+- `source_url`: the upstream URL (repo or specific path)
+- `source_license`: SPDX identifier (`MIT`, `Apache-2.0`, etc.)
+
+### Optional fields
+
 - `version`: skill version
-- `requires`: dependencies (if any)
+- `requires`: dependencies (if any) — be specific about what
+- `derived_from`: if you substantively edited an upstream skill
+- `translation_of`: for translations
 
 ## 🔧 Development Workflow
 
@@ -144,7 +167,8 @@ Before submitting, ensure:
 - [ ] Has proper markdown formatting
 - [ ] No broken links
 - [ ] Passes validation script
-- [ ] Tested in real use case
+- [ ] **For original skills:** `author:` field set, tested in at least one real session
+- [ ] **For aggregated skills:** `source_repo:`, `source_url:`, `source_license:` fields set; upstream license permits redistribution
 
 ## 📚 Skill Categories
 

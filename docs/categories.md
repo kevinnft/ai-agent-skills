@@ -6,10 +6,10 @@ Complete list of all 31 skill categories with descriptions and skill counts.
 
 ## 📊 Summary
 
-- **Total Skills:** 189
-- **Populated Categories:** 24 (31 skill directories total)
-- **Largest Category:** mattpocock (28 skills)
-- **Combined Stars:** 424K+ from source repos
+- **Total Skills:** 189 (verified via `find skills -name SKILL.md` after `git submodule update --init`)
+- **Populated Categories:** 26 (counted from top-level dirs in `skills/`)
+- **Largest Category:** `mattpocock` (28 skills)
+- **Skills with explicit `source_url:` attribution:** 64 (`addyosmani/`, `mattpocock/`, `superpowers/`); rolling out to other categories
 
 ---
 
@@ -335,16 +335,18 @@ Other:        79 skills (40%)
 
 ## 🔗 Source Attribution
 
-### Industry Experts
-- **obra/superpowers** (186K ⭐) — Jesse Vincent
-- **andrej-karpathy-skills** (125K ⭐) — Andrej Karpathy
-- **mattpocock/skills** (73K ⭐) — Matt Pocock
-- **addyosmani/agent-skills** (39K ⭐) — Addy Osmani
+### Aggregated upstream sources
+- **obra/superpowers** ([repo](https://github.com/obra/superpowers)) — MIT — used in `skills/superpowers/`
+- **forrestchang/andrej-karpathy-skills** ([repo](https://github.com/forrestchang/andrej-karpathy-skills)) — MIT — referenced in inline guidance
+- **mattpocock/skills** ([repo](https://github.com/mattpocock/skills)) — MIT — used in `skills/mattpocock/`
+- **addyosmani/agent-skills** ([repo](https://github.com/addyosmani/agent-skills)) — MIT — used in `skills/addyosmani/`
+- **kepano/obsidian-skills** ([repo](https://github.com/kepano/obsidian-skills)) — git submodule — used in `skills/obsidian-skills/`
+- **handsomestWei/patent-disclosure-skill** ([repo](https://github.com/handsomestWei/patent-disclosure-skill)) — git submodule — used in `skills/patent-disclosure-skill/`
 
-### Combined Impact
-- **424K+ stars** across source repos
-- **4 industry experts** contributing knowledge
-- **Production-tested** in real projects
+### Disclaimer
+The upstream authors named above are **not affiliated** with this repository, have not endorsed it, and do not maintain it. This repository aggregates their publicly published content under their respective licenses. See the root [`NOTICE`](../NOTICE) for the full attribution table.
+
+If you are an upstream author and would like a skill removed, renamed, or attributed differently, please open an issue.
 
 ---
 
