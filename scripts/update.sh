@@ -21,7 +21,7 @@ NC='\033[0m'
 print_msg() {
     local color=$1
     shift
-    echo -e "${color}$@${NC}"
+    echo -e "${color}$*${NC}"
 }
 
 # Print header
@@ -44,7 +44,8 @@ backup_skills() {
     mkdir -p "$BACKUP_DIR"
     cp -r "$TARGET_DIR"/* "$BACKUP_DIR/" 2>/dev/null || true
     
-    local backup_size=$(du -sh "$BACKUP_DIR" | awk '{print $1}')
+    local backup_size
+    backup_size=$(du -sh "$BACKUP_DIR" | awk '{print $1}')
     print_msg "$GREEN" "  ✓ Backup created: $BACKUP_DIR ($backup_size)"
 }
 
@@ -68,9 +69,11 @@ pull_latest() {
     fi
     
     # Pull latest
-    local current_commit=$(git rev-parse --short HEAD)
+    local current_commit
+    current_commit=$(git rev-parse --short HEAD)
     git pull origin main 2>&1 | tail -3
-    local new_commit=$(git rev-parse --short HEAD)
+    local new_commit
+    new_commit=$(git rev-parse --short HEAD)
     
     if [ "$current_commit" = "$new_commit" ]; then
         print_msg "$GREEN" "  ✓ Already up to date ($current_commit)"
@@ -111,7 +114,8 @@ reinstall_skills() {
 verify_installation() {
     print_msg "$BLUE" "✅ Verifying installation..."
     
-    local skill_count=$(find "$TARGET_DIR" -name "SKILL.md" -type f 2>/dev/null | wc -l)
+    local skill_count
+    skill_count=$(find "$TARGET_DIR" -name "SKILL.md" -type f 2>/dev/null | wc -l)
     
     if [ $skill_count -eq 0 ]; then
         print_msg "$RED" "  ✗ No skills found after update"

@@ -40,7 +40,7 @@ DUPLICATE_SKILLS=(
 print_msg() {
     local color=$1
     shift
-    echo -e "${color}$@${NC}"
+    echo -e "${color}$*${NC}"
 }
 
 # Print usage
@@ -80,8 +80,10 @@ list_categories() {
     local count=0
     for dir in "$SKILLS_DIR"/*; do
         if [ -d "$dir" ]; then
-            local cat_name=$(basename "$dir")
-            local skill_count=$(find "$dir" -name "SKILL.md" -type f | wc -l)
+            local cat_name
+            cat_name=$(basename "$dir")
+            local skill_count
+            skill_count=$(find "$dir" -name "SKILL.md" -type f | wc -l)
             printf "  %-30s %3d skills\n" "$cat_name" "$skill_count"
             count=$((count + 1))
         fi
@@ -177,7 +179,8 @@ install_category() {
     mkdir -p "$target_cat_dir"
     
     # Count skills
-    local skill_count=$(find "$source_dir" -name "SKILL.md" -type f | wc -l)
+    local skill_count
+    skill_count=$(find "$source_dir" -name "SKILL.md" -type f | wc -l)
     
     if [ $skill_count -eq 0 ]; then
         print_msg "$YELLOW" "  ⚠  No skills found in category"
@@ -248,10 +251,12 @@ install_all() {
     
     for dir in "$SKILLS_DIR"/*; do
         if [ -d "$dir" ]; then
-            local cat_name=$(basename "$dir")
-            
+            local cat_name
+            cat_name=$(basename "$dir")
+
             if install_category "$cat_name"; then
-                local skill_count=$(find "$dir" -name "SKILL.md" -type f | wc -l)
+                local skill_count
+                skill_count=$(find "$dir" -name "SKILL.md" -type f | wc -l)
                 ((total_skills += skill_count))
                 ((total_categories++))
             else
