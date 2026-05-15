@@ -12,8 +12,10 @@ metadata:
     tags: [twitter, x, social-media, xurl, official-api]
     homepage: https://github.com/xdevplatform/xurl
     upstream_skill: https://github.com/openclaw/openclaw/blob/main/skills/xurl/SKILL.md
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/social-media/xurl
 ---
 
 # xurl — X (Twitter) API via the Official CLI

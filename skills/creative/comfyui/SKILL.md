@@ -25,8 +25,10 @@ metadata:
       - video-generation
     related_skills: [stable-diffusion-image-generation, image_gen]
     category: creative
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/creative/comfyui
 ---
 
 # ComfyUI

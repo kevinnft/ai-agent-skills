@@ -8,8 +8,10 @@ metadata:
   hermes:
     tags: [TouchDesigner, MCP, twozero, creative-coding, real-time-visuals, generative-art, audio-reactive, VJ, installation, GLSL]
     related_skills: [native-mcp, ascii-video, manim-video, hermes-video]
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/creative/touchdesigner-mcp
 ---
 
 # TouchDesigner Integration (twozero MCP)

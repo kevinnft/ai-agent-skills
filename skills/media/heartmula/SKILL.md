@@ -6,8 +6,10 @@ metadata:
   hermes:
     tags: [music, audio, generation, ai, heartmula, heartcodec, lyrics, songs]
     related_skills: [audiocraft]
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/media/heartmula
 ---
 
 # HeartMuLa - Open-Source Music Generation

@@ -6,8 +6,10 @@ metadata:
   hermes:
     tags: [kanban, multi-agent, orchestration, routing]
     related_skills: [kanban-worker]
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/devops/kanban-orchestrator
 ---
 
 # Kanban Orchestrator — Decomposition Playbook
