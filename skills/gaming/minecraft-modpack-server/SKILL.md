@@ -2,8 +2,10 @@
 name: minecraft-modpack-server
 description: "Host modded Minecraft servers (CurseForge, Modrinth)."
 tags: [minecraft, gaming, server, neoforge, forge, modpack]
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/gaming/minecraft-modpack-server
 ---
 
 # Minecraft Modpack Server Setup

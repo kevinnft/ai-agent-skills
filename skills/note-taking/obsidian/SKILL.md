@@ -1,8 +1,10 @@
 ---
 name: obsidian
 description: Read, search, create, and edit notes in the Obsidian vault.
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/note-taking/obsidian
 ---
 
 # Obsidian Vault

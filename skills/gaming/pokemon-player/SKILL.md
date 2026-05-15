@@ -2,8 +2,10 @@
 name: pokemon-player
 description: "Play Pokemon via headless emulator + RAM reads."
 tags: [gaming, pokemon, emulator, pyboy, gameplay, gameboy]
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/gaming/pokemon-player
 ---
 # Pokemon Player
 

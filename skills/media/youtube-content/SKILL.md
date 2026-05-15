@@ -1,8 +1,10 @@
 ---
 name: youtube-content
 description: "YouTube transcripts to summaries, threads, blogs."
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/media/youtube-content
 ---
 
 # YouTube Content Tool

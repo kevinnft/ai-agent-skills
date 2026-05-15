@@ -163,22 +163,24 @@ Every `SKILL.md` declares where it came from. Run `grep -h "^origin:" skills/**/
 
 ```text
        ┌─────────────────────────────────────────────────────────────┐
-   64  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                  │  aggregated
+   89  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                        │  aggregated
    61  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                    │  original
-   53  │ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                                       │  unknown ⚠
+   22  │ ▓▓▓▓▓▓▓▓▓                                                   │  unknown ⚠
    11  │ ▓▓▓▓                                                        │  adapted
        └─────────────────────────────────────────────────────────────┘
-                                                          189 total
+                                                          189 total*
 ```
+
+<sub>*189 SKILL.md files total. 6 are inside the obsidian-skills / patent-disclosure-skill git submodules — those keep upstream-owned frontmatter and are excluded from the `origin:` provenance contract.</sub>
 
 | `origin:` | Count | Meaning |
 |---|--:|---|
-| 🟦 `aggregated` | **64** | Top-level frontmatter copied from a named upstream repo with full attribution (`addyosmani/`, `mattpocock/`, `superpowers/`) |
+| 🟦 `aggregated` | **89** | Top-level frontmatter copied from a named upstream repo with full attribution (`addyosmani/`, `mattpocock/`, `superpowers/`, `NousResearch/hermes-agent`, `JimLiu/baoyu-skills`) |
 | 🟩 `original` | **61** | Authored for this repo's ecosystem (Hermes / Nous Research / Orchestra / community) |
 | 🟧 `adapted` | **11** | Materially edited from a named upstream — see `source_url` |
-| 🟥 `unknown` | **53** | Author present in frontmatter but upstream repo not yet identified — **help wanted!** |
+| 🟥 `unknown` | **22** | Author present in frontmatter but upstream repo not yet identified — **help wanted!** |
 
-> **🤝 Help wanted on `unknown`-origin skills.** If you recognize a skill in [`docs/categories.md`](./docs/categories.md) and know its upstream, open a PR adding `source_repo` / `source_url` / `source_license` to the frontmatter. Even one is appreciated.
+> **🤝 Help wanted on the remaining `unknown`-origin skills.** Down from 53 in v1.6.0 — community-traceable upstream identified for 31 skills (25 from `NousResearch/hermes-agent`, 6 from named author repos). If you recognize one of the [remaining 22](./docs/categories.md), open a PR adding `source_repo` / `source_url` / `source_license` to the frontmatter.
 
 ---
 
@@ -221,8 +223,8 @@ All tooling MIT-licensed under [`LICENSE`](./LICENSE).
 ```text
   189  SKILL.md files                            ✅ verified each release
    26  populated categories                      ✅
-  136  skills with source_repo metadata          (64 aggregated + 11 adapted + 61 original-self-link)
-   53  skills awaiting upstream identification   🤝 help wanted
+  161  skills with source_repo metadata          (89 aggregated + 11 adapted + 61 original-self-link)
+   22  skills awaiting upstream identification   🤝 help wanted
     9  scripts under scripts/
     3  GitHub Actions workflows                  CI · auto-label · upstream-sync-check
    28  pytest unit tests                         scripts/release · skills-api · quality-dashboard

@@ -8,8 +8,10 @@ metadata:
   hermes:
     tags: [comic, knowledge-comic, creative, image-generation]
     homepage: https://github.com/JimLiu/baoyu-skills#baoyu-comic
-origin: unknown
+origin: aggregated
 source_license: see upstream
+source_repo: JimLiu/baoyu-skills
+source_url: https://github.com/JimLiu/baoyu-skills/tree/main/skills/creative/baoyu-comic
 ---
 
 # Knowledge Comic Creator

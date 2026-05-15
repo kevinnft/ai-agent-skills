@@ -10,8 +10,10 @@ triggers:
   - parody song
   - adapting a song
   - AI music generation
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/creative/songwriting-and-ai-music
 ---
 
 # Songwriting & AI Music Generation

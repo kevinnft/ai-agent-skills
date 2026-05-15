@@ -2,8 +2,10 @@
 name: powerpoint
 description: "Create, read, edit .pptx decks, slides, notes, templates."
 license: Proprietary. LICENSE.txt has complete terms
-origin: unknown
-source_license: see upstream
+origin: aggregated
+source_license: MIT
+source_repo: NousResearch/hermes-agent
+source_url: https://github.com/NousResearch/hermes-agent/tree/main/skills/productivity/powerpoint
 ---
 
 # Powerpoint Skill
