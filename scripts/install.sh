@@ -4,7 +4,7 @@ set +e
 # AI Agent Skills - Installation Script
 # Installs skills to Hermes Agent or other AI agents
 
-VERSION="1.7.0"
+VERSION="1.7.1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 SKILLS_DIR="$REPO_ROOT/skills"
@@ -21,6 +21,7 @@ INSTALL_ALL=true
 CATEGORY=""
 PRESET=""
 VALIDATE=false
+VALIDATE_ONLY=false
 DRY_RUN=false
 TARGET_DIR="$HOME/.hermes/skills"
 TARGET_EXPLICIT=false
@@ -69,7 +70,8 @@ Options:
     --preset NAME        Install a curated starter pack (see below)
     --list               List available categories
     --list-presets       List curated starter packs
-    --validate           Validate skills before install
+    --validate           Lint frontmatter before install (combine with install)
+    --validate-only      Lint frontmatter and exit (no files copied)
     --dry-run            Print what would be installed without copying
     --target DIR         Target directory (default: ~/.hermes/skills)
     --agent NAME         Agent type: hermes, claude, cursor, custom
@@ -156,6 +158,57 @@ resolve_preset() {
         fi
     done
     return 1
+}
+
+# Validate-only mode: lint frontmatter across the requested scope and exit.
+# Honours --category and --preset. Default scope is every category.
+run_validate_only() {
+    print_msg "$BLUE" "🔎 Validating skills (no install)..."
+    echo ""
+
+    local cats=()
+    if [ -n "$PRESET" ]; then
+        local preset_cats
+        if ! preset_cats=$(resolve_preset "$PRESET"); then
+            print_msg "$RED" "✗ Unknown preset: $PRESET"
+            exit 1
+        fi
+        IFS=',' read -ra cats <<< "$preset_cats"
+    elif [ -n "$CATEGORY" ]; then
+        cats=("$CATEGORY")
+    else
+        for dir in "$SKILLS_DIR"/*; do
+            [ -d "$dir" ] && cats+=("$(basename "$dir")")
+        done
+    fi
+
+    local total_valid=0
+    local total_invalid=0
+    for c in "${cats[@]}"; do
+        local source_dir="$SKILLS_DIR/$c"
+        if [ ! -d "$source_dir" ]; then
+            print_msg "$RED" "✗ Category not found: $c"
+            total_invalid=$((total_invalid + 1))
+            continue
+        fi
+        print_msg "$BLUE" "📋 $c"
+        while IFS= read -r skill_file; do
+            if validate_skill "$skill_file"; then
+                total_valid=$((total_valid + 1))
+            else
+                print_msg "$RED" "    in: $skill_file"
+                total_invalid=$((total_invalid + 1))
+            fi
+        done < <(find "$source_dir" -name "SKILL.md" -type f)
+    done
+
+    echo ""
+    if [ $total_invalid -gt 0 ]; then
+        print_msg "$RED" "✗ $total_invalid invalid · $total_valid valid"
+        exit 1
+    fi
+    print_msg "$GREEN" "✓ All $total_valid skills valid (no files copied)"
+    exit 0
 }
 
 # Validate skill
@@ -441,6 +494,11 @@ main() {
                 VALIDATE=true
                 shift
                 ;;
+            --validate-only)
+                VALIDATE=true
+                VALIDATE_ONLY=true
+                shift
+                ;;
             --dry-run)
                 DRY_RUN=true
                 shift
@@ -482,7 +540,42 @@ main() {
         print_msg "$RED" "✗ Skills directory not found: $SKILLS_DIR"
         exit 1
     fi
-    
+
+    # Detect missing submodule content (clone done without --recurse-submodules).
+    # We don't auto-init silently because it requires network; we surface it
+    # so the user knows their install will be 185 instead of 191.
+    if [ -f "$REPO_ROOT/.gitmodules" ] && command -v git >/dev/null 2>&1; then
+        local empty_subs=0
+        while IFS= read -r path; do
+            [ -z "$path" ] && continue
+            if [ -d "$REPO_ROOT/$path" ] && [ -z "$(ls -A "$REPO_ROOT/$path" 2>/dev/null)" ]; then
+                empty_subs=$((empty_subs + 1))
+            fi
+        done < <(git -C "$REPO_ROOT" config --file .gitmodules --get-regexp path 2>/dev/null | awk '{print $2}')
+        if [ "$empty_subs" -gt 0 ]; then
+            print_msg "$YELLOW" "⚠  $empty_subs submodule(s) not initialized — 6 skills will be missing."
+            print_msg "$YELLOW" "   Run: git submodule update --init --recursive"
+            print_msg "$YELLOW" "   (or re-clone with: git clone --recurse-submodules)"
+            echo ""
+        fi
+    fi
+
+    # --validate-only short-circuits: lint and exit, never touch the FS.
+    if [ "$VALIDATE_ONLY" = true ]; then
+        run_validate_only
+    fi
+
+    # Backward-compat guard: bare `--validate` (no install flags) used to
+    # silently install everything. Warn loudly so users who only meant to
+    # lint don't get surprise filesystem writes. Use --validate-only to lint
+    # without installing.
+    if [ "$VALIDATE" = true ] && [ "$INSTALL_ALL" = true ] && [ -z "$CATEGORY" ] && [ -z "$PRESET" ]; then
+        print_msg "$YELLOW" "⚠  --validate without --category/--preset/--all will install ALL"
+        print_msg "$YELLOW" "   skills to $TARGET_DIR after linting."
+        print_msg "$YELLOW" "   If you only want to lint, use --validate-only instead."
+        echo ""
+    fi
+
     # Create target directory (skipped in dry-run to keep filesystem untouched).
     if [ "$DRY_RUN" = false ]; then
         mkdir -p "$TARGET_DIR"

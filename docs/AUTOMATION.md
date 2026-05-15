@@ -1,6 +1,6 @@
 # 🛠️ Automation Tools
 
-Production-ready automation tools for repository management, quality monitoring, and skills distribution.
+Internal tooling for repository management, quality monitoring, and skills distribution. Heuristic only — see individual tool docs for limits.
 
 ## 🏷️ Auto-Label Bot
 
@@ -75,11 +75,11 @@ Real-time repository health monitoring with quality scores and automated alerts.
 
 **Example Output:**
 ```
-Overall Quality Score: 92/100
+Overall Quality Score: 92/100   # heuristic — see scripts/quality-dashboard.py
 
 📈 Repository Metrics:
-  ⭐ Stars: 45
-  🍴 Forks: 12
+  ⭐ Stars: 5
+  🍴 Forks: 0
   👥 Contributors: 5
   📝 Commits (7d): 12
 
@@ -156,8 +156,7 @@ curl -X POST http://localhost:5555/api/skills/web-scraping/install
 
 **Total Code:** ~48KB Python (1,550+ lines)  
 **Total Docs:** ~22KB Markdown  
-**Quality:** Production-ready, zero bugs  
-**Maintenance:** Zero
+**Maintenance:** Low (no external services)
 
 ---
 
@@ -205,13 +204,16 @@ chmod +x scripts/skills-api.py
 
 ---
 
-## 🎉 Success!
+## Summary
 
-All automation tools are production-ready and working perfectly!
+The four tools are wired into CI and the release flow.
 
 **Built:** 4 tools  
 **Code:** 48KB Python  
 **Docs:** 22KB Markdown  
-**Quality:** 10/10  
-**Cost:** $0  
-**Maintenance:** Zero
+**Cost:** $0 hosted (runs in GitHub Actions)  
+**Maintenance:** Low
+
+> Note: any "quality score" emitted by these tools is a self-computed
+> heuristic from `scripts/quality-dashboard.py` (this repo's own script).
+> It is not third-party validation.

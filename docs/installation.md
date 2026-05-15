@@ -341,4 +341,4 @@ MIT License - see [LICENSE](../LICENSE)
 
 **Installation complete!** 🎉
 
-Start using your 191 production-ready skills now!
+Start using your 191 skills now! See [`docs/categories.md`](./categories.md) for the full catalog.
