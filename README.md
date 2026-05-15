@@ -225,7 +225,7 @@ All tooling MIT-licensed under [`LICENSE`](./LICENSE).
    53  skills awaiting upstream identification   🤝 help wanted
     9  scripts under scripts/
     3  GitHub Actions workflows                  CI · auto-label · upstream-sync-check
-   22  pytest unit tests                         scripts/release · skills-api · quality-dashboard
+   28  pytest unit tests                         scripts/release · skills-api · quality-dashboard
     2  git submodules                            obsidian-skills · patent-disclosure-skill
 ```
 

@@ -1,0 +1,15 @@
+# Dependencies for the helper scripts under scripts/.
+# Install with: pip install -r scripts/requirements.txt
+
+# quality-dashboard.py
+PyGithub>=2.1.1
+
+# skills-api.py
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# release.py (Telegram notifications)
+requests>=2.31.0
+
+# CI / validation helpers
+PyYAML>=6.0

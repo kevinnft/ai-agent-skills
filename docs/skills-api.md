@@ -41,7 +41,7 @@ chmod +x scripts/skills-api.py
 ### Start Server
 
 ```bash
-# Default (localhost:5000)
+# Default (localhost:5555)
 ./scripts/skills-api.py
 
 # Custom port
@@ -63,8 +63,8 @@ chmod +x scripts/skills-api.py
 
 🚀 Starting server...
 📍 Host: 127.0.0.1
-🔌 Port: 5000
-🌐 URL: http://127.0.0.1:5000
+🔌 Port: 5555
+🌐 URL: http://127.0.0.1:5555
 
 📚 API Endpoints:
    GET  /health                      - Health check
@@ -248,7 +248,7 @@ Create a simple HTML frontend:
     <div id="skills"></div>
 
     <script>
-        const API_URL = 'http://localhost:5000';
+        const API_URL = 'http://localhost:5555';
 
         async function loadSkills(query = '') {
             const url = query 
@@ -351,14 +351,14 @@ server {
 ### Example 1: List Skills
 
 ```bash
-$ curl http://localhost:5000/api/skills | jq '.total'
+$ curl http://localhost:5555/api/skills | jq '.total'
 189
 ```
 
 ### Example 2: Search
 
 ```bash
-$ curl "http://localhost:5000/api/skills/search?q=web" | jq '.results[].name'
+$ curl "http://localhost:5555/api/skills/search?q=web" | jq '.results[].name'
 "web-scraping"
 "web-automation"
 "webhook-subscriptions"
@@ -367,7 +367,7 @@ $ curl "http://localhost:5000/api/skills/search?q=web" | jq '.results[].name'
 ### Example 3: Install
 
 ```bash
-$ curl -X POST http://localhost:5000/api/skills/web-scraping/install
+$ curl -X POST http://localhost:5555/api/skills/web-scraping/install
 {
   "status": "installed",
   "skill": "research/web-scraping",
@@ -378,7 +378,7 @@ $ curl -X POST http://localhost:5000/api/skills/web-scraping/install
 ### Example 4: Stats
 
 ```bash
-$ curl http://localhost:5000/api/stats | jq '.popular_skills[0]'
+$ curl http://localhost:5555/api/stats | jq '.popular_skills[0]'
 {
   "name": "web-scraping",
   "installs": 45

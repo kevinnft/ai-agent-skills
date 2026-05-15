@@ -97,23 +97,27 @@ class QualityDashboard:
         """Get repository metrics"""
         # Get commits in last week (timezone-aware)
         from datetime import timezone
-        week_ago = datetime.now(timezone.utc) - timedelta(days=7)
-        month_ago = datetime.now(timezone.utc) - timedelta(days=30)
-        
+        now = datetime.now(timezone.utc)
+        week_ago = now - timedelta(days=7)
+        month_ago = now - timedelta(days=30)
+
         commits = list(self.repo.get_commits(since=month_ago))
         commits_this_week = len([c for c in commits if c.commit.author.date > week_ago])
         commits_this_month = len(commits)
-        
+
         # Get last commit
         last_commit = self.repo.get_commits()[0]
-        last_commit_date = last_commit.commit.author.date.strftime('%Y-%m-%d %H:%M')
-        
+        last_commit_dt = last_commit.commit.author.date
+        last_commit_date = last_commit_dt.strftime('%Y-%m-%d %H:%M')
+        # Stash days-since for the activity score so it isn't dominated by truthiness.
+        self._days_since_last_commit = (now - last_commit_dt).days
+
         # Get contributors
         contributors = self.repo.get_contributors().totalCount
-        
+
         # Get open PRs
         open_prs = self.repo.get_pulls(state='open').totalCount
-        
+
         return Metrics(
             stars=self.repo.stargazers_count,
             forks=self.repo.forks_count,
@@ -292,11 +296,20 @@ class QualityDashboard:
         health_total = len(health_checks)
         health_score = int((health_passed / health_total) * 100) if health_total > 0 else 0
         
-        # Activity score (0-100)
+        # Activity score (0-100). Recency caps at 14 days — older commits decay.
+        days_since = getattr(self, '_days_since_last_commit', 999)
+        if days_since <= 7:
+            recency_points = 20
+        elif days_since <= 14:
+            recency_points = 10
+        elif days_since <= 30:
+            recency_points = 5
+        else:
+            recency_points = 0
         activity_score = min(100, (
             min(metrics.commits_this_week * 10, 50) +  # Max 50 points
             min(metrics.commits_this_month * 2, 30) +   # Max 30 points
-            (20 if metrics.last_commit else 0)          # 20 points if recent
+            recency_points                              # Max 20 points
         ))
         
         # Community score (0-100)

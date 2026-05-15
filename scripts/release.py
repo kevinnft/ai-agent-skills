@@ -137,8 +137,36 @@ def get_commits_since_last_tag() -> List[Dict[str, str]]:
     
     return commits
 
+_CONVENTIONAL_PREFIX = re.compile(
+    r'^(?P<type>feat|feature|fix|docs?|refactor|test|chore|perf|build|ci|style|revert)'
+    r'(?:\([^)]*\))?!?:\s*',
+    re.IGNORECASE
+)
+
+_TYPE_TO_CATEGORY = {
+    'feat': 'features',
+    'feature': 'features',
+    'fix': 'fixes',
+    'doc': 'docs',
+    'docs': 'docs',
+    'refactor': 'refactor',
+    'test': 'tests',
+    'chore': 'chore',
+    'perf': 'features',
+    'build': 'chore',
+    'ci': 'chore',
+    'style': 'chore',
+    'revert': 'other',
+}
+
+
+def _capitalize(text: str) -> str:
+    """Capitalize first character if present, otherwise return as-is."""
+    return text[:1].upper() + text[1:] if text else text
+
+
 def categorize_commits(commits: List[Dict[str, str]]) -> Dict[str, List[Dict[str, str]]]:
-    """Categorize commits by type (feat, fix, docs, etc.)"""
+    """Categorize commits by Conventional Commit type with verb-keyword fallback."""
     categories = {
         'features': [],
         'fixes': [],
@@ -148,87 +176,95 @@ def categorize_commits(commits: List[Dict[str, str]]) -> Dict[str, List[Dict[str
         'chore': [],
         'other': []
     }
-    
+
     for commit in commits:
-        msg = commit['message'].lower()
-        
-        if msg.startswith('feat:') or msg.startswith('feature:') or 'add' in msg[:20]:
-            categories['features'].append(commit)
-        elif msg.startswith('fix:') or 'fix' in msg[:20]:
-            categories['fixes'].append(commit)
-        elif msg.startswith('docs:') or 'doc' in msg[:20]:
-            categories['docs'].append(commit)
-        elif msg.startswith('refactor:') or 'refactor' in msg[:20]:
-            categories['refactor'].append(commit)
-        elif msg.startswith('test:') or 'test' in msg[:20]:
-            categories['tests'].append(commit)
-        elif msg.startswith('chore:') or 'chore' in msg[:20]:
-            categories['chore'].append(commit)
+        msg = commit.get('message', '').strip()
+        category = None
+
+        match = _CONVENTIONAL_PREFIX.match(msg)
+        if match:
+            category = _TYPE_TO_CATEGORY.get(match.group('type').lower())
         else:
-            categories['other'].append(commit)
-    
+            # Word-boundary fallback so "address" doesn't match "add" and
+            # "fix add bug" gets classified as a fix, not a feature.
+            head = msg.lower()[:40]
+            if re.search(r'\bfix(?:es|ed|ing)?\b', head):
+                category = 'fixes'
+            elif re.search(r'\b(?:add|adds|added|adding)\b', head):
+                category = 'features'
+            elif re.search(r'\bdocs?\b', head):
+                category = 'docs'
+            elif re.search(r'\brefactor(?:s|ed|ing)?\b', head):
+                category = 'refactor'
+            elif re.search(r'\btests?\b', head):
+                category = 'tests'
+            elif re.search(r'\bchore\b', head):
+                category = 'chore'
+
+        categories[category or 'other'].append(commit)
+
     return categories
 
 def generate_changelog(version: str, commits: List[Dict[str, str]]) -> str:
     """Generate changelog from commits"""
     categories = categorize_commits(commits)
-    
+
     changelog = f"## [{version}] - {datetime.now().strftime('%Y-%m-%d')}\n\n"
-    
+
     # Features
     if categories['features']:
         changelog += "### ✨ New Features\n\n"
         for commit in categories['features']:
-            msg = commit['message'].replace('feat:', '').replace('feature:', '').strip()
-            msg = msg[0].upper() + msg[1:]  # Capitalize first letter
+            msg = _CONVENTIONAL_PREFIX.sub('', commit['message']).strip()
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     # Fixes
     if categories['fixes']:
         changelog += "### 🐛 Bug Fixes\n\n"
         for commit in categories['fixes']:
-            msg = commit['message'].replace('fix:', '').strip()
-            msg = msg[0].upper() + msg[1:]
+            msg = _CONVENTIONAL_PREFIX.sub('', commit['message']).strip()
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     # Documentation
     if categories['docs']:
         changelog += "### 📚 Documentation\n\n"
         for commit in categories['docs']:
-            msg = commit['message'].replace('docs:', '').strip()
-            msg = msg[0].upper() + msg[1:]
+            msg = _CONVENTIONAL_PREFIX.sub('', commit['message']).strip()
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     # Refactoring
     if categories['refactor']:
         changelog += "### ♻️ Refactoring\n\n"
         for commit in categories['refactor']:
-            msg = commit['message'].replace('refactor:', '').strip()
-            msg = msg[0].upper() + msg[1:]
+            msg = _CONVENTIONAL_PREFIX.sub('', commit['message']).strip()
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     # Tests
     if categories['tests']:
         changelog += "### 🧪 Tests\n\n"
         for commit in categories['tests']:
-            msg = commit['message'].replace('test:', '').strip()
-            msg = msg[0].upper() + msg[1:]
+            msg = _CONVENTIONAL_PREFIX.sub('', commit['message']).strip()
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     # Other
     if categories['other']:
         changelog += "### 🔧 Other Changes\n\n"
         for commit in categories['other']:
             msg = commit['message'].strip()
-            msg = msg[0].upper() + msg[1:]
+            msg = _capitalize(msg)
             changelog += f"- {msg} ({commit['hash']})\n"
         changelog += "\n"
-    
+
     return changelog
 
 def update_changelog_file(new_content: str, changelog_path: Path):

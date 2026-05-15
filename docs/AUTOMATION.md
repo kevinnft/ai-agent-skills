@@ -132,13 +132,13 @@ GET  /api/stats               - Usage statistics
 **Example:**
 ```bash
 # List skills
-curl http://localhost:5000/api/skills
+curl http://localhost:5555/api/skills
 
 # Search
-curl "http://localhost:5000/api/skills/search?q=web"
+curl "http://localhost:5555/api/skills/search?q=web"
 
 # Install
-curl -X POST http://localhost:5000/api/skills/web-scraping/install
+curl -X POST http://localhost:5555/api/skills/web-scraping/install
 ```
 
 **Documentation:** [docs/skills-api.md](docs/skills-api.md)

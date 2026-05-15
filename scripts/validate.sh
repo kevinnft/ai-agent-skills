@@ -1,5 +1,7 @@
 #!/bin/bash
-set +e
+# Use a defensive mode that still lets the validator continue past
+# individual skill failures so we can report all issues in one pass.
+set -uo pipefail
 
 # AI Agent Skills - Validation Script
 # Validates all skills for correctness
@@ -26,7 +28,7 @@ WARNINGS=0
 print_msg() {
     local color=$1
     shift
-    echo -e "${color}$@${NC}"
+    echo -e "${color}$*${NC}"
 }
 
 # Validate YAML frontmatter
@@ -62,7 +64,8 @@ validate_frontmatter() {
     fi
     
     # Check name format (lowercase, hyphens/underscores only)
-    local name=$(echo "$frontmatter" | grep "^name:" | sed 's/name: *//' | tr -d '"' | tr -d "'")
+    local name
+    name=$(echo "$frontmatter" | grep "^name:" | sed 's/name: *//' | tr -d '"' | tr -d "'")
     if [[ ! "$name" =~ ^[a-z0-9_-]+$ ]]; then
         print_msg "$YELLOW" "    ⚠  Name should be lowercase with hyphens/underscores: $name"
         ((WARNINGS++))
@@ -83,7 +86,8 @@ validate_markdown() {
     fi
     
     # Check has content after frontmatter
-    local content_lines=$(sed -n '/^---$/,/^---$/!p' "$file" | grep -v "^$" | wc -l)
+    local content_lines
+    content_lines=$(sed -n '/^---$/,/^---$/!p' "$file" | grep -v "^$" | wc -l)
     if [ $content_lines -lt 5 ]; then
         print_msg "$YELLOW" "    ⚠  Very short content ($content_lines lines)"
         ((WARNINGS++))
@@ -101,7 +105,8 @@ validate_markdown() {
 # Validate skill file
 validate_skill() {
     local skill_file=$1
-    local skill_name=$(basename "$(dirname "$skill_file")")
+    local skill_name
+    skill_name=$(basename "$(dirname "$skill_file")")
     
     print_msg "$BLUE" "  Validating: $skill_name"
     
@@ -189,7 +194,8 @@ main() {
     # Validate each category
     for dir in "$SKILLS_DIR"/*; do
         if [ -d "$dir" ]; then
-            local cat_name=$(basename "$dir")
+            local cat_name
+            cat_name=$(basename "$dir")
             validate_category "$cat_name"
         fi
     done
