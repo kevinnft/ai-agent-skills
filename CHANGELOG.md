@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2026-05-15
+
+### Changed
+- **31 skills moved from `origin: unknown` to `origin: aggregated`** with verified upstream pointers — distribution shifts from 64/61/11/53 (1.6.1) to **89/61/11/22**.
+  - **23 skills traced to `NousResearch/hermes-agent` (MIT)** via GitHub API contents lookup against `https://github.com/NousResearch/hermes-agent/tree/main/skills/<path>` (HTTP 200 confirmed for each):
+    - `creative/`: ascii-art, ascii-video, comfyui, creative-ideation, manim-video, p5js, pixel-art, songwriting-and-ai-music, touchdesigner-mcp, claude-design
+    - `devops/`: kanban-orchestrator, kanban-worker, webhook-subscriptions
+    - `gaming/`: minecraft-modpack-server, pokemon-player
+    - `media/`: heartmula, youtube-content
+    - `productivity/`: maps, powerpoint
+    - `note-taking/obsidian`, `social-media/xurl`, `yuanbao`, `dogfood`
+  - **2 skills traced to `JimLiu/baoyu-skills`** (canonical author of the baoyu-* family):
+    - `creative/baoyu-comic`, `creative/baoyu-infographic`
+- **README provenance bar chart + stats card** refreshed to reflect the new counts (89 aggregated / 61 original / 11 adapted / 22 unknown).
+
+### Added
+- **`scripts/backfill/backfill_origins_v1.6.2.py`** — idempotent audit-trail script documenting the mapping decisions. Re-running yields zero changes.
+
+### Why patch bump (1.6.1 → 1.6.2)
+- Pure metadata refinement: no skill content edited, no public CLI surface changed, no behavioral change to install / validate / quality-dashboard. Upstream attribution is now strictly more accurate than before.
+
 ## [1.6.1] - 2026-05-15
 
 ### Fixed
