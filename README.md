@@ -17,6 +17,20 @@
 </p>
 
 <p>
+  <a href="https://github.com/kevinnft/ai-agent-skills/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/kevinnft/ai-agent-skills?style=flat-square&color=FFD93D&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/network/members"><img alt="Forks" src="https://img.shields.io/github/forks/kevinnft/ai-agent-skills?style=flat-square&color=B5EAD7&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/release/kevinnft/ai-agent-skills?style=flat-square&color=7AB8FF&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/kevinnft/ai-agent-skills?style=flat-square&color=C7B6FF&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/issues"><img alt="Issues" src="https://img.shields.io/github/issues/kevinnft/ai-agent-skills?style=flat-square&color=FFB3BA&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills"><img alt="Repo size" src="https://img.shields.io/github/repo-size/kevinnft/ai-agent-skills?style=flat-square&color=A8E6CF&labelColor=2D3748" /></a>
+  <a href="https://kevinnft.github.io/ai-agent-skills/"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fkevinnft.github.io%2Fai-agent-skills%2F&style=flat-square&labelColor=2D3748&color=B5EAD7&label=catalog" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/kevinnft/ai-agent-skills?style=flat-square&color=FFD93D&labelColor=2D3748" /></a>
+  <a href="https://github.com/kevinnft/ai-agent-skills/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/kevinnft/ai-agent-skills/total?style=flat-square&color=7AB8FF&labelColor=2D3748" /></a>
+  <img alt="Python 3.7+" src="https://img.shields.io/badge/python-3.7%2B-A8E6CF?style=flat-square&labelColor=2D3748" />
+  <a href="https://securityscorecards.dev/viewer/?uri=github.com/kevinnft/ai-agent-skills"><img alt="OpenSSF Scorecard" src="https://img.shields.io/ossf-scorecard/github.com/kevinnft/ai-agent-skills?style=flat-square&labelColor=2D3748&color=B5EAD7&label=openssf" /></a>
+</p>
+
+<p>
   <a href="#-quick-start"><b>Quick start</b></a> ·
   <a href="#-categories">Categories</a> ·
   <a href="#-provenance">Provenance</a> ·
