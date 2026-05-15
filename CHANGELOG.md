@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] - 2026-05-15
+
+### Fixed
+- **`release.py` IndexError on empty commit subject** — `msg[0].upper()` crashed on commits whose subject was empty after prefix stripping (e.g. bare `feat:`). The release flow died *after* CHANGELOG.md was already written. Replaced with `msg[:1].upper() + msg[1:]`.
+- **`release.py` substring miscategorization** — `'add' in msg[:20]` matched `address` (so `"address security issue"` landed in features, not fixes). Replaced with a Conventional Commits regex + word-boundary fallback. 9 regression tests added.
+- **`install.sh --target` ignored when `--agent` is also passed** — order-dependent flag handling clobbered the explicit user target. Now an explicit `--target` is preserved across the `set_target_dir()` mapping.
+- **`update.sh` not portable on macOS** — `find -printf` is GNU-only. Replaced with a portable timestamp-name sort.
+- **`skills-api.py` returned empty when invoked outside the repo root** — `Path.cwd()` made the API position-dependent. Now derives `REPO_DIR` from `__file__`. Default port aligned with docs at `5555` (was `5000`). `SKILLS_TARGET_DIR` env override added.
+- **`quality-dashboard.py` activity score capped at +20 forever** — the "20 points if recent" branch checked truthiness of the formatted last-commit string, which is always truthy. Score now decays with days-since-last-commit (≤7d: +20, ≤14d: +10, ≤30d: +5, else 0).
+- **`validate.sh` swallowed errors** — `set +e` allowed silent failures. Switched to `set -uo pipefail` while still continuing past per-skill failures so all issues surface in one pass.
+- **Docs port drift** — `docs/skills-api.md` and `docs/AUTOMATION.md` now reference `:5555` to match the script default.
+
+### Added
+- **`scripts/check_provenance.py`** — fails the build if any non-submodule `SKILL.md` drops its `origin:` field. Wired into the CI `validate` job. Verified locally: 183/183 non-submodule skills declare a recognized origin (`original` / `aggregated` / `adapted` / `unknown`).
+- **ShellCheck step in CI** (`ludeeus/action-shellcheck`, severity warning, `skills/` excluded) — catches shell drift before it lands.
+- **`scripts/requirements.txt`** — declares Python deps used by `quality-dashboard.py`, `skills-api.py`, and `release.py`.
+- **`install.sh --prefer NAME`** — resolves the 5 documented duplicate skill names by keeping a single copy from the named category. Defaults to `superpowers/`. Verified live: each duplicate (`test-driven-development`, `systematic-debugging`, `requesting-code-review`, `subagent-driven-development`, `writing-plans`) lands exactly once.
+- **6 regression tests for `release.py`** — covering Conventional Commits scopes, breaking-change suffix, address-vs-add disambiguation, fix-keyword precedence, empty-subject crashes, and bare-prefix subjects. Test count 22 → 28.
+
+### Changed
+- **All GitHub Actions pinned to commit SHAs** with a tag comment for readability (`actions/checkout@93cb6efe… # v5`, `actions/setup-python@a26af69b… # v5`, `actions/github-script@f28e40c7… # v7`, `ludeeus/action-shellcheck@00cae500… # 2.0.0`). A compromised tag can no longer silently swap in malicious workflow code. Applied across all three workflow files.
+- **`scripts/install.sh`, `update.sh`, `validate.sh` cleaned for ShellCheck warnings** — `print_msg` switched from `$@` to `$*` (SC2145), and 13 sites of `local var=$(cmd)` split into separate declare/assign so `set -uo pipefail` actually traps subshell failures (SC2155).
+- **README pytest count corrected** — 22 → 28 to match the actual collected test count after this release's regression tests.
+
+### Why patch bump (1.6.0 → 1.6.1)
+- All changes are bug fixes or hardening of existing behavior. No new public surface area beyond the additive `--prefer` flag (which has a backward-compatible default) and the new CI step (transparent to consumers). Skill content unchanged.
+
 ## [1.6.0] - 2026-05-15
 
 ### Added
