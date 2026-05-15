@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2026-05-15
+
+Reliability + honesty pass triggered by an external review. Fixes one footgun in `install.sh` that silently performed filesystem writes, surfaces the submodule trap that hid 6 skills from clones without `--recurse-submodules`, and finishes the v1.6.0 hyperbole sweep into the `docs/` tree (README was already clean).
+
+### Fixed
+- **`install.sh --validate` no longer silently installs.** Bare `--validate` (no `--all` / `--category` / `--preset`) used to lint and then write 185 skills to `~/.hermes/skills/` because `INSTALL_ALL` defaults to `true`. Users who only wanted to lint frontmatter got a surprise `~/.hermes/skills/` populated. Now there are two distinct flags:
+  - `--validate-only` — lint frontmatter and exit, never touches the filesystem (works with `--category` and `--preset` to scope linting)
+  - `--validate` — kept for backward compat, now prints a `⚠` warning when used without an install scope and explicitly tells the user to use `--validate-only` if they only meant to lint
+- **Submodule-trap warning.** Cloning without `--recurse-submodules` left `skills/obsidian-skills/` and `skills/patent-disclosure-skill/` empty; the installer would then deliver 185 skills while every doc / badge claimed 191. The installer now detects empty submodule directories at startup and prints a `⚠` with the exact `git submodule update --init --recursive` command. The 6 missing skills are no longer silently dropped.
+
+### Changed
+- **`docs/` hyperbole sweep #2.** README's v1.6.0 cleanup didn't propagate to the `docs/` tree. Removed/qualified `production-ready`, `zero bugs`, `working perfectly` claims, and the unattributed `Quality Score: 92/100` heuristic across `docs/AUTOMATION.md`, `docs/quality-dashboard.md`, `docs/release-automation.md`, `docs/skills-api.md`, `docs/installation.md`. Quality scores still appear, now annotated as heuristics from the repo's own `scripts/quality-dashboard.py` (not third-party validation). Skill-description quotes in the auto-generated `docs/categories.md` are attribution-faithful upstream content and were left untouched.
+- **Example dashboard numbers** in docs corrected to current repo state (5 stars, 0 forks) — previous fabricated 45/12 figures predated the v1.6.0 honesty pass.
+
+### Why patch bump (1.7.0 → 1.7.1)
+- One installer bug fix, one new safety warning, doc-cleanup pass. No skill content changed, no public CLI surface removed, no SKILL.md frontmatter contract changed. Strictly safer than 1.7.0 — existing flags continue to work, new `--validate-only` is purely additive.
+
 ## [1.7.0] - 2026-05-15
 
 UX-focused release: lower the barrier to entry for first-time users, kill the misleading "stub category" count, and prove the macOS portability claims with actual CI.

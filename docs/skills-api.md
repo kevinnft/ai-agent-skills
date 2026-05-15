@@ -12,7 +12,6 @@ Lightweight REST API for browsing, searching, and installing skills.
 - ✅ RESTful API
 - ✅ CORS enabled
 - ✅ Lightweight (<50MB RAM, <10MB disk)
-- ✅ Production-ready
 
 ## 📋 Requirements
 

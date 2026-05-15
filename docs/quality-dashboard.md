@@ -8,12 +8,11 @@ Real-time monitoring of repository health, metrics, and quality scores.
 - ✅ Health checks (README, LICENSE, CI, broken links)
 - ✅ Code quality analysis
 - ✅ Contributor statistics
-- ✅ Quality score calculation (0-100)
+- ✅ Quality score calculation (0-100, heuristic — see `scripts/quality-dashboard.py`)
 - ✅ Badge generation
 - ✅ JSON export
 - ✅ Automated alerts
 - ✅ Telegram notifications
-- ✅ Zero bugs, production-ready
 
 ## 📋 Requirements
 
@@ -68,10 +67,10 @@ echo 'export GITHUB_TOKEN="your_github_token"' >> ~/.bashrc
 📊 QUALITY DASHBOARD: kevinnft/ai-agent-skills
 ======================================================================
 
-Overall Quality Score: 92/100
+Overall Quality Score: 92/100   # heuristic — see scripts/quality-dashboard.py
 
 📈 Repository Metrics:
-  ⭐ Stars: 45
+  ⭐ Stars: 5
   🍴 Forks: 12
   👀 Watchers: 8
   📋 Open Issues: 3
@@ -275,7 +274,7 @@ $ ./scripts/quality-dashboard.py
 📊 QUALITY DASHBOARD: kevinnft/ai-agent-skills
 ======================================================================
 
-Overall Quality Score: 92/100
+Overall Quality Score: 92/100   # heuristic — see scripts/quality-dashboard.py
 
 [... full dashboard output ...]
 ```
